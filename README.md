@@ -36,7 +36,8 @@ EsportsOS is designed to allow all sizes of esports tournaments to be organised 
 
 | **Attribute Name** | **Type** | **Key** | **Description** |
 | --- | --- | --- | --- |
-| Player\_ID | String | PK | Unique identifier for each user of the system. This is will be their unique in-game username. |
+| Player\_ID | String | PK | Unique identifier for each user of the system. Generated Automatically by Laravel. |
+| Username | String | N/A | Unique in-game username that the player is known by. |
 | Country | String || The country that the player belongs to. |
 | Name | String | N/A | The Player&#39;s full name. |
 | Twitter | String | N/A | The Player&#39;s Twitter handle e.g. @PlayerXYZ |
