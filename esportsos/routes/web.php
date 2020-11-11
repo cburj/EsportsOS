@@ -18,3 +18,9 @@ Route::get('/', function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+/* Auto generates all the required routes for the resources */
+Route::resource('teams', 'App\Http\Controllers\TeamsController');
+Route::resource('players', 'App\Http\Controllers\PlayersController');
+Route::resource('matches', 'App\Http\Controllers\MatchesController');
