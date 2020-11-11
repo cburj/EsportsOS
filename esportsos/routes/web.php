@@ -24,3 +24,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('teams', 'App\Http\Controllers\TeamsController');
 Route::resource('players', 'App\Http\Controllers\PlayersController');
 Route::resource('matches', 'App\Http\Controllers\MatchesController');
+
+
+/* API ROUTES */
+/* Not sure if there is an easier way, but this works for now */
+Route::get('/api/teams', 'App\Http\Controllers\TeamsController@api');

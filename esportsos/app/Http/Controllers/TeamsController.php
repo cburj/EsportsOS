@@ -83,4 +83,9 @@ class TeamsController extends Controller
     {
         //
     }
+
+    public function api()
+    {
+        return Team::all();
+    }
 }
