@@ -1,3 +1,30 @@
 body{
   font-family: 'Rubik', sans-serif;
+  background-color: white;
+  color: black;
+}
+
+.custom-nav {
+  border-bottom-style: solid;
+  border-image-source: linear-gradient(
+    to right,
+    #f40035,
+    #fa187d,
+    #e450bc,
+    #b679ea,
+    #7698ff,
+    #4babff,
+    #1abaff,
+    #00c8fe,
+    #00d7fd,
+    #00e4f3,
+    #00f0e1,
+    #00fac9
+  );
+  border-image-slice: 10%;
+  background-color: #050505;
+  border-top: 0px;
+  border-left: 0px;
+  border-right: 0px;
+  background-color: black;
 }

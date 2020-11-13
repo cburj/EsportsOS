@@ -34,8 +34,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
-            <div class="container">
+        <nav class="navbar navbar-expand-md navbar-dark  shadow-sm custom-nav">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'EsportsOS') }}
                 </a>
@@ -46,7 +45,15 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="nav-item">
+                            <a class="nav-link" href="/players">Players</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/matches">Matches</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/teams">Teams</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -71,12 +78,23 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                    <a class="dropdown-item" href="#">
+                                        🎮Admin Dashboard
                                     </a>
-
+                                    <a class="dropdown-item" href="#">
+                                        📊Statistics
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        🔨Moderation
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        🔧Settings
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                                  document.getElementById('logout-form').submit();">
+                                     {{ __('🚪Logout') }}
+                                 </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
@@ -85,9 +103,7 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>

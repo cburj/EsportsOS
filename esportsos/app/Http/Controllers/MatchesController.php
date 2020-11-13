@@ -13,7 +13,7 @@ class MatchesController extends Controller
      */
     public function index()
     {
-        //
+        return "we're working on it!";
     }
 
     /**
