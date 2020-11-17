@@ -47,7 +47,7 @@ class PlayersController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('players.show', ['player' => Player::findOrFail($id)]);
     }
 
     /**

@@ -21,7 +21,7 @@ class CreateMatchesTable extends Migration
             //Points to one of the teams.
             $table->unsignedBigInteger('team2_id');
             // The match that proceeds this match (the one it feeds the winning team into).
-            $table->unsignedBigInteger('child_match_id');
+            $table->unsignedBigInteger('child_match_id')->nullable();
             //The datetime when the match was scheduled to start.
             $table->dateTime('date_time');
             //The datetime when the match actually started.
