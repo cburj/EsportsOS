@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Match extends Model
 {
     use HasFactory;
+
+    public function team1()
+    {
+        return $this->belongsTo('App\Models\Team');
+    }
+    
+    public function team2()
+    {
+        return $this->belongsTo('App\Models\Team');
+    }
 }

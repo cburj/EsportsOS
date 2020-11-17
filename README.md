@@ -1,5 +1,5 @@
 # "EsportsOS" (Working Title)
-EsportsOS is designed to allow all sizes of esports tournaments to be organised in a few simple clicks, with the ability to record match resutls and rank teams/players based on their performances. EsportsOS also gives admins the ability to create several dashboards that can be used within livestreams/broadcasts to shared data with viewers and attendees.
+EsportsOS is designed to allow all sizes of esports tournaments to be organised in a few simple clicks, with the ability to record match results and rank teams/players based on their performances. EsportsOS also gives admins the ability to create several dashboards that can be used within livestreams/broadcasts to be shared data with viewers and attendees.
 
 ### Models
 * User*
