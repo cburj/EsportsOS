@@ -4,6 +4,16 @@ body{
   color: black;
 }
 
+.body-a{
+  color: black;
+  font-weight: bold;
+}
+
+.body-a:hover{
+  color: grey;
+  text-decoration: none;
+}
+
 .custom-nav {
   border-bottom-style: solid;
   border-image-source: linear-gradient(

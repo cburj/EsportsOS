@@ -6,13 +6,7 @@
         @if(count($teams) > 0)
             @foreach($teams as $team)
                 <div class="">
-                    <h3>{{$team->name}} ({{$team->abbreviation}})</h3>
-                    <p>Country: {{$team->country}}</p>
-                    <p>Coach: {{$team->coach_name}}</p>
-                    <p>Tournament Rating: {{$team->rating}}</p>
-                    <p>Twitter: <a href="https://www.twitter.com/{{$team->twitter}}">{{$team->twitter}}</a></p>
-                    <p>Sponsor: {{$team->primary_sponsor}}</p>
-                    <p>Seconday Sponsor: {{$team->secondary_sponsor}}</p>
+                <h3><strong><a class="body-a" href="/teams/{{$team->id}}">{{$team->name}} ({{$team->abbreviation}})</a></strong></h3>
                     <strong>Players:</strong>
                     <p>
                     @foreach ($team->players as $player)
