@@ -13,6 +13,12 @@
                     <p>Twitter: <a href="https://www.twitter.com/{{$team->twitter}}">{{$team->twitter}}</a></p>
                     <p>Sponsor: {{$team->primary_sponsor}}</p>
                     <p>Seconday Sponsor: {{$team->secondary_sponsor}}</p>
+                    <strong>Players:</strong>
+                    <p>
+                    @foreach ($team->players as $player)
+                        {{$player->username. ','}}
+                    @endforeach
+                    <p>
                 </div>
             <hr/>
             @endforeach
