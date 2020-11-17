@@ -108,5 +108,10 @@
             @yield('content')
         </main>
     </div>
+    <footer class="footer">
+        <div class="container">
+          <span class="text-muted">EsportsOS - Created by Charlie Burgess (2020)</span>
+        </div>
+      </footer>
 </body>
 </html>
