@@ -83,4 +83,9 @@ class PlayersController extends Controller
     {
         //
     }
+
+    public function api()
+    {
+        return Player::all();
+    }
 }

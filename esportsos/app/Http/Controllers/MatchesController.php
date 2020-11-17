@@ -83,4 +83,9 @@ class MatchesController extends Controller
     {
         //
     }
+
+    public function api()
+    {
+        return Match::all();
+    }
 }
