@@ -25,7 +25,7 @@ class PlayersController extends Controller
      */
     public function create()
     {
-        //
+        return view('players.create');
     }
 
     /**
@@ -36,7 +36,26 @@ class PlayersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        /* Validation */
+        $this->validate( $request, [
+            'username' => 'required'
+         ] );
+
+         Player::create([
+             'username' => $request->username,
+             'full_name' => $request->full_name,
+             'country' => $request->country,
+             'twitter' => $request->twitter,
+             'discord' => $request->discord,
+             'team_id' => $request->team_id,
+             'user_id' => $request->user_id,
+             'wins' => 0,
+             'losses' => 0,
+             'draws' => 0,
+             'rating' => 0.0
+         ]);
+
+         return back()->withInput();
     }
 
     /**
