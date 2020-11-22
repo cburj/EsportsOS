@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Player;
+use App\Models\Team;
+use App\Models\User;
 
 class PlayersController extends Controller
 {
@@ -25,7 +27,10 @@ class PlayersController extends Controller
      */
     public function create()
     {
-        return view('players.create');
+        //Import all of the required Teams/Users for dropdowns etc.
+        $teams = Team::all();
+        $users = User::all();
+        return view('players.create')->with('teams', $teams)->with('users', $users);
     }
 
     /**

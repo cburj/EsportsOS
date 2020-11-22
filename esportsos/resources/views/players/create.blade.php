@@ -31,6 +31,25 @@
                 <input type="text" name="user_id"></input>
                 <br>
 
+
+                <!--<label for="team_id">TeamID:</label>
+                <select class="form-control" id="team_id">
+                    <option value="" disabled selected>Select Team...</option>
+                    @foreach ($teams as $team)
+                        <option value="{{$team->id}}">{{$team->id}}</option>
+                    @endforeach
+                </select>
+                <br>-->
+
+                <!--<label for="user_id">UserID:</label>
+                <select class="form-control" id="user_id">
+                    <option value="" disabled selected>Select User...</option>
+                    @foreach ($users as $user)
+                        <option value="{{$user->id}}">{{$user->id}}</option>
+                    @endforeach
+                </select>
+                <br>-->
+
                 <input type="submit" value="Submit" class="btn btn-primary">
 
             </form>
