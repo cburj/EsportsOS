@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\Team;
 use App\Models\User;
+use Illuminate\Database\QueryException;
 
 class PlayersController extends Controller
 {
@@ -46,21 +47,27 @@ class PlayersController extends Controller
             'username' => 'required'
          ] );
 
-         Player::create([
-             'username' => $request->username,
-             'full_name' => $request->full_name,
-             'country' => $request->country,
-             'twitter' => $request->twitter,
-             'discord' => $request->discord,
-             'team_id' => $request->team_id,
-             'user_id' => $request->user_id,
-             'wins' => 0,
-             'losses' => 0,
-             'draws' => 0,
-             'rating' => 0.0
-         ]);
-
-         return back()->withInput();
+        try
+        {
+            $player = Player::create([
+                'username' => $request->username,
+                'full_name' => $request->full_name,
+                'country' => $request->country,
+                'twitter' => $request->twitter,
+                'discord' => $request->discord,
+                'team_id' => $request->team_id,
+                'user_id' => $request->user_id,
+                'wins' => 0,
+                'losses' => 0,
+                'draws' => 0,
+                'rating' => 0.0
+            ]);
+            return redirect('players/' . $player->id);
+        }
+        catch(QueryException $e)
+        {
+            return redirect('players/create');
+        }
     }
 
     /**

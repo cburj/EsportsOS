@@ -9,6 +9,16 @@ class Team extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'abbreviation',
+        'coach_name',
+        'country',
+        'twitter',
+        'primary_sponsor',
+        'seconday_sponsor'
+    ];
+
     public function players()
     {
         return $this->hasMany('App\Models\Player');

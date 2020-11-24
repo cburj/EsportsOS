@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Team;
+use Illuminate\Database\QueryException;
 
 class TeamsController extends Controller
 {
@@ -25,7 +26,7 @@ class TeamsController extends Controller
      */
     public function create()
     {
-        //
+        return view('teams.create');
     }
 
     /**
@@ -36,7 +37,28 @@ class TeamsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        //dd($request);
+        try
+        { 
+        $team = Team::create([
+            'name' => $request->name,
+            'abbreviation' => $request->abbreviation,
+            'coach_name' => $request->coach_name,
+            'country' => $request->country,
+            'twitter' => $request->twitter,
+            'primary_sponsor' => $request->primary_sponsor,
+            'secondary_sponsor' => $request->secondary_sponsor
+        ]);
+
+        //Redirect to this new Record.
+        return redirect('teams/' . $team->id);
+        }
+        catch(QueryException $e)
+        {
+            //For now, just redirect to the page.
+            return redirect('teams/create');
+        }
     }
 
     /**

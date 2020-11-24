@@ -21,17 +21,17 @@ class CreateTeamsTable extends Migration
             //Unique abbreviation of the team name e.g. Astralis becomes ASTR
             $table->string('abbreviation')->unique();
             //The name of the coach for the team.
-            $table->string('coach_name');
+            $table->string('coach_name')->default('');
             //The coutry the team is representing/based in.
-            $table->string('country');
+            $table->string('country')->default('');
             //Numerical rating based off previous performances.
             $table->float('rating')->default(0.0);
             //Twitter username for the team.
-            $table->string('twitter');
+            $table->string('twitter')->default('');
             //The name of the primary sponsor e.g. Nvidia
-            $table->string('primary_sponsor');
+            $table->string('primary_sponsor')->default('');
             //The name of the secondary sponsor e.g. Razer
-            $table->string('secondary_sponsor');
+            $table->string('secondary_sponsor')->default('');
         });
     }
 
