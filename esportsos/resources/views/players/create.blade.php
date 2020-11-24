@@ -24,31 +24,32 @@
                 <label for="discord">Discord:</label>
                 <input type="text" name="discord"></input>
                 <br>
-                <label for="team_id">TeamID:</label>
+                <!--<label for="team_id">TeamID:</label>
                 <input type="text" name="team_id"></input>
                 <br>
                 <label for="user_id">UserID:</label>
                 <input type="text" name="user_id"></input>
-                <br>
+                <br>-->
 
 
-                <!--<label for="team_id">TeamID:</label>
-                <select class="form-control" id="team_id">
+                <label for="team_id">TeamID:</label>
+                <select class="form-control" id="team_id" name="team_id">
                     <option value="" disabled selected>Select Team...</option>
                     @foreach ($teams as $team)
-                        <option value="{{$team->id}}">{{$team->id}}</option>
+                        <!--<option value="hello world">{{$team->id}}</option>-->
+                        <option value="{{ $team->id }}">{{ $team->name }}</option>
                     @endforeach
                 </select>
-                <br>-->
+                <br>
 
-                <!--<label for="user_id">UserID:</label>
-                <select class="form-control" id="user_id">
+                <label for="user_id">UserID:</label>
+                <select class="form-control" id="user_id" name="user_id">
                     <option value="" disabled selected>Select User...</option>
                     @foreach ($users as $user)
-                        <option value="{{$user->id}}">{{$user->id}}</option>
+                        <option value="{{$user->id}}">{{$user->email}}</option>
                     @endforeach
                 </select>
-                <br>-->
+                <br>
 
                 <input type="submit" value="Submit" class="btn btn-primary">
 

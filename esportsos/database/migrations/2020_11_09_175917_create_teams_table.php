@@ -25,7 +25,7 @@ class CreateTeamsTable extends Migration
             //The coutry the team is representing/based in.
             $table->string('country');
             //Numerical rating based off previous performances.
-            $table->float('rating');
+            $table->float('rating')->default(0.0);
             //Twitter username for the team.
             $table->string('twitter');
             //The name of the primary sponsor e.g. Nvidia

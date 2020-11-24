@@ -29,13 +29,13 @@ class CreatePlayersTable extends Migration
             //The unique ID of the team the player represents.
             $table->unsignedBigInteger('team_id');
             //The number of wins the player has.
-            $table->integer('wins');
+            $table->integer('wins')->default(0);
             //The number of losses the player has
-            $table->integer('losses');
+            $table->integer('losses')->default(0);
             //The number of draws the player has.
-            $table->integer('draws');
+            $table->integer('draws')->default(0);
             //Numercal rating based off previous performances.
-            $table->float('rating');
+            $table->float('rating')->default(0.0);
             //User ID - allowing players to be linked to a specific user in the system.
             $table->unsignedBigInteger('user_id');
 

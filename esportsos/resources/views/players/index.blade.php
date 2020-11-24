@@ -20,9 +20,10 @@
             @endif
             </div>
             <div class="col-sm">
-                @if(Auth::user()->isAdmin)
-                <h5>Admin Actions</h5>
-                <button type="button" class="btn btn-dark" onclick="location.href='/players/create'">Register Player</button>
+                <!-- If user is logged in and is an admin, then show the button -->
+                @if(!Auth::guest() && Auth::user()->isAdmin)
+                    <h5>Admin Actions</h5>
+                    <button type="button" class="btn btn-dark" onclick="location.href='/players/create'">Register Player</button>
                 @endif
             </div>
           </div>
