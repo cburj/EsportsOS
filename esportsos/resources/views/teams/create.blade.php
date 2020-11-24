@@ -24,8 +24,8 @@
                 <label for="primary_sponsor">Primary Sponsor:</label>
                 <input type="text" name="primary_sponsor"></input>
                 <br>
-                <label for="seconday_sponsor">Secondary Sponsor:</label>
-                <input type="text" name="seconday_sponsor"></input>
+                <label for="secondary_sponsor">Secondary Sponsor:</label>
+                <input type="text" name="secondary_sponsor"></input>
                 <br>
                 <input type="submit" value="Submit" class="btn btn-primary">
             </form>

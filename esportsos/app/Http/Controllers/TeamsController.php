@@ -48,7 +48,7 @@ class TeamsController extends Controller
             'country' => $request->country,
             'twitter' => $request->twitter,
             'primary_sponsor' => $request->primary_sponsor,
-            'secondary_sponsor' => $request->secondary_sponsor
+            'secondary_sponsor' => $request->secondary_sponsor,
         ]);
 
         //Redirect to this new Record.

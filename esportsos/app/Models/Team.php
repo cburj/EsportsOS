@@ -16,7 +16,7 @@ class Team extends Model
         'country',
         'twitter',
         'primary_sponsor',
-        'seconday_sponsor'
+        'secondary_sponsor'
     ];
 
     public function players()
