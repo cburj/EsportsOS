@@ -9,9 +9,10 @@
                     @foreach ($teams as $team)
                         <div class="card">
                             <div class="card-body">
+                                <a href="/teams/{{$team->id}}">
                                     <img src="/img/teams/{{$team->name}}.png" class="img-thumbnail float-right"/>
-                                <h3><strong><a class="body-a" href="/teams/{{ $team->id }}">{{ $team->name }}
-                                            ({{ $team->abbreviation }})</a></strong></h3>
+                                </a>
+                                <h3><strong><a class="body-a" href="/teams/{{ $team->id }}">{{ $team->name }} ({{ $team->abbreviation }})</a></strong></h3>
                                 <strong>Players:</strong>
                                 <p>
                                     @foreach ($team->players as $player)

@@ -25,13 +25,14 @@ class CreateMatchesTable extends Migration
             //The datetime when the match was scheduled to start.
             $table->dateTime('date_time');
             //The datetime when the match actually started.
-            $table->dateTime('start_time');
+            $table->dateTime('start_time')->nullable();
             //The datetime when the match finished.
-            $table->dateTime('end_time');
+            $table->dateTime('end_time')->nullable();
             //The current/final score of team 1
-            $table->integer('team1_score');
+            $table->integer('team1_score')->default(0);
             //The current/final score of team 2
-            $table->integer('team2_score');
+            $table->integer('team2_score')->default(0);
+            $table->string('server_ip')->default('127.0.0.1');
 
             /**
              * Foreign Key Constraints

@@ -19,13 +19,13 @@ class CreatePlayersTable extends Migration
             //The player's UNIQUE in-game username.
             $table->string('username')->unique();
             //The users full name.
-            $table->string('full_name');
+            $table->string('full_name')->default('');
             //The country the player is originally from (or is now representing).
-            $table->string('country');
+            $table->string('country')->default('');
             //The players official Twitter handle.
-            $table->string('twitter');
+            $table->string('twitter')->default('');
             //The players Discord username.
-            $table->string('discord');
+            $table->string('discord')->default('');
             //The unique ID of the team the player represents.
             $table->unsignedBigInteger('team_id');
             //The number of wins the player has.

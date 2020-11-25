@@ -61,3 +61,10 @@ body {
 input{
   width: 100%;
 }
+
+/* Stop Team Logos from showing on small screens */
+@media all and (max-width: 767px) {
+  .matches-index-logos {
+    display: none;
+  }
+}
