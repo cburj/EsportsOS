@@ -9,10 +9,10 @@
                     <div class="card-body">
                         <div class="matches-index-logos">
                             <a href="/teams/{{ $match->team1->id }}">
-                                <img src="/img/teams/{{ $match->team1->name }}.png" class="img-thumbnail float-left" />
+                                <img src="/img/teams/{{ $match->team1->name }}.png" class="img-thumbnail float-left" onerror="this.onerror=null; this.src='/img/teams/Default.png'"/>
                             </a>
                             <a href="/teams/{{ $match->team2->id }}">
-                                <img src="/img/teams/{{ $match->team2->name }}.png" class="img-thumbnail float-right" />
+                                <img src="/img/teams/{{ $match->team2->name }}.png" class="img-thumbnail float-right" onerror="this.onerror=null; this.src='/img/teams/Default.png'"/>
                             </a>
                         </div>
                         <div class="text-center">

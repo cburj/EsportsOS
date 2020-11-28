@@ -7,6 +7,7 @@ use App\Models\Player;
 use App\Models\Team;
 use App\Models\User;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 
 class PlayersController extends Controller
 {
@@ -28,10 +29,15 @@ class PlayersController extends Controller
      */
     public function create()
     {
-        //Import all of the required Teams/Users for dropdowns etc.
-        $teams = Team::all();
-        $users = User::all();
-        return view('players.create')->with('teams', $teams)->with('users', $users);
+        if (Auth::user())
+        {
+            //Import all of the required Teams/Users for dropdowns etc.
+            $teams = Team::all();
+            $users = User::all();
+            return view('players.create')->with('teams', $teams)->with('users', $users);
+        }
+        else
+            return $this->index();
     }
 
     /**
@@ -43,12 +49,11 @@ class PlayersController extends Controller
     public function store(Request $request)
     {
         /* Validation */
-        $this->validate( $request, [
+        $this->validate($request, [
             'username' => 'required'
-         ] );
+        ]);
 
-        try
-        {
+        try {
             $player = Player::create([
                 'username' => $request->username,
                 'full_name' => $request->full_name,
@@ -63,9 +68,7 @@ class PlayersController extends Controller
                 'rating' => 0.0
             ]);
             return redirect('players/' . $player->id);
-        }
-        catch(QueryException $e)
-        {
+        } catch (QueryException $e) {
             return redirect('players/create');
         }
     }

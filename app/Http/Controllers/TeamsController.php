@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Team;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 
 class TeamsController extends Controller
 {
@@ -26,7 +27,10 @@ class TeamsController extends Controller
      */
     public function create()
     {
-        return view('teams.create');
+        if(Auth::user())
+            return view('teams.create');
+        else
+            return $this->index();
     }
 
     /**

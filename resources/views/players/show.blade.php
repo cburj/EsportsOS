@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="container">
-        <img src="/img/players/{{$player->username}}.png" class="float-right" onerror="this.onerror=null; this.src='/img/Default.jpg'"/>
+        <img src="/img/players/{{$player->username}}.png" class="float-right" onerror="this.onerror=null; this.src='/img/players/Default.png'"/>
         <h3><strong>{{$player->username}}</strong></h3>
         <p>Name: {{$player->full_name}}</p>
         <p>Team: <a class="body-a" href="/teams/{{ $player->team->id }}">{{ $player->team->name }}</a></p>
