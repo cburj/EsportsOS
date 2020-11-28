@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2020 at 01:21 PM
+-- Generation Time: Nov 28, 2020 at 04:52 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -138,8 +138,8 @@ CREATE TABLE `players` (
 --
 
 INSERT INTO `players` (`id`, `created_at`, `updated_at`, `username`, `full_name`, `country`, `twitter`, `discord`, `team_id`, `wins`, `losses`, `draws`, `rating`, `user_id`) VALUES
-(1, '2020-11-25 17:47:41', '2020-11-25 17:47:41', 'Dupreeh', 'Peter Rasmussen', 'Denmark', '@dupreeh', 'dupreeh#6969', 1, 0, 0, 0, 0.00, 1),
-(2, '2020-11-25 17:48:28', '2020-11-25 17:48:28', 'Coldzera', 'Marcelo David', 'Brazil', '@coldzera', 'coldzera#2445', 2, 0, 0, 0, 0.00, 1);
+(1, '2020-11-25 17:47:41', '2020-11-25 17:47:41', 'DBCooper', 'Dan Cooper', 'USA', '@twitter', 'cooper#1234', 1, 0, 0, 0, 0.00, 1),
+(2, '2020-11-25 17:48:28', '2020-11-25 17:48:28', 'OfficerK', 'KD6-3.7', 'USA', '@twitter', 'officerk#1234', 2, 0, 0, 0, 0.00, 1);
 
 -- --------------------------------------------------------
 
@@ -166,8 +166,8 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`id`, `created_at`, `updated_at`, `name`, `abbreviation`, `coach_name`, `country`, `rating`, `twitter`, `primary_sponsor`, `secondary_sponsor`) VALUES
-(1, '2020-11-25 17:47:24', '2020-11-25 17:47:24', 'Astralis', 'ASTR', 'Zonic', 'Denmark', 0.00, '@astralisgg', 'Hummel', 'Logitech'),
-(2, '2020-11-25 17:48:05', '2020-11-25 17:48:05', 'FaZe Clan', 'FaZe', 'YNK', 'USA', 0.00, '@FaZeClan', 'NISSAN', 'GFuel');
+(1, '2020-11-25 17:47:24', '2020-11-25 17:47:24', 'VSCode Esports', 'VSC', 'John Doe', 'Denmark', 0.00, '@twitter', 'Premium PC', 'Gaming Drink'),
+(2, '2020-11-25 17:48:05', '2020-11-25 17:48:05', 'VIM Esports', 'VIM', 'Jane Doe', 'USA', 0.00, '@twitter', 'Sports Brand', 'Fashion Label');
 
 -- --------------------------------------------------------
 
