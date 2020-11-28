@@ -26,7 +26,7 @@
     <!--BOOTSTRAP CDN CONTENT-->
 
     <!--CUSTOM CSS-->
-    <link href="/css/main.css" rel="stylesheet">
+<link href="{{ secure_asset('/css/main.css') }}" rel="stylesheet">
     <!--CUSTOM CSS-->
 
     <!-- Styles -->
