@@ -25,12 +25,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
     <!--BOOTSTRAP CDN CONTENT-->
 
-    <!--CUSTOM CSS-->
-<link href="{{ secure_asset('/css/main.css') }}" rel="stylesheet">
-    <!--CUSTOM CSS-->
+    <!-- This has to be set to secure if we are deployed on Heroku -->
+    @if(app()->environment() === 'development')
+        <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+    @else
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @endif
 
-    <!-- Styles -->
-    <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+
 </head>
 <body>
     <div id="app">
