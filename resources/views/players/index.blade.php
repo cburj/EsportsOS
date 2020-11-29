@@ -9,11 +9,10 @@
                 @foreach ($players as $player)
                     <div class="card">
                         <div class="card-body">
-                            <h3><a class="body-a" href="/players/{{ $player->id }}">{{ $player->username }}</a></h3>
-                            <p>Team: <a class="body-a" href="/teams/{{ $player->team->id }}">{{ $player->team->name }}</a></p>
+                            <h6><a class="body-a" href="/players/{{ $player->id }}">{{ $player->username }}</a> <div class="float-right">Team: <a class="body-a" href="/teams/{{ $player->team->id }}">{{ $player->team->name }}</a></div></h6>
                         </div>
                     </div>
-                    <hr />
+                    <br>
                 @endforeach
             @else
                 <p>Oops, no players found 😢</p>
