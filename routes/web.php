@@ -25,6 +25,9 @@ Route::resource('teams', 'App\Http\Controllers\TeamsController');
 Route::resource('players', 'App\Http\Controllers\PlayersController');
 Route::resource('matches', 'App\Http\Controllers\MatchesController');
 
+/* Livestream Assets/Dashboards */
+Route::get('/assets/bracket', 'App\Http\Controllers\AssetsController@bracket');
+
 
 /* API ROUTES */
 /* Not sure if there is an easier way, but this works for now */
