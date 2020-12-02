@@ -8,7 +8,8 @@
     <h2>ID: {{ $match->id }}</h2>
     <h3>{{ $match->team1->name }}</h3>
     <h3>{{ $match->team2->name }}</h3>
-    <h5>Child Match: {{ $match->child_match_id }}</h5>
+    <h5>Child Match 1: {{ $match->child1_id }}</h5>
+    <h5>Child Match 2: {{ $match->child2_id }}</h5>
     <hr/>
 @endforeach
 

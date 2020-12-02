@@ -12,7 +12,8 @@ class Match extends Model
     protected $fillable = [
         'team1_id',
         'team2_id',
-        'child_match_id',
+        'child1_id',
+        'child2_id',
         'date_time',
         'server_ip'
     ];

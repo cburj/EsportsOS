@@ -53,7 +53,8 @@ class MatchesController extends Controller
         $match = Match::create([
             'team1_id' => $request->team1_id,
             'team2_id' => $request->team2_id,
-            'child_match_id' => $request->child_match_id,
+            'child1_id' => $request->child1_id,
+            'child2_id' => $request->child2_id,
             'date_time' => $request->date_time,
             'server_ip' => $request->server_ip
         ]);

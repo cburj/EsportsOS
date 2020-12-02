@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2020 at 02:30 PM
+-- Generation Time: Dec 02, 2020 at 11:28 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -50,7 +50,8 @@ CREATE TABLE `matches` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `team1_id` bigint(20) UNSIGNED NOT NULL,
   `team2_id` bigint(20) UNSIGNED NOT NULL,
-  `child_match_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `child1_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `child2_id` bigint(20) UNSIGNED DEFAULT NULL,
   `date_time` datetime NOT NULL,
   `start_time` datetime DEFAULT NULL,
   `end_time` datetime DEFAULT NULL,
@@ -63,8 +64,9 @@ CREATE TABLE `matches` (
 -- Dumping data for table `matches`
 --
 
-INSERT INTO `matches` (`id`, `created_at`, `updated_at`, `team1_id`, `team2_id`, `child_match_id`, `date_time`, `start_time`, `end_time`, `team1_score`, `team2_score`, `server_ip`) VALUES
-(1, '2020-11-29 13:14:32', '2020-11-29 13:14:32', 1, 2, NULL, '2020-12-10 13:30:00', NULL, NULL, 0, 0, '127.0.0.1');
+INSERT INTO `matches` (`id`, `created_at`, `updated_at`, `team1_id`, `team2_id`, `child1_id`, `child2_id`, `date_time`, `start_time`, `end_time`, `team1_score`, `team2_score`, `server_ip`) VALUES
+(1, '2020-12-02 10:26:57', '2020-12-02 10:26:57', 1, 2, NULL, NULL, '2020-12-10 10:00:00', NULL, NULL, 0, 0, '192.168.0.1'),
+(2, '2020-12-02 10:27:39', '2020-12-02 10:27:39', 2, 1, 1, 1, '2020-12-11 10:27:00', NULL, NULL, 0, 0, '192.168.0.1');
 
 -- --------------------------------------------------------
 
@@ -88,8 +90,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (96, '2014_10_12_000000_create_users_table', 2),
 (97, '2019_08_19_000000_create_failed_jobs_table', 2),
 (98, '2020_11_09_175917_create_teams_table', 2),
-(99, '2020_11_09_180403_create_matches_table', 2),
-(100, '2020_11_09_180413_create_players_table', 2);
+(100, '2020_11_09_180413_create_players_table', 2),
+(102, '2020_11_09_180403_create_matches_table', 3);
 
 -- --------------------------------------------------------
 
@@ -220,7 +222,8 @@ ALTER TABLE `matches`
   ADD PRIMARY KEY (`id`),
   ADD KEY `matches_team1_id_foreign` (`team1_id`),
   ADD KEY `matches_team2_id_foreign` (`team2_id`),
-  ADD KEY `matches_child_match_id_foreign` (`child_match_id`);
+  ADD KEY `matches_child1_id_foreign` (`child1_id`),
+  ADD KEY `matches_child2_id_foreign` (`child2_id`);
 
 --
 -- Indexes for table `migrations`
@@ -272,13 +275,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `matches`
 --
 ALTER TABLE `matches`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=101;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `players`
@@ -306,7 +309,8 @@ ALTER TABLE `users`
 -- Constraints for table `matches`
 --
 ALTER TABLE `matches`
-  ADD CONSTRAINT `matches_child_match_id_foreign` FOREIGN KEY (`child_match_id`) REFERENCES `matches` (`id`),
+  ADD CONSTRAINT `matches_child1_id_foreign` FOREIGN KEY (`child1_id`) REFERENCES `matches` (`id`),
+  ADD CONSTRAINT `matches_child2_id_foreign` FOREIGN KEY (`child2_id`) REFERENCES `matches` (`id`),
   ADD CONSTRAINT `matches_team1_id_foreign` FOREIGN KEY (`team1_id`) REFERENCES `teams` (`id`),
   ADD CONSTRAINT `matches_team2_id_foreign` FOREIGN KEY (`team2_id`) REFERENCES `teams` (`id`);
 

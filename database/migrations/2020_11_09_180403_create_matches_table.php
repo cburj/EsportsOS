@@ -20,8 +20,10 @@ class CreateMatchesTable extends Migration
             $table->unsignedBigInteger('team1_id');
             //Points to one of the teams.
             $table->unsignedBigInteger('team2_id');
-            // The match that proceeds this match (the one it feeds the winning team into).
-            $table->unsignedBigInteger('child_match_id')->nullable();
+            // One of the matches that feeds winners into the current match.
+            $table->unsignedBigInteger('child1_id')->nullable();
+            // One of the other matches that feeds winners into the current match.
+            $table->unsignedBigInteger('child2_id')->nullable();
             //The datetime when the match was scheduled to start.
             $table->dateTime('date_time');
             //The datetime when the match actually started.
@@ -39,7 +41,8 @@ class CreateMatchesTable extends Migration
              */
             $table->foreign('team1_id')->references('id')->on('teams');
             $table->foreign('team2_id')->references('id')->on('teams');
-            $table->foreign('child_match_id')->references('id')->on('matches');
+            $table->foreign('child1_id')->references('id')->on('matches');
+            $table->foreign('child2_id')->references('id')->on('matches');
         });
     }
 
