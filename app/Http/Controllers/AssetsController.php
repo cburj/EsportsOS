@@ -9,7 +9,7 @@ class AssetsController extends Controller
 {
     public function bracket()
     {
-        $matches = Match::all();
+        $matches = Match::orderBy('id', 'ASC')->get();
         return view('assets.bracket')->with('matches', $matches);
     }
 

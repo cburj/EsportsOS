@@ -3,24 +3,48 @@
 @section('content')
 
 <h1>BRACKET (⚠ Work-In-Progress!)</h1>
-<!-- very basic for now, gonna need some good cs maths here -->
-@foreach ($matches as $match)
-    <h2>ID: {{ $match->id }}</h2>
-    <h3>{{ $match->team1->name }}</h3>
-    <h3>{{ $match->team2->name }}</h3>
-    <h5>Child Match 1: {{ $match->child1_id }}</h5>
-    <h5>Child Match 2: {{ $match->child2_id }}</h5>
-    <hr/>
-@endforeach
 
-<!--
+@php
+ 
+/**
+ * @param array *$array
+ * @param int $id
+ * @return App\Models\Match
+ * 
+ * Function which is passed an array of matches, and then finds
+ * a given match id in that array. The corresponding match
+ * is returned, or NULL if no match ID was found.
+ */
+function findMatch($matches, $id)
+{
+    foreach($matches as $match)
+    {
+        if ($match->id == $id)
+            return $match;
+    }
+    return null;
+}
 
+function printNode( $match, $matches )
+{
+    global $level;
 
-* Need to do some form of Level-Order-Traversal.
-* But how do we find the root node? (aka the final match)
+    if( $match == null )
+        return;
 
+    echo '<h4>' . $match->team1->name . ' VS ' . $match->team2->name . '</h4>';
+    echo '<br/>';
 
--->
+    $left = $match->child1_id;
+    $right = $match->child1_id;
+
+    printNode( findMatch( $matches, $left ), $matches );
+    printNode( findMatch( $matches, $right ), $matches );
+}
+
+printNode($matches[0], $matches);
+
+@endphp
 
 @endsection
 
