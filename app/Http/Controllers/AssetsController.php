@@ -12,4 +12,9 @@ class AssetsController extends Controller
         $matches = Match::all();
         return view('assets.bracket')->with('matches', $matches);
     }
+
+    public function index()
+    {
+        return view('assets.index');
+    }
 }

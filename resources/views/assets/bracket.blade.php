@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>BRACKETS:</h1>
+<h1>BRACKET (⚠ Work-In-Progress!)</h1>
 <!-- very basic for now, gonna need some good cs maths here -->
 @foreach ($matches as $match)
     <h2>ID: {{ $match->id }}</h2>
@@ -13,5 +13,14 @@
     <hr/>
 @endforeach
 
+<!--
+
+
+* Need to do some form of Level-Order-Traversal.
+* But how do we find the root node? (aka the final match)
+
+
+-->
 
 @endsection
+

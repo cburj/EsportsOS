@@ -26,6 +26,7 @@ Route::resource('players', 'App\Http\Controllers\PlayersController');
 Route::resource('matches', 'App\Http\Controllers\MatchesController');
 
 /* Livestream Assets/Dashboards */
+Route::get('/assets', 'App\Http\Controllers\AssetsController@index');
 Route::get('/assets/bracket', 'App\Http\Controllers\AssetsController@bracket');
 
 

@@ -85,18 +85,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="#">
-                                        🎮Admin Dashboard
+                                    @if(!Auth::guest() && Auth::user()->isAdmin)
+                                    <a class="dropdown-item" href="/assets">
+                                        Stream Assets
                                     </a>
-                                    <a class="dropdown-item" href="#">
-                                        📊Statistics
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        🔨Moderation
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        🔧Settings
-                                    </a>
+                                    @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">
