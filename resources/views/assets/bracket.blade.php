@@ -25,24 +25,24 @@ function findMatch($matches, $id)
     return null;
 }
 
-function printNode( $match, $matches )
+function printNode( $match, $matches, $level )
 {
-    global $level;
 
     if( $match == null )
         return;
 
-    echo '<h4>' . $match->team1->name . ' VS ' . $match->team2->name . '</h4>';
-    echo '<br/>';
+    echo '<h4 class="bracket-level-' . $level . '">' . $match->team1->name . ' VS ' . $match->team2->name . '</h4>';
+    echo '<hr/>';
 
     $left = $match->child1_id;
-    $right = $match->child1_id;
+    $right = $match->child2_id;
 
-    printNode( findMatch( $matches, $left ), $matches );
-    printNode( findMatch( $matches, $right ), $matches );
+
+    printNode( findMatch( $matches, $left ), $matches, $level+1 );
+    printNode( findMatch( $matches, $right ), $matches, $level+1 );
 }
 
-printNode($matches[0], $matches);
+printNode($matches[0], $matches, 1);
 
 @endphp
 
