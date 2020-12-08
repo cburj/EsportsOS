@@ -31,18 +31,26 @@ function printNode( $match, $matches, $level )
     if( $match == null )
         return;
 
-    echo '<h4 class="bracket-level-' . $level . '">' . $match->team1->name . ' VS ' . $match->team2->name . '</h4>';
+    echo '<ul>';
+    echo '<li class=" card bracket-card bracket-level-' . $level . ' ">';
+    echo '<div class="card-body"><h5>' . $match->team1->name . '<div class="float-right">' . $match->team1_score . '</div></h5>';
     echo '<hr/>';
+    echo '<h5>' . $match->team2->name . '<div class="float-right">' . $match->team2_score . '</div></h5>';
+    echo '</div>';
+    echo '</li>';
+    echo '<br>';
 
     $left = $match->child1_id;
     $right = $match->child2_id;
 
-
     printNode( findMatch( $matches, $left ), $matches, $level+1 );
     printNode( findMatch( $matches, $right ), $matches, $level+1 );
+    echo '</ul>';
 }
 
+echo '<div class="tree">';
 printNode($matches[0], $matches, 1);
+echo '</div>';
 
 @endphp
 
