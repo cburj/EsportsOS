@@ -28,6 +28,7 @@ Route::resource('matches', 'App\Http\Controllers\MatchesController');
 /* Livestream Assets/Dashboards */
 Route::get('/assets', 'App\Http\Controllers\AssetsController@index');
 Route::get('/assets/bracket', 'App\Http\Controllers\AssetsController@bracket');
+Route::get('/assets/teams', 'App\Http\Controllers\AssetsController@teams');
 
 
 /* API ROUTES */

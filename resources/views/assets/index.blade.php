@@ -9,6 +9,9 @@
         <h3>Tournament Bracket</h3>
         <a href="/assets/bracket" class="btn btn-dark">Launch</a>
         <hr/>
+        <h3>Teams Standings</h3>
+        <a href="/assets/teams" class="btn btn-dark">Launch</a>
+        <hr/>
     </div>
 
 @endsection
