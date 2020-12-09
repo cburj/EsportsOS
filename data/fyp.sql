@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2020 at 11:28 AM
+-- Generation Time: Dec 09, 2020 at 06:22 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -65,8 +65,11 @@ CREATE TABLE `matches` (
 --
 
 INSERT INTO `matches` (`id`, `created_at`, `updated_at`, `team1_id`, `team2_id`, `child1_id`, `child2_id`, `date_time`, `start_time`, `end_time`, `team1_score`, `team2_score`, `server_ip`) VALUES
-(1, '2020-12-02 10:26:57', '2020-12-02 10:26:57', 1, 2, NULL, NULL, '2020-12-10 10:00:00', NULL, NULL, 0, 0, '192.168.0.1'),
-(2, '2020-12-02 10:27:39', '2020-12-02 10:27:39', 2, 1, 1, 1, '2020-12-11 10:27:00', NULL, NULL, 0, 0, '192.168.0.1');
+(8, '2020-12-08 14:51:48', '2020-12-08 14:51:48', 1, 4, 10, 9, '2020-12-10 14:51:00', NULL, NULL, 0, 0, '127.0.0.1'),
+(9, '2020-12-08 14:52:40', '2020-12-08 14:52:40', 1, 2, NULL, NULL, '2020-12-09 14:52:00', NULL, NULL, 0, 0, '192.168.0.1'),
+(10, '2020-12-08 14:52:59', '2020-12-08 14:52:59', 4, 3, 11, 12, '2020-12-08 14:52:00', NULL, NULL, 0, 0, '192.168.0.1'),
+(11, '2020-12-08 15:00:39', '2020-12-08 15:00:39', 2, 3, NULL, NULL, '2020-12-26 15:00:00', NULL, NULL, 0, 0, '192.168.0.1'),
+(12, '2020-12-08 15:36:56', '2020-12-08 15:36:56', 4, 4, NULL, NULL, '2021-01-09 15:36:00', NULL, NULL, 16, 4, '192.168.0.1');
 
 -- --------------------------------------------------------
 
@@ -140,7 +143,7 @@ CREATE TABLE `players` (
 --
 
 INSERT INTO `players` (`id`, `created_at`, `updated_at`, `username`, `full_name`, `country`, `twitter`, `discord`, `team_id`, `wins`, `losses`, `draws`, `rating`, `user_id`) VALUES
-(1, '2020-11-29 13:16:00', '2020-11-29 13:16:00', 'Deckard', 'Rick Deckard', 'USA', '@twitter', 'deckard#2049', 1, 0, 0, 0, 0.00, 1),
+(1, '2020-11-29 13:16:00', '2020-11-29 13:16:00', 'Deckard', 'Rick Deckard', 'USA', '@twitter', 'deckard#2049', 1, 5, 2, 3, 0.00, 1),
 (2, '2020-11-29 13:17:02', '2020-11-29 13:17:02', 'Gaff', 'E.Gaff', 'USA', '@twitter', 'gaff#2049', 1, 0, 0, 0, 0.00, 1),
 (3, '2020-11-29 13:17:46', '2020-11-29 13:17:46', 'Bryant', 'Harry Bryant', 'USA', '@twitter', 'Bryant#2019', 1, 0, 0, 0, 0.00, 1),
 (4, '2020-11-29 13:18:27', '2020-11-29 13:18:27', 'Sebastian', 'J. F. Sebastian', 'USA', '@twitter', 'Sebastian#2019', 1, 0, 0, 0, 0.00, 1),
@@ -177,7 +180,9 @@ CREATE TABLE `teams` (
 
 INSERT INTO `teams` (`id`, `created_at`, `updated_at`, `name`, `abbreviation`, `coach_name`, `country`, `rating`, `twitter`, `primary_sponsor`, `secondary_sponsor`) VALUES
 (1, '2020-11-29 13:12:52', '2020-11-29 13:12:52', 'TeamX', 'TX', 'John Doe', 'United Kingdom', 0.00, '@twitter', 'Overpriced PC Company', 'Useless Gaming Drink'),
-(2, '2020-11-29 13:13:37', '2020-11-29 13:13:37', 'TeamY', 'TY', 'Jane Doe', 'Germany', 0.00, '@twitter', 'Expensive Fashion Brand', 'Crypto Scam');
+(2, '2020-11-29 13:13:37', '2020-11-29 13:13:37', 'TeamY', 'TY', 'Jane Doe', 'Germany', 0.00, '@twitter', 'Expensive Fashion Brand', 'Crypto Scam'),
+(3, '2020-12-03 14:53:51', '2020-12-03 14:53:51', 'TeamZ', 'TZ', 'John Doe', 'United Kingdom', 0.00, '@twitter', 'Brand', 'Brand'),
+(4, '2020-12-03 14:54:23', '2020-12-03 14:54:23', 'TeamA', 'TA', 'John Doe', 'United Kingdom', 0.00, '@twitter', 'Brand', 'Brand');
 
 -- --------------------------------------------------------
 
@@ -202,7 +207,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `isAdmin`) VALUES
-(1, 'Charlie Burgess', 'charlie@cburg.co.uk', NULL, '$2y$10$lcYqkUAlPpSlMAniSMbjNuSE84YK3ywaL5GQNY6UIlYekx3dYyaRW', NULL, '2020-11-29 13:11:41', '2020-11-29 13:11:41', 1);
+(1, 'Charlie Burgess', 'charlie@cburg.co.uk', NULL, '$2y$10$lcYqkUAlPpSlMAniSMbjNuSE84YK3ywaL5GQNY6UIlYekx3dYyaRW', NULL, '2020-11-29 13:11:41', '2020-11-29 13:11:41', 1),
+(2, 'John Doe', 'john@example.com', NULL, '$2y$10$etl9nlDANjkEELw2.DX2w..j2jaQzegCAgaxYfnfYNAAurcb6eSym', NULL, '2020-12-02 10:51:21', '2020-12-02 10:51:21', 0);
 
 --
 -- Indexes for dumped tables
@@ -275,7 +281,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `matches`
 --
 ALTER TABLE `matches`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -293,13 +299,13 @@ ALTER TABLE `players`
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
