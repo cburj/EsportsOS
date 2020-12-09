@@ -23,7 +23,8 @@
             </div>
             <div class="col-m">
                 <h5><strong>Upcoming Matches</strong></h5>
-                @if (count($matches) > 0)
+
+                @if (false)
                 @foreach ($matches as $match)
                     <div class="card">
                         <div class="card-body">
@@ -39,9 +40,9 @@
                     </div>
                     <hr />
                 @endforeach
-            @else
-                <p>Oops, no matches found 😢</p>
-            @endif
+                @else
+                    <p>Oops, no matches found 😢</p>
+                @endif
             </div>
         </div>
     </div>
