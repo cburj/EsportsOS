@@ -74,7 +74,7 @@ class TeamsController extends Controller
      */
     public function show($id)
     {
-        $matches = Match::all();
+        $matches = Match::get();
         return view('teams.show', ['team' => Team::findOrFail($id)])->with('matches', $matches);
     }
 
