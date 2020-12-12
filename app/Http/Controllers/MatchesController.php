@@ -16,7 +16,7 @@ class MatchesController extends Controller
      */
     public function index()
     {
-        $matches = Match::all();
+        $matches = Match::get();
         return view('matches.index')->with('matches', $matches);
     }
 
@@ -29,7 +29,7 @@ class MatchesController extends Controller
     {
         if (Auth::user()) {
             $teams = Team::all();
-            $matches = Match::all();
+            $matches = Match::get();
             return view('matches.create')->with('matches', $matches)->with('teams', $teams);
         } else
             return $this->index();
