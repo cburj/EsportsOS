@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Match;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Match;
 use App\Models\Team;
 
 class MatchesController extends Controller
