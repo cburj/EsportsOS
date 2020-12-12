@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Team;
 
 class MatchesController extends Controller
 {
@@ -13,7 +14,8 @@ class MatchesController extends Controller
      */
     public function index()
     {
-        //
+        $matches = Match::get();
+        return view('matches.index')->with('matches', $matches);
     }
 
     /**
