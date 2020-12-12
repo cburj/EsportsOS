@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Match;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Team;
-use DateTime;
 
 class MatchesController extends Controller
 {
