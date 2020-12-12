@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Match;
-use App\Models\Team;
 
 class MatchesController extends Controller
 {
@@ -16,8 +13,7 @@ class MatchesController extends Controller
      */
     public function index()
     {
-        $matches = Match::get();
-        return view('matches.index')->with('matches', $matches);
+        //
     }
 
     /**
@@ -27,12 +23,7 @@ class MatchesController extends Controller
      */
     public function create()
     {
-        if (Auth::user()) {
-            $teams = Team::all();
-            $matches = Match::get();
-            return view('matches.create')->with('matches', $matches)->with('teams', $teams);
-        } else
-            return $this->index();
+        //
     }
 
     /**
@@ -43,22 +34,7 @@ class MatchesController extends Controller
      */
     public function store(Request $request)
     {
-
-        $this->validate($request, [
-            'team1_id' => 'required',
-            'team2_id' => 'required'
-        ]);
-
-        $match = Match::create([
-            'team1_id' => $request->team1_id,
-            'team2_id' => $request->team2_id,
-            'child1_id' => $request->child1_id,
-            'child2_id' => $request->child2_id,
-            'date_time' => $request->date_time,
-            'server_ip' => $request->server_ip
-        ]);
-
-        return redirect('matches');
+        //
     }
 
     /**
@@ -104,10 +80,5 @@ class MatchesController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function api()
-    {
-        return Match::all();
     }
 }
