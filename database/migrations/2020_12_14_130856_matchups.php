@@ -4,16 +4,16 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMatchesTable extends Migration
+class Matchups extends Migration
 {
-    /**
+/**
      * Run the migrations.
      *
      * @return void
      */
     public function up()
     {
-        Schema::create('matches', function (Blueprint $table) {
+        Schema::create('matchups', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             //Points to one of the teams.
@@ -41,8 +41,8 @@ class CreateMatchesTable extends Migration
              */
             $table->foreign('team1_id')->references('id')->on('teams');
             $table->foreign('team2_id')->references('id')->on('teams');
-            $table->foreign('child1_id')->references('id')->on('matches');
-            $table->foreign('child2_id')->references('id')->on('matches');
+            $table->foreign('child1_id')->references('id')->on('matchups');
+            $table->foreign('child2_id')->references('id')->on('matchups');
         });
     }
 
@@ -53,6 +53,6 @@ class CreateMatchesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('matches');
+        Schema::dropIfExists('matchups');
     }
 }

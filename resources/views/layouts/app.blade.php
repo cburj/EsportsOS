@@ -59,7 +59,7 @@
                             <a class="nav-link" href="/players">Players</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/matches">Matches</a>
+                            <a class="nav-link" href="/matchups">Matches</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/teams">Teams</a>

@@ -23,7 +23,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 /* Auto generates all the required routes for the resources */
 Route::resource('teams', 'App\Http\Controllers\TeamsController');
 Route::resource('players', 'App\Http\Controllers\PlayersController');
-Route::resource('matches', 'App\Http\Controllers\MatchesController');
+Route::resource('matchups', 'App\Http\Controllers\MatchupsController');
 
 /* Livestream Assets/Dashboards */
 Route::get('/assets', 'App\Http\Controllers\AssetsController@index');
@@ -35,4 +35,4 @@ Route::get('/assets/teams', 'App\Http\Controllers\AssetsController@teams');
 /* Not sure if there is an easier way, but this works for now */
 Route::get('/api/teams', 'App\Http\Controllers\TeamsController@api');
 Route::get('/api/players', 'App\Http\Controllers\PlayersController@api');
-Route::get('/api/matches', 'App\Http\Controllers\MatchesController@api');
+Route::get('/api/matchups', 'App\Http\Controllers\MatchupsController@api');

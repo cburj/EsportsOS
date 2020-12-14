@@ -15,41 +15,41 @@
  * a given match id in that array. The corresponding match
  * is returned, or NULL if no match ID was found.
  */
-function findMatch($matches, $id)
+function findMatch($matchups, $id)
 {
-    foreach($matches as $match)
+    foreach($matchups as $matchup)
     {
-        if ($match->id == $id)
-            return $match;
+        if ($matchup->id == $id)
+            return $matchup;
     }
     return null;
 }
 
-function printNode( $match, $matches, $level )
+function printNode( $matchup, $matchups, $level )
 {
 
-    if( $match == null )
+    if( $matchup == null )
         return;
 
     echo '<ul>';
     echo '<li class=" card bracket-card bracket-level-' . $level . ' ">';
-    echo '<div class="card-body"><h5>' . $match->team1->name . '<div class="float-right">' . $match->team1_score . '</div></h5>';
+    echo '<div class="card-body"><h5>' . $matchup->team1->name . '<div class="float-right">' . $matchup->team1_score . '</div></h5>';
     echo '<hr/>';
-    echo '<h5>' . $match->team2->name . '<div class="float-right">' . $match->team2_score . '</div></h5>';
+    echo '<h5>' . $matchup->team2->name . '<div class="float-right">' . $matchup->team2_score . '</div></h5>';
     echo '</div>';
     echo '</li>';
     echo '<br>';
 
-    $left = $match->child1_id;
-    $right = $match->child2_id;
+    $left = $matchup->child1_id;
+    $right = $matchup->child2_id;
 
-    printNode( findMatch( $matches, $left ), $matches, $level+1 );
-    printNode( findMatch( $matches, $right ), $matches, $level+1 );
+    printNode( findMatch( $matchup, $left ), $matchups, $level+1 );
+    printNode( findMatch( $matchup, $right ), $matchups, $level+1 );
     echo '</ul>';
 }
 
 echo '<div class="tree">';
-printNode($matches[0], $matches, 1);
+printNode($matchups[0], $matchups, 1);
 echo '</div>';
 
 @endphp

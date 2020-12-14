@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Team;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Match;
+use App\Models\Matchup;
 
 class TeamsController extends Controller
 {
@@ -74,8 +74,8 @@ class TeamsController extends Controller
      */
     public function show($id)
     {
-        //$matches = Match::all()->cursor();
-        return view('teams.show', ['team' => Team::findOrFail($id)]);
+        $matchups = Matchup::all();
+        return view('teams.show', ['team' => Team::findOrFail($id)])->with('matchups', $matchups);
     }
 
     /**

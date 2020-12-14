@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Match;
+use App\Models\Matchup;
 use App\Models\Team;
 
 class AssetsController extends Controller
 {
     public function bracket()
     {
-        $matches = Match::orderBy('id', 'ASC')->get();
-        return view('assets.bracket')->with('matches', $matches);
+        $matchups = Matchup::orderBy('id', 'ASC')->get();
+        return view('assets.bracket')->with('matchups', $matchups);
     }
 
     public function teams()

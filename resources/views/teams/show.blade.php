@@ -25,13 +25,13 @@
                 <h5><strong>Upcoming Matches</strong></h5>
 
                 @if (false)
-                @foreach ($matches as $match)
+                @foreach ($matchups as $matchup)
                     <div class="card">
                         <div class="card-body">
                             <div class="text-center">
-                                <h5><strong>{{ $match->team1->name }} vs {{ $match->team2->name }}</strong></h5>
+                                <h5><strong>{{ $matchup->team1->name }} vs {{ $matchup->team2->name }}</strong></h5>
                                 @php
-                                $dateString = $match->date_time;
+                                $dateString = $matchup->date_time;
                                 $date = new DateTime($dateString);
                                 @endphp
                                 <p>Starts at: {{ $date->format('d/m/Y @ H:i') }}</p>
