@@ -31,8 +31,11 @@ class MatchupsController extends Controller
             $teams = Team::all();
             $matchups = Matchup::get();
             return view('matchups.create')->with('matchups', $matchups)->with('teams', $teams);
-        } else
-            return $this->index();
+        }
+        else
+        {
+            return redirect('/matchups')->with('errorMessage', 'You must be logged in to perform this action!');
+        }
     }
 
     /**
