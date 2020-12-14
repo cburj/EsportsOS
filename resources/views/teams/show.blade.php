@@ -24,7 +24,7 @@
             <div class="col-m">
                 <h5><strong>Upcoming Matches</strong></h5>
 
-                @if (false)
+                @if (count($matchups) > 0)
                 @foreach ($matchups as $matchup)
                     <div class="card">
                         <div class="card-body">

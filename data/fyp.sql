@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 12, 2020 at 08:23 PM
+-- Generation Time: Dec 14, 2020 at 02:21 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -41,10 +41,10 @@ CREATE TABLE `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `matches`
+-- Table structure for table `matchups`
 --
 
-CREATE TABLE `matches` (
+CREATE TABLE `matchups` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -61,15 +61,11 @@ CREATE TABLE `matches` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `matches`
+-- Dumping data for table `matchups`
 --
 
-INSERT INTO `matches` (`id`, `created_at`, `updated_at`, `team1_id`, `team2_id`, `child1_id`, `child2_id`, `date_time`, `start_time`, `end_time`, `team1_score`, `team2_score`, `server_ip`) VALUES
-(8, '2020-12-08 14:51:48', '2020-12-08 14:51:48', 1, 4, 10, 9, '2020-12-10 14:51:00', NULL, NULL, 0, 0, '127.0.0.1'),
-(9, '2020-12-08 14:52:40', '2020-12-08 14:52:40', 1, 2, NULL, NULL, '2020-12-09 14:52:00', NULL, NULL, 0, 0, '192.168.0.1'),
-(10, '2020-12-08 14:52:59', '2020-12-08 14:52:59', 4, 3, 11, 12, '2020-12-08 14:52:00', NULL, NULL, 0, 0, '192.168.0.1'),
-(11, '2020-12-08 15:00:39', '2020-12-08 15:00:39', 2, 3, NULL, NULL, '2020-12-26 15:00:00', NULL, NULL, 0, 0, '192.168.0.1'),
-(12, '2020-12-08 15:36:56', '2020-12-08 15:36:56', 4, 4, NULL, NULL, '2021-01-09 15:36:00', NULL, NULL, 16, 4, '192.168.0.1');
+INSERT INTO `matchups` (`id`, `created_at`, `updated_at`, `team1_id`, `team2_id`, `child1_id`, `child2_id`, `date_time`, `start_time`, `end_time`, `team1_score`, `team2_score`, `server_ip`) VALUES
+(1, '2020-12-14 13:17:48', '2020-12-14 13:17:48', 1, 2, NULL, NULL, '2020-12-23 13:17:00', NULL, NULL, 0, 0, '192.168.0.1');
 
 -- --------------------------------------------------------
 
@@ -94,7 +90,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (97, '2019_08_19_000000_create_failed_jobs_table', 2),
 (98, '2020_11_09_175917_create_teams_table', 2),
 (100, '2020_11_09_180413_create_players_table', 2),
-(102, '2020_11_09_180403_create_matches_table', 3);
+(102, '2020_11_09_180403_create_matches_table', 3),
+(104, '2020_12_14_130856_matchups', 4);
 
 -- --------------------------------------------------------
 
@@ -222,14 +219,14 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Indexes for table `matches`
+-- Indexes for table `matchups`
 --
-ALTER TABLE `matches`
+ALTER TABLE `matchups`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `matches_team1_id_foreign` (`team1_id`),
-  ADD KEY `matches_team2_id_foreign` (`team2_id`),
-  ADD KEY `matches_child1_id_foreign` (`child1_id`),
-  ADD KEY `matches_child2_id_foreign` (`child2_id`);
+  ADD KEY `matchups_team1_id_foreign` (`team1_id`),
+  ADD KEY `matchups_team2_id_foreign` (`team2_id`),
+  ADD KEY `matchups_child1_id_foreign` (`child1_id`),
+  ADD KEY `matchups_child2_id_foreign` (`child2_id`);
 
 --
 -- Indexes for table `migrations`
@@ -278,16 +275,16 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `matches`
+-- AUTO_INCREMENT for table `matchups`
 --
-ALTER TABLE `matches`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+ALTER TABLE `matchups`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
 
 --
 -- AUTO_INCREMENT for table `players`
@@ -312,13 +309,13 @@ ALTER TABLE `users`
 --
 
 --
--- Constraints for table `matches`
+-- Constraints for table `matchups`
 --
-ALTER TABLE `matches`
-  ADD CONSTRAINT `matches_child1_id_foreign` FOREIGN KEY (`child1_id`) REFERENCES `matches` (`id`),
-  ADD CONSTRAINT `matches_child2_id_foreign` FOREIGN KEY (`child2_id`) REFERENCES `matches` (`id`),
-  ADD CONSTRAINT `matches_team1_id_foreign` FOREIGN KEY (`team1_id`) REFERENCES `teams` (`id`),
-  ADD CONSTRAINT `matches_team2_id_foreign` FOREIGN KEY (`team2_id`) REFERENCES `teams` (`id`);
+ALTER TABLE `matchups`
+  ADD CONSTRAINT `matchups_child1_id_foreign` FOREIGN KEY (`child1_id`) REFERENCES `matchups` (`id`),
+  ADD CONSTRAINT `matchups_child2_id_foreign` FOREIGN KEY (`child2_id`) REFERENCES `matchups` (`id`),
+  ADD CONSTRAINT `matchups_team1_id_foreign` FOREIGN KEY (`team1_id`) REFERENCES `teams` (`id`),
+  ADD CONSTRAINT `matchups_team2_id_foreign` FOREIGN KEY (`team2_id`) REFERENCES `teams` (`id`);
 
 --
 -- Constraints for table `players`

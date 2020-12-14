@@ -9,7 +9,7 @@
 /**
  * @param array *$array
  * @param int $id
- * @return App\Models\Match
+ * @return App\Models\Matchup
  * 
  * Function which is passed an array of matches, and then finds
  * a given match id in that array. The corresponding match

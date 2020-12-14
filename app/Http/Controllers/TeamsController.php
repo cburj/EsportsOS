@@ -74,7 +74,7 @@ class TeamsController extends Controller
      */
     public function show($id)
     {
-        $matchups = Matchup::all();
+        $matchups = Matchup::where('team1_id', $id)->orWhere('team2_id', $id)->get();
         return view('teams.show', ['team' => Team::findOrFail($id)])->with('matchups', $matchups);
     }
 
