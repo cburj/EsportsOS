@@ -24,4 +24,10 @@ class AssetsController extends Controller
     {
         return view('assets.index');
     }
+
+    public function matchFocus()
+    {
+        $matchups = Matchup::take(1)->get();
+        return view('assets.matchfocus')->with('matchups', $matchups);
+    }
 }

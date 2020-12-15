@@ -30,11 +30,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
     <!--BOOTSTRAP CDN CONTENT-->
 
+        <!--charts-->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+
     <!-- This has to be set to secure if we are deployed on Heroku -->
     @if(app()->environment() === 'development')
-        <link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ secure_asset('css/assets.css') }}" rel="stylesheet">
     @else
-        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/assets.css') }}" rel="stylesheet">
     @endif
 
 

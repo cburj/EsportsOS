@@ -1,0 +1,16 @@
+.bracket-card{
+    width: 18rem;
+    background-color: #dbdbdb;
+}
+
+h1{
+    color: red;
+}
+
+.matchFocusMain{
+    text-align: center;
+}
+
+.asset-match-focus-teams{
+    font-size: 7vw;
+}
