@@ -3,6 +3,10 @@
 @section('content')
 
     <div class="container">
+        @if(!empty(session('errorMessage')))
+            <x-alert message="{{ session('errorMessage') }}" type="danger" dismiss="1"></x-alert>
+        @endif
+        
         <div class="row">
             <div class="col-10">
                 @if (count($teams) > 0)

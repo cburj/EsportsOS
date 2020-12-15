@@ -31,7 +31,7 @@ class TeamsController extends Controller
         if(Auth::user())
             return view('teams.create');
         else
-            return $this->index();
+            return redirect('/teams')->with('errorMessage', 'You must be logged in to perform this action.');
     }
 
     /**

@@ -37,7 +37,9 @@ class PlayersController extends Controller
             return view('players.create')->with('teams', $teams)->with('users', $users);
         }
         else
-            return $this->index();
+        {
+            return redirect('/players')->with('errorMessage', 'You must be logged in to perform this action.');
+        }
     }
 
     /**
