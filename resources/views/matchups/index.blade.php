@@ -1,17 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-
-    @if(!empty(session('errorMessage')))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        <strong>ERROR:</strong>{{ session('errorMessage') }}
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-    @endif
-
     <div class="container">
+
+        @if(!empty(session('errorMessage')))
+            <x-alert message="{{ session('errorMessage') }}" type="danger" dismiss="1"></x-alert>
+        @endif
+
         @if (count($matchups) > 0)
             @foreach ($matchups as $matchup)
                 <div class="card">

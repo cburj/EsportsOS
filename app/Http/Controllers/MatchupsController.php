@@ -34,7 +34,7 @@ class MatchupsController extends Controller
         }
         else
         {
-            return redirect('/matchups')->with('errorMessage', 'You must be logged in to perform this action!');
+            return redirect('/matchups')->with('errorMessage', 'You must be logged in to perform this action.');
         }
     }
 
