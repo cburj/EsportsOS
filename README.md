@@ -37,6 +37,6 @@ All GET Requests can be accessed using the following endpoints:
 
 I have created a variety of reusable Laravel Components that can be used across the entire application. See the list below for more details:
 
-ALERT - a simple way to create a popup alert to give a small piece of information.
-Usage:
-* ```<x-alert message="<<Your Alert Message>>" type="<<Bootstrap alert type e.g. danger>>" dismiss="<<If the alert can be dismissed e.g. 1 or 0>>"></x-alert>```
+* ALERT, Usage: ```<x-alert message="<<Your Alert Message>>" type="<<Bootstrap alert type e.g. danger>>" dismiss="<<If the alert can be dismissed e.g. 1 or 0>>"></x-alert>``` 
+* TEAM-CARD, Usage: ```<x-team-card :team="<<team model>>"></x-team-card>```  
+* MATCH-CARD, Usage: ```<x-match-card :matchup="<<matchup model>>" verbose="<<Show Team Logs e.g. true or false>>"></x-match-card>```
