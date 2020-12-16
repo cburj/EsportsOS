@@ -23,22 +23,10 @@
             </div>
             <div class="col-m">
                 <h5><strong>Upcoming Matches</strong></h5>
-
                 @if (count($matchups) > 0)
                 @foreach ($matchups as $matchup)
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="text-center">
-                                <h5><strong>{{ $matchup->team1->name }} vs {{ $matchup->team2->name }}</strong></h5>
-                                @php
-                                $dateString = $matchup->date_time;
-                                $date = new DateTime($dateString);
-                                @endphp
-                                <p>Starts at: {{ $date->format('d/m/Y @ H:i') }}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <hr />
+                    <x-match-card :matchup="$matchup" verbose="false"></x-match-card>
+                    <br>
                 @endforeach
                 @else
                     <p>Oops, no matches found 😢</p>

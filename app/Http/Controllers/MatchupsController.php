@@ -72,7 +72,7 @@ class MatchupsController extends Controller
      */
     public function show($id)
     {
-        //
+        return response()->view('errors.404');
     }
 
     /**
