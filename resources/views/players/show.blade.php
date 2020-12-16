@@ -13,23 +13,25 @@
   </div>
 
     <div class="container">
-        <img src="/img/players/{{$player->username}}.png" class="float-right" onerror="this.onerror=null; this.src='/img/players/Default.png'"/>
-        <h3><strong>{{$player->username}}</strong></h3>
-        <p>Name: {{$player->full_name}}</p>
+        <div class="row">
+            <div class="col-sm-8">
+                <h3><strong>{{$player->username}}</strong></h3>
+                <p>Name: {{$player->full_name}}</p>
         
+                <p>Team: <a class="body-a" href="" data-toggle="modal" data-target="#teamModal">{{ $player->team->name }}</a></p>
+                <p>Country: {{$player->country}}</p>
+                <p>Twitter: <a class="body-a" href="https://www.twitter.com/{{$player->twitter}}">{{$player->twitter}}</a></p>
+                <p>Discord: {{$player->discord}}</p>
+                <p>Rating: {{$player->rating}}</p>
+            </div>
+            <div class="col-sm-4">
+                <h4>Statistics</h4>
+                <div class="player-donut">
+                    <canvas id="myChart" width="100" height="100"></canvas>
+                </div>
+            </div>
+          </div>
         
-        <p>Team: <a class="body-a" href="" data-toggle="modal" data-target="#teamModal">{{ $player->team->name }}</a></p>
-        
-        
-        <p>Country: {{$player->country}}</p>
-        <p>Twitter: <a class="body-a" href="https://www.twitter.com/{{$player->twitter}}">{{$player->twitter}}</a></p>
-        <p>Discord: {{$player->discord}}</p>
-        <p>Rating: {{$player->rating}}</p>
-
-        <h4>Statistics</h4>
-        <div class="player-donut">
-        <canvas id="myChart" style="position: relative;"></canvas>
-        </div>
         <script>
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
