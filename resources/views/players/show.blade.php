@@ -2,11 +2,25 @@
 
 @section('content')
 
+<div class="modal fade" id="teamModal" tabindex="-1" role="dialog" aria-labelledby="teamModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+            <x-team-card :team="$player->team"></x-team-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <div class="container">
         <img src="/img/players/{{$player->username}}.png" class="float-right" onerror="this.onerror=null; this.src='/img/players/Default.png'"/>
         <h3><strong>{{$player->username}}</strong></h3>
         <p>Name: {{$player->full_name}}</p>
-        <p>Team: <a class="body-a" href="/teams/{{ $player->team->id }}">{{ $player->team->name }}</a></p>
+        
+        
+        <p>Team: <a class="body-a" href="" data-toggle="modal" data-target="#teamModal">{{ $player->team->name }}</a></p>
+        
+        
         <p>Country: {{$player->country}}</p>
         <p>Twitter: <a class="body-a" href="https://www.twitter.com/{{$player->twitter}}">{{$player->twitter}}</a></p>
         <p>Discord: {{$player->discord}}</p>
