@@ -40,3 +40,4 @@ I have created a variety of reusable Laravel Components that can be used across 
 * ALERT, Usage: ```<x-alert message="<<Your Alert Message>>" type="<<Bootstrap alert type e.g. danger>>" dismiss="<<If the alert can be dismissed e.g. 1 or 0>>"></x-alert>``` 
 * TEAM-CARD, Usage: ```<x-team-card :team="<<team model>>"></x-team-card>```  
 * MATCH-CARD, Usage: ```<x-match-card :matchup="<<matchup model>>" verbose="<<Show Team Logs e.g. true or false>>"></x-match-card>```
+* PLAYER-DONUT, Usage: ```<x-player-donut :player="$player" chartID="test1"></x-player-donut>```   
