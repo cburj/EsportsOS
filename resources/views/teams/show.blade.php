@@ -31,8 +31,38 @@
                 @else
                     <p>Oops, no matches found 😢</p>
                 @endif
+
+                <canvas id="chartID" width="100" height="100"></canvas>
+                <script>
+                    var ctx = document.getElementById('chartID').getContext('2d');
+                    var chartID = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['Match 1', 'Match 2', 'Match 3', 'Match 4', 'Match 5'],
+                            datasets: [{
+                                label: '',
+                                data: [15, 2, 5, 1, 7],
+                                backgroundColor: [
+                                    'rgba(219, 219, 219, 0.5)'
+                                ],
+                                borderColor: [
+                                    'rgba(125, 125, 125, 1)'
+                                ],
+                                borderWidth: 2
+                            }]
+                        },
+                        options: {
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        beginAtZero: true
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                    </script>
             </div>
         </div>
     </div>
-
 @endsection

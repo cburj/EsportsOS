@@ -1,0 +1,4 @@
+/*Gets all results and the times*/
+select team1_score as 'score' from matchups where team1_id=1
+union 
+select team2_score as 'score' from matchups where team2_id=1;
