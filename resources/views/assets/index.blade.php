@@ -12,6 +12,9 @@
         <h3>Teams Standings</h3>
         <a href="/assets/teams" class="btn btn-dark">Launch</a>
         <hr/>
+        <h3>Match Focus</h3>
+        <a href="/assets/matchfocus" class="btn btn-dark">Launch</a>
+        <hr/>
     </div>
 
 @endsection
