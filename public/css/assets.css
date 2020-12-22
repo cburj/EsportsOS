@@ -28,3 +28,15 @@ body{
     width: 50%;
     text-align: center;
 }
+
+.player-card-col{
+    width: 33%;
+}
+
+.player-card-row{
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+.player-card{
+}

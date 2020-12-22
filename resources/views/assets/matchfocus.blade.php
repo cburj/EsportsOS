@@ -15,7 +15,7 @@
               <div class="">
                 Team X Roster:
                 @foreach ($team1_players as $t1p)
-                    <h1>{{$t1p->username}}</h1>
+                    <x-player-card :player="$t1p"></x-player-card>
                 @endforeach
               </div>
           </div>
@@ -28,9 +28,14 @@
                 </div>
               </div>
           </div>
-          <div class="match-focus-25">
-            Team Y Roster:
-          </div>
+          <div class="match-focus-25 d-flex align-items-center justify-content-center">
+            <div class="">
+              Team Y Roster:
+              @foreach ($team2_players as $t2p)
+                  <x-player-card :player="$t2p"></x-player-card>
+              @endforeach
+            </div>
+        </div>
         </div>
 
 
