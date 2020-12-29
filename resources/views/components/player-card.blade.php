@@ -1,14 +1,11 @@
-<div class="player-card">
-    <h2>{{$player->username}}</h2>
-    <div class="row player-card-row">
-    <div class="player-card-col">
-        W: {{$player->wins}}
-    </div>
-    <div class="player-card-col">
-        L: {{$player->losses}}
-    </div>
-    <div class="player-card-col">
-        D: {{$player->draws}}
-    </div>
-    </div>
+<div class="player-card player-card-{{$align}}">
+    <h2>
+        @if ($align == "left")
+            <img src="/img/players/Default.png" class="img" style="width: 100px;"/>
+        @endif
+        {{$player->username}}
+        @if ($align == "right")
+            <img src="/img/players/Default.png" class="img" style="width: 100px;"/>
+        @endif
+    </h2>
 </div>

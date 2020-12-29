@@ -13,9 +13,8 @@
         <div class="row">
           <div class="match-focus-25 d-flex align-items-center justify-content-center">
               <div class="">
-                Team X Roster:
                 @foreach ($team1_players as $t1p)
-                    <x-player-card :player="$t1p"></x-player-card>
+                    <x-player-card :player="$t1p" align="left"></x-player-card>
                 @endforeach
               </div>
           </div>
@@ -30,9 +29,8 @@
           </div>
           <div class="match-focus-25 d-flex align-items-center justify-content-center">
             <div class="">
-              Team Y Roster:
               @foreach ($team2_players as $t2p)
-                  <x-player-card :player="$t2p"></x-player-card>
+                  <x-player-card :player="$t2p" align="right"></x-player-card>
               @endforeach
             </div>
         </div>

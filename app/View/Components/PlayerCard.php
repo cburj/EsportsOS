@@ -7,14 +7,16 @@ use Illuminate\View\Component;
 class PlayerCard extends Component
 {
     public $player;
+    public $align;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($player)
+    public function __construct($player, $align)
     {
         $this->player = $player;
+        $this->align = $align;
     }
 
     /**

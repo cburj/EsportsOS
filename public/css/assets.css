@@ -20,7 +20,6 @@ body{
 
 .match-focus-25{
     width: 25%;
-    text-align: center;
     position: relative;
 }
 
@@ -39,4 +38,11 @@ body{
 }
 
 .player-card{
+}
+
+.player-card-right{
+    text-align: right;
+}
+.player-card-left{
+    text-align: left;
 }

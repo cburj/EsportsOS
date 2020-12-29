@@ -18,18 +18,14 @@ body{
   border-bottom-style: solid;
   border-image-source: linear-gradient(
     to right,
-    #f40035,
-    #fa187d,
-    #e450bc,
-    #b679ea,
-    #7698ff,
-    #4babff,
-    #1abaff,
-    #00c8fe,
-    #00d7fd,
-    #00e4f3,
-    #00f0e1,
-    #00fac9
+    #fb665d,
+    #f24187,
+    #b82dd1,
+    #8d26ff,
+    #5a4efe,
+    #4660fa,
+    #1c81ff,
+    #1597f5
   );
   border-image-slice: 10%;
   background-color: #050505;
@@ -37,6 +33,71 @@ body{
   border-left: 0px;
   border-right: 0px;
   background-color: rgb(13, 16, 24);
+}
+
+.bg-gradient {
+  color: #ffffff;
+  background: linear-gradient(
+    45deg,
+    #fb665d,
+    #f24187,
+    #b82dd1,
+    #8d26ff,
+    #5a4efe,
+    #4660fa,
+    #1c81ff,
+    #1597f5
+  );
+  background-size: 600% 600%;
+  -webkit-animation: AnimationName 5s ease infinite;
+  -moz-animation: AnimationName 5s ease infinite;
+  -o-animation: AnimationName 5s ease infinite;
+  animation: AnimationName 5s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 51%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 51%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@-o-keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 51%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 51%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 
