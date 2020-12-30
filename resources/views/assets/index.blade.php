@@ -15,6 +15,9 @@
         <h3>Match Focus</h3>
         <a href="/assets/matchfocus" class="btn btn-dark">Launch</a>
         <hr/>
+        <h3>Tournament Schedule</h3>
+        <a href="/assets/schedule" class="btn btn-dark">Launch</a>
+        <hr/>
     </div>
 
 @endsection

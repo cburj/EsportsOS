@@ -33,4 +33,10 @@ class AssetsController extends Controller
         $team2_players = Player::where('team_id', $matchups[0]->team2_id)->get();
         return view('assets.matchfocus')->with('matchups', $matchups)->with('team1_players', $team1_players)->with('team2_players', $team2_players);
     }
+
+    public function schedule()
+    {
+        $matchups = Matchup::where('date_time', '>=', date('Y-m-d H:i:s'))->orderBy('date_time', 'ASC')->take(6)->get();
+        return view('assets.schedule')->with('matchups', $matchups);
+    }
 }

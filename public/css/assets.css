@@ -43,20 +43,23 @@ body{
 .player-card-right{
     text-align: right;
 }
+
 .player-card-left{
     text-align: left;
 }
 
-.bg-cburg{
-    background: linear-gradient(
-        to right,
-        #fb665d,
-        #f24187,
-        #b82dd1,
-        #8d26ff,
-        #5a4efe,
-        #4660fa,
-        #1c81ff,
-        #1597f5
-      );
+.schedule-team{
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    background-color: rgba(20, 20, 20, 0.8);
+}
+
+.schedule-time{
+}
+
+.schedule-vs{
+    background-color: rgba(32, 32, 32, 0.8);
+    border-right: solid;
+    border-left: solid;
+    border-color: rgba(255, 255, 255, 0.3);
 }

@@ -30,6 +30,7 @@ Route::get('/assets', 'App\Http\Controllers\AssetsController@index');
 Route::get('/assets/bracket', 'App\Http\Controllers\AssetsController@bracket');
 Route::get('/assets/teams', 'App\Http\Controllers\AssetsController@teams');
 Route::get('/assets/matchfocus', 'App\Http\Controllers\AssetsController@matchfocus');
+Route::get('/assets/schedule', 'App\Http\Controllers\AssetsController@schedule');
 
 
 /* API ROUTES */
