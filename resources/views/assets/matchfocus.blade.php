@@ -23,7 +23,7 @@
                 <div class="matchFocusMain">
                     <h2>UPCOMING MATCH</h2>
                     <h1 class="asset-match-focus-teams"><img src="/img/teams/{{$matchup->team1->name}}.png" class=""/>VS<img src="/img/teams/{{$matchup->team2->name}}.png" class=""/></h1>
-                    <h4>Starts at: {{ $date->format('d/m/Y @ H:i') }}</h4>
+                    <h4>Match Start: {{ $date->format('d/m/Y @ H:i') }}</h4>
                 </div>
               </div>
           </div>
@@ -35,7 +35,6 @@
             </div>
         </div>
         </div>
-
 
 @endsection
 

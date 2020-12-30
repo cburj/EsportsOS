@@ -15,7 +15,7 @@ body{
     font-family: 'Rubik', sans-serif;
     background-color: white;
     color: white;
-    text-shadow: 5px 5px 10px #000000;
+    text-shadow: 5px 5px 12px #000000;
 }
 
 .match-focus-25{
@@ -45,4 +45,18 @@ body{
 }
 .player-card-left{
     text-align: left;
+}
+
+.bg-cburg{
+    background: linear-gradient(
+        to right,
+        #fb665d,
+        #f24187,
+        #b82dd1,
+        #8d26ff,
+        #5a4efe,
+        #4660fa,
+        #1c81ff,
+        #1597f5
+      );
 }
