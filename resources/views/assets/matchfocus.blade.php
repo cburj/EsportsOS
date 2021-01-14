@@ -10,7 +10,7 @@
     //dd($team1_players);
 
 @endphp
-        <div class="row">
+        <div class="row test">
           <div class="match-focus-25 d-flex align-items-center justify-content-center">
               <div class="">
                 @foreach ($team1_players as $t1p)

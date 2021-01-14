@@ -63,3 +63,30 @@ body{
     border-left: solid;
     border-color: rgba(255, 255, 255, 0.3);
 }
+
+.player-focus{
+    background-color: rgba(32, 32, 32, 0.8);
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.3);
+    border-radius: 7vh;
+}
+
+.player-focus-img{
+    border-style: solid;
+    border-left-style: none;
+    border-right-style: none;
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.player-focus-img-pic{
+    width: 300px;
+}
+
+.player-focus-name{
+    color: white;
+}
+
+.player-focus-info{
+    margin-left: 10vw;
+    font-style: italic;
+}
