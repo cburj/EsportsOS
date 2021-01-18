@@ -18,6 +18,9 @@
         <h3>Tournament Schedule</h3>
         <a href="/assets/schedule" class="btn btn-dark">Launch</a>
         <hr/>
+        <h3>Player Focus</h3>
+        <a href="/assets/player" class="btn btn-dark">Launch</a>
+        <hr/>
     </div>
 
 @endsection

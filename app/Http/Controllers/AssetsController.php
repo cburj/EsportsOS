@@ -46,4 +46,11 @@ class AssetsController extends Controller
         $teams = Team::where('id', $players[0]->team_id)->take(1)->get();
         return view('assets.player')->with('players', $players)->with('teams', $teams)->with('verbose', $verbose);
     }
+
+    public function playerIndex()
+    {
+        $players = Player::select('id', 'team_id', 'username')->get();
+        $teams = Team::select('name', 'id')->get();
+        return view('assets.playerIndex')->with('players', $players)->with('teams', $teams);
+    }
 }
