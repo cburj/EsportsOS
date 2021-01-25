@@ -12,12 +12,24 @@
             </div>
             @endif
             <div class="text-center">
-                <h3><strong>{{ $matchup->team1->name }} vs {{ $matchup->team2->name }}</strong></h3>
+                <a href="/matchups/{{ $matchup->id }}" class="matchup-link"><h3><strong>{{ $matchup->team1->name }} vs {{ $matchup->team2->name }}</strong></h3></a>
                 @php
                 $dateString = $matchup->date_time;
                 $date = new DateTime($dateString);
+                $cur_date = new DateTime();
+                $endString = $matchup->end_time;
+                $end_date = new DateTime($endString);
                 @endphp
-                <p>Starts at: {{ $date->format('d/m/Y @ H:i') }}</p>
+
+                @if($endString != null)
+                    <p>Finished at: {{ $end_date->format('d/m/Y @ H:i') }}</p>
+                @elseif($cur_date <= $date)
+                    <p>Starts at: {{ $date->format('d/m/Y @ H:i') }}</p>
+                @elseif($cur_date > $date)
+                    <p>🔴Live</p>
+                @endif
+
+
                 <h2>{{ $matchup->team1_score }}:{{ $matchup->team2_score }}</h2>
                 @php
                 //Generate the URL for players to join the game.

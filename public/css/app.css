@@ -129,3 +129,8 @@ input{
     display: none;
   }
 }
+
+.matchup-link{
+  text-decoration: none !important;
+  color: black;
+}

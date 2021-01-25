@@ -16,7 +16,7 @@ class MatchupsController extends Controller
      */
     public function index()
     {
-        $matchups = Matchup::get();
+        $matchups = Matchup::orderBy('date_time', 'ASC')->get();
         return view('matchups.index')->with('matchups', $matchups);
     }
 
@@ -72,7 +72,7 @@ class MatchupsController extends Controller
      */
     public function show($id)
     {
-        return response()->view('errors.404');
+        return view('matchups.show', ['matchup' => Matchup::findOrFail($id)]);
     }
 
     /**
