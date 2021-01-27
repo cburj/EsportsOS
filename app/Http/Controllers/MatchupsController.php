@@ -106,7 +106,7 @@ class MatchupsController extends Controller
             $matchup->team1_score = $request->team_1_score;
             $matchup->team2_score = $request->team_2_score;
 
-            $matchup->state = "VERIFYING";
+            $matchup->state = $request->state;
 
             $matchup->save();
             return redirect('matchups/' . $id . '');

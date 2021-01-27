@@ -6,14 +6,18 @@
         <x-match-card :matchup="$matchup" verbose="true"></x-match-card>
         <br>
 
-        @if (!Auth::guest() &&
-        (Auth::user()->isAdmin || Helper::checkUserTeam(Auth::user()->id, $matchup->team1_id, $matchup->team2_id)))
 
+        @if(!Auth::guest() && Auth::user()->isAdmin )
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-elegant shadow-none" data-toggle="modal" data-target="#fullHeightModalRight">
                 ADMIN Panel
             </button>
+        @endif
 
+
+        @if (!Auth::guest() &&
+        (Helper::checkUserTeam(Auth::user()->id, $matchup->team1_id, $matchup->team2_id)) &&
+        $matchup->state == "AWAITING")
             <button class="btn btn-elegant shadow-none" type="button" data-toggle="collapse" data-target="#collapseExample"
                 aria-expanded="false" aria-controls="collapseExample">
                 Enter Result
@@ -25,6 +29,7 @@
                     @csrf
 
                     <input type="hidden" value="{{ $matchup->id }}" name="id">
+                    <input type="hidden" value="VERIFYING" name="state">
 
                     <p class="h4 mb-4 text-center">Submit Match Result</p>
 
@@ -70,6 +75,39 @@
                         <h4 class="modal-title w-100" id="myModalLabel">ADMIN PANEL</h4>
                     </div>
                     <div class="modal-body">
+
+
+                        <button class="btn btn-warning btn-block shadow-none" type="button" data-toggle="collapse" data-target="#adminOverride"
+                aria-expanded="false" aria-controls="adminOverride">
+                Override Result
+            </button>
+
+            <div class="collapse" id="adminOverride">
+                <form class="border p-5" action="{{ route('matchups.update', $matchup->id) }}" method="post">
+                    @method('PUT')
+                    @csrf
+
+                    <input type="hidden" value="{{ $matchup->id }}" name="id">
+                    <input type="hidden" value="RESULT CONFIRMED" name="state">
+
+                    <p class="h4 mb-4 text-center">Submit Match Result</p>
+
+                    <label for="team_1_score">{{ $matchup->team1->name }} Score:</label>
+                    <input type="number" id="team_1_score" name="team_1_score" min="0" max="16">
+
+                    <hr>
+
+                    <label for="team_2_score">{{ $matchup->team2->name }} Score:</label>
+                    <input type="number" id="team_2_score" name="team_2_score" min="0" max="16">
+
+                    <hr>
+
+                    <button class="btn btn-primary btn-block" type="submit" value="Submit">Save</button>
+                </form>
+            </div>
+
+
+                        <hr>
                         <button type="button" class="btn btn-success btn-block shadow-none">Confirm Result</button>
                         <br>
                         <button type="button" class="btn btn-danger btn-block shadow-none">Cancel Match</button>
