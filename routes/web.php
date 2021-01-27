@@ -40,3 +40,5 @@ Route::get('/assets/player/{id}/{verbose}', 'App\Http\Controllers\AssetsControll
 Route::get('/api/teams', 'App\Http\Controllers\TeamsController@api');
 Route::get('/api/players', 'App\Http\Controllers\PlayersController@api');
 Route::get('/api/matchups', 'App\Http\Controllers\MatchupsController@api');
+
+/* EXPERIMENTAL ROUTES */

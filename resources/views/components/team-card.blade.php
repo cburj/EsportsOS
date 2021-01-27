@@ -1,5 +1,5 @@
 <div>
-    <div class="card">
+    <div class="card shadow-none border">
         <div class="card-body">
             <h3 class="text-center"><strong><a class="body-a" href="/teams/{{ $team->id }}">{{ $team->name }} ({{ $team->abbreviation }})</a></strong></h3>
             <div class="row">

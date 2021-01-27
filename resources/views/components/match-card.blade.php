@@ -1,5 +1,5 @@
 <div>
-    <div class="card">
+    <div class="card shadow-none border">
         <div class="card-body">
             @if($verbose == "true")
             <div class="matches-index-logos">
@@ -36,7 +36,7 @@
                 $ip = $matchup->server_ip;
                 $conStr = "steam://connect/127.0.0.1/";
                 @endphp
-                <a href="" class="btn btn-primary" onclick="location.href='{{ $conStr }}'">
+                <a href="" class="btn btn-elegant" onclick="location.href='{{ $conStr }}'">
                     PLAYER JOIN
                 </a>
             </div>

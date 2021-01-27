@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Matchup;
 use App\Models\Team;
+use Illuminate\Database\Events\QueryExecuted;
+use Illuminate\Database\QueryException;
 
 class MatchupsController extends Controller
 {
@@ -87,7 +89,7 @@ class MatchupsController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the score/results for the current match.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
@@ -95,7 +97,20 @@ class MatchupsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try
+        {
+            dd($request);
+            $matchup = Matchup::find($id);
+
+            $matchup->team1_score = $request->team_1_score;
+            $matchup->team2_score = $request->team_2_score;
+
+            $matchup->save();
+        }
+        catch(QueryException $e)
+        {
+            return redirect('matchup/' . $id . '');
+        }
     }
 
     /**
@@ -112,5 +127,10 @@ class MatchupsController extends Controller
     public function api()
     {
         return Matchup::all();
+    }
+
+    public function submitScore(Request $request)
+    {
+        dd($request);
     }
 }
