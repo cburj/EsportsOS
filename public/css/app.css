@@ -1,136 +1,136 @@
-body{
-  font-family: 'Rubik', sans-serif;
-  background-color: white;
-  color: black;
+body {
+    font-family: "Rubik", sans-serif;
+    background-color: white;
+    color: black;
 }
 
-.body-a{
-  color: black;
-  font-weight: bold;
+.body-a {
+    color: black;
+    font-weight: bold;
 }
 
-.body-a:hover{
+.body-a:hover {
     color: grey;
     text-decoration: none;
 }
 
 .custom-nav {
-  border-bottom-style: solid;
-  border-image-source: linear-gradient(
-    to right,
-    #fb665d,
-    #f24187,
-    #b82dd1,
-    #8d26ff,
-    #5a4efe,
-    #4660fa,
-    #1c81ff,
-    #1597f5
-  );
-  border-image-slice: 10%;
-  background-color: #050505;
-  border-top: 0px;
-  border-left: 0px;
-  border-right: 0px;
-  background-color: rgb(13, 16, 24);
+    border-bottom-style: solid;
+    border-image-source: linear-gradient(
+        to right,
+        #fb665d,
+        #f24187,
+        #b82dd1,
+        #8d26ff,
+        #5a4efe,
+        #4660fa,
+        #1c81ff,
+        #1597f5
+    );
+    border-image-slice: 10%;
+    background-color: #050505;
+    border-top: 0px;
+    border-left: 0px;
+    border-right: 0px;
+    background-color: rgb(13, 16, 24);
 }
 
 .bg-gradient {
-  color: #ffffff;
-  background: linear-gradient(
-    45deg,
-    #fb665d,
-    #f24187,
-    #b82dd1,
-    #8d26ff,
-    #5a4efe,
-    #4660fa,
-    #1c81ff,
-    #1597f5
-  );
-  background-size: 600% 600%;
-  -webkit-animation: AnimationName 5s ease infinite;
-  -moz-animation: AnimationName 5s ease infinite;
-  -o-animation: AnimationName 5s ease infinite;
-  animation: AnimationName 5s ease infinite;
+    color: #ffffff;
+    background: linear-gradient(
+        45deg,
+        #fb665d,
+        #f24187,
+        #b82dd1,
+        #8d26ff,
+        #5a4efe,
+        #4660fa,
+        #1c81ff,
+        #1597f5
+    );
+    background-size: 600% 600%;
+    -webkit-animation: AnimationName 5s ease infinite;
+    -moz-animation: AnimationName 5s ease infinite;
+    -o-animation: AnimationName 5s ease infinite;
+    animation: AnimationName 5s ease infinite;
 }
 
 @-webkit-keyframes AnimationName {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 51%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 51%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 @-moz-keyframes AnimationName {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 51%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 51%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 @-o-keyframes AnimationName {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 51%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 51%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 @keyframes AnimationName {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 51%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 51%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
-
 
 /* Stick Bottom Nav */
 /* Provided by: https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/ */
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
 }
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  background-color: #f5f5f5;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #f5f5f5;
 }
 
-input{
-  width: 100%;
+input {
+    width: 100%;
 }
 
 /* Stop Team Logos from showing on small screens */
 @media all and (max-width: 767px) {
-  .matches-index-logos {
-    display: none;
-  }
+    .matches-index-logos {
+        display: none;
+    }
 }
 
-.matchup-link{
-  text-decoration: none !important;
-  color: black;
+.matchup-link {
+    text-decoration: none !important;
+    color: black;
 }
+

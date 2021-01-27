@@ -99,17 +99,20 @@ class MatchupsController extends Controller
     {
         try
         {
-            dd($request);
+            //dd($request);
             $matchup = Matchup::find($id);
 
             $matchup->team1_score = $request->team_1_score;
             $matchup->team2_score = $request->team_2_score;
 
+            $matchup->state = "VERIFYING";
+
             $matchup->save();
+            return redirect('matchups/' . $id . '');
         }
         catch(QueryException $e)
         {
-            return redirect('matchup/' . $id . '');
+            return redirect('matchups/' . $id . '');
         }
     }
 
@@ -127,10 +130,5 @@ class MatchupsController extends Controller
     public function api()
     {
         return Matchup::all();
-    }
-
-    public function submitScore(Request $request)
-    {
-        dd($request);
     }
 }

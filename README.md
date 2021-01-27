@@ -41,3 +41,13 @@ I have created a variety of reusable Laravel Components that can be used across 
 * TEAM-CARD, Usage: ```<x-team-card :team="<<team model>>"></x-team-card>```  
 * MATCH-CARD, Usage: ```<x-match-card :matchup="<<matchup model>>" verbose="<<Show Team Logs e.g. true or false>>"></x-match-card>```
 * PLAYER-DONUT, Usage: ```<x-player-donut :player="$player" chartID="test1"></x-player-donut>```   
+
+
+### Matchup State Types:
+| Value | Meaning |
+| --- | --- |
+| AWAITING | The match is either awaiting results, or hasn't started yet |
+| VERIFYING | The result has been submitted and is waiting for an admin to verify them |
+| DISPUTED | The result has been disputed by another player/team |
+| CONFIRMED | Submitted results have been verified by an admin |
+| CANCELLED | Match has been abandoned/cancelled by an admin |

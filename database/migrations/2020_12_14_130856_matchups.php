@@ -36,6 +36,9 @@ class Matchups extends Migration
             $table->integer('team2_score')->default(0);
             $table->string('server_ip')->default('127.0.0.1');
 
+            //Matchup Status
+            $table->string('state')->default('AWAITING');
+
             /**
              * Foreign Key Constraints
              */

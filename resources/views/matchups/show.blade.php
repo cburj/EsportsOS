@@ -8,15 +8,19 @@
 
         @if (!Auth::guest() && Auth::user()->isAdmin)
 
-            <p>
-                <button class="btn btn-dark btn-block" type="button" data-toggle="collapse" data-target="#collapseExample"
-                    aria-expanded="false" aria-controls="collapseExample">
-                    🔽 Enter Score For Match 🔽
-                </button>
-            </p>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-elegant shadow-none" data-toggle="modal" data-target="#fullHeightModalRight">
+                ADMIN Panel
+            </button>
+
+            <button class="btn btn-elegant shadow-none" type="button" data-toggle="collapse" data-target="#collapseExample"
+                aria-expanded="false" aria-controls="collapseExample">
+                Enter Result
+            </button>
 
             <div class="collapse" id="collapseExample">
-                <form class="border p-5" action="{{ route('matchups.update', $matchup->id) }}" method="POST">
+                <form class="border p-5" action="{{ route('matchups.update', $matchup->id) }}" method="post">
+                    @method('PUT')
                     @csrf
 
                     <input type="hidden" value="{{ $matchup->id }}" name="id">
@@ -52,6 +56,27 @@
             </div>
         @endif
 
+        <!-- Full Height Modal Right -->
+        <div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+
+            <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
+            <div class="modal-dialog modal-full-height modal-right" role="document">
+
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title w-100" id="myModalLabel">ADMIN PANEL</h4>
+                    </div>
+                    <div class="modal-body">
+                        <button type="button" class="btn btn-success btn-block shadow-none">Confirm Result</button>
+                        <br>
+                        <button type="button" class="btn btn-danger btn-block shadow-none">Cancel Match</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Full Height Modal Right -->
 
     </div>
 @endsection
