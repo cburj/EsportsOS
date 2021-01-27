@@ -8,6 +8,7 @@ use App\Models\Matchup;
 use App\Models\Team;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Database\QueryException;
+use App\Helper\Helper;
 
 class MatchupsController extends Controller
 {

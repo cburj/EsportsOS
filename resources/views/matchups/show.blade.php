@@ -6,7 +6,8 @@
         <x-match-card :matchup="$matchup" verbose="true"></x-match-card>
         <br>
 
-        @if (!Auth::guest() && Auth::user()->isAdmin)
+        @if (!Auth::guest() &&
+        (Auth::user()->isAdmin || Helper::checkUserTeam(Auth::user()->id, $matchup->team1_id, $matchup->team2_id)))
 
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-elegant shadow-none" data-toggle="modal" data-target="#fullHeightModalRight">
