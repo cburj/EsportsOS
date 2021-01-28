@@ -55,7 +55,7 @@
 
                                 <th scope="row">{{ $matchup->id }}</th>
                                 <td>{{ $matchup->team1->name }}</td>
-                                <td>{{ $matchup->team1->name }}</td>
+                                <td>{{ $matchup->team2->name }}</td>
                                 <td>{{ $matchup->team1_score }}:{{ $matchup->team2_score }}</td>
                                 <td>{{ $date->format('d/m/Y @ H:i') }}</td>
                                 <td>{{ $matchup->state }}</td>

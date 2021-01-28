@@ -15,7 +15,7 @@ class MatchupsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -138,6 +138,7 @@ class MatchupsController extends Controller
 
     public function adminMatchups()
     {
+        $this->middleware('auth');
         $matchups = Matchup::where('state', 'RESULT DISPUTED')->orWhere('state', 'MATCH CANCELLED')->orderBy('updated_at', 'ASC')->get();
 
         if(Auth::user()->isAdmin)
