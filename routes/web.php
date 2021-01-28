@@ -34,6 +34,9 @@ Route::get('/assets/schedule', 'App\Http\Controllers\AssetsController@schedule')
 Route::get('/assets/player/', 'App\Http\Controllers\AssetsController@playerIndex');
 Route::get('/assets/player/{id}/{verbose}', 'App\Http\Controllers\AssetsController@player');
 
+/* ADMIN-SPECIFIC ROUTES */
+Route::get('/admin/matches', 'App\Http\Controllers\MatchupsController@adminMatchups');
+
 
 /* API ROUTES */
 /* Not sure if there is an easier way, but this works for now */

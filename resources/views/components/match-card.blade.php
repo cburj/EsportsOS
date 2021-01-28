@@ -29,8 +29,9 @@
 
                 @if ($endString != null)
                     <p>Finished at: {{ $end_date->format('d/m/Y @ H:i') }}</p>
-                @elseif($cur_date <= $date) <p>Starts at: {{ $date->format('d/m/Y @ H:i') }}</p>
-                    @elseif($cur_date > $date)
+                @elseif($cur_date <= $date)
+                    <p>Starts at: {{ $date->format('d/m/Y @ H:i') }}</p>
+                @elseif($cur_date > $date)
                         <p>🔴Live</p>
                 @endif
 

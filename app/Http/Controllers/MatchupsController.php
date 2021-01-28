@@ -12,6 +12,12 @@ use App\Helper\Helper;
 
 class MatchupsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -128,5 +134,15 @@ class MatchupsController extends Controller
     public function api()
     {
         return Matchup::all();
+    }
+
+    public function adminMatchups()
+    {
+        $matchups = Matchup::where('state', 'RESULT DISPUTED')->orWhere('state', 'MATCH CANCELLED')->orderBy('updated_at', 'ASC')->get();
+
+        if(Auth::user()->isAdmin)
+            return view('admin.matches')->with('matchups', $matchups);
+        else
+            return redirect('matchups');
     }
 }

@@ -140,3 +140,7 @@ input {
     box-shadow: none !important;
 }
 
+.admin-matches-table{
+    overflow: auto;
+}
+
