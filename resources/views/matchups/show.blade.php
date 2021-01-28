@@ -10,17 +10,17 @@
         @if(!Auth::guest() && Auth::user()->isAdmin )
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-elegant shadow-none" data-toggle="modal" data-target="#fullHeightModalRight">
-                ADMIN Panel
+                <i class="fas fa-tools"></i> ADMIN Panel
             </button>
         @endif
 
 
         @if (!Auth::guest() &&
         (Helper::checkUserTeam(Auth::user()->id, $matchup->team1_id, $matchup->team2_id)) &&
-        $matchup->state == "AWAITING")
+        $matchup->state == "AWAITING RESULT")
             <button class="btn btn-elegant shadow-none" type="button" data-toggle="collapse" data-target="#collapseExample"
                 aria-expanded="false" aria-controls="collapseExample">
-                Enter Result
+                <i class="fas fa-pencil-alt"></i> Enter Result
             </button>
 
             <div class="collapse" id="collapseExample">
@@ -29,17 +29,17 @@
                     @csrf
 
                     <input type="hidden" value="{{ $matchup->id }}" name="id">
-                    <input type="hidden" value="VERIFYING" name="state">
+                    <input type="hidden" value="VERIFYING RESULT" name="state">
 
                     <p class="h4 mb-4 text-center">Submit Match Result</p>
 
                     <label for="team_1_score">{{ $matchup->team1->name }} Score:</label>
-                    <input type="number" id="team_1_score" name="team_1_score" min="0" max="16">
+                    <input type="number" id="team_1_score" name="team_1_score" min="0" max="16" value="0">
 
                     <hr>
 
                     <label for="team_2_score">{{ $matchup->team2->name }} Score:</label>
-                    <input type="number" id="team_2_score" name="team_2_score" min="0" max="16">
+                    <input type="number" id="team_2_score" name="team_2_score" min="0" max="16" value="0">
 
                     <hr>
 
@@ -77,9 +77,9 @@
                     <div class="modal-body">
 
 
-                        <button class="btn btn-warning btn-block shadow-none" type="button" data-toggle="collapse" data-target="#adminOverride"
+                        <button class="btn btn-elegant btn-block shadow-none" type="button" data-toggle="collapse" data-target="#adminOverride"
                 aria-expanded="false" aria-controls="adminOverride">
-                Override Result
+                <i class="fas fa-edit"></i> Override Result
             </button>
 
             <div class="collapse" id="adminOverride">
@@ -88,17 +88,28 @@
                     @csrf
 
                     <input type="hidden" value="{{ $matchup->id }}" name="id">
-                    <input type="hidden" value="RESULT CONFIRMED" name="state">
 
                     <p class="h4 mb-4 text-center">Submit Match Result</p>
 
+                    <label for="state">Match State:</label>
+                    <select class="form-control" id="state" name="state">
+                        <option value="" disabled selected>Select State...</option>
+                            <option value="AWAITING RESULT">AWAITING RESULT</option>
+                            <option value="VERIFYING RESULT">VERIFYING RESULT</option>
+                            <option value="RESULT CONFIRMED">RESULT CONFIRMED</option>
+                            <option value="RESULT DISPUTED">RESULT DISPUTED</option>
+                            <option value="MATCH CANCELLED">MATCH CANCELLED</option>
+                    </select>
+
+                    <hr>
+
                     <label for="team_1_score">{{ $matchup->team1->name }} Score:</label>
-                    <input type="number" id="team_1_score" name="team_1_score" min="0" max="16">
+                    <input type="number" id="team_1_score" name="team_1_score" min="0" max="16" value="{{$matchup->team1_score}}">
 
                     <hr>
 
                     <label for="team_2_score">{{ $matchup->team2->name }} Score:</label>
-                    <input type="number" id="team_2_score" name="team_2_score" min="0" max="16">
+                    <input type="number" id="team_2_score" name="team_2_score" min="0" max="16" value="{{$matchup->team2_score}}">
 
                     <hr>
 
@@ -108,9 +119,29 @@
 
 
                         <hr>
-                        <button type="button" class="btn btn-success btn-block shadow-none">Confirm Result</button>
+
+                        <form class="" action="{{ route('matchups.update', $matchup->id) }}" method="post" id="confirm_result">
+                            @method('PUT')
+                            @csrf
+        
+                            <input type="hidden" value="{{ $matchup->id }}" name="id">
+                            <input type="hidden" value="{{ $matchup->team1_score }}" name="team_1_score">
+                            <input type="hidden" value="{{ $matchup->team2_score }}" name="team_2_score">
+                            <input type="hidden" value="RESULT CONFIRMED" name="state">
+                        </form>
+                        <button type="submit" form="confirm_result" value="submit" class="btn btn-success btn-block shadow-none"><i class="fas fa-check"></i> Confirm Result</button>
                         <br>
-                        <button type="button" class="btn btn-danger btn-block shadow-none">Cancel Match</button>
+
+                        <form class="" action="{{ route('matchups.update', $matchup->id) }}" method="post" id="cancel_match">
+                            @method('PUT')
+                            @csrf
+        
+                            <input type="hidden" value="{{ $matchup->id }}" name="id">
+                            <input type="hidden" value="0" name="team_1_score">
+                            <input type="hidden" value="0" name="team_2_score">
+                            <input type="hidden" value="MATCH CANCELLED" name="state">
+                        </form>
+                        <button type="submit" form="cancel_match" value="submit" class="btn btn-danger btn-block shadow-none"><i class="fas fa-times"></i> Cancel Match</button>
                     </div>
                 </div>
             </div>

@@ -101,6 +101,9 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if(!Auth::guest() && Auth::user()->isAdmin)
+                                    <a class="dropdown-item" href="/">
+                                        Match Dashboard
+                                    </a>
                                     <a class="dropdown-item" href="/assets">
                                         Stream Assets
                                     </a>

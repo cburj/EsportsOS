@@ -134,3 +134,9 @@ input {
     color: black;
 }
 
+/* Get rid of horrible drop shadow on buttons*/
+.btn{
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+}
+

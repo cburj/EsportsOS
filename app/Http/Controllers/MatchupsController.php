@@ -34,9 +34,7 @@ class MatchupsController extends Controller
             $teams = Team::all();
             $matchups = Matchup::get();
             return view('matchups.create')->with('matchups', $matchups)->with('teams', $teams);
-        }
-        else
-        {
+        } else {
             return redirect('/matchups')->with('errorMessage', 'You must be logged in to perform this action.');
         }
     }
@@ -98,21 +96,20 @@ class MatchupsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        try
-        {
+        try {
             //dd($request);
             $matchup = Matchup::find($id);
 
             $matchup->team1_score = $request->team_1_score;
+
             $matchup->team2_score = $request->team_2_score;
 
-            $matchup->state = $request->state;
+            if ($request->state != null)
+                $matchup->state = $request->state;
 
             $matchup->save();
             return redirect('matchups/' . $id . '');
-        }
-        catch(QueryException $e)
-        {
+        } catch (QueryException $e) {
             return redirect('matchups/' . $id . '');
         }
     }
