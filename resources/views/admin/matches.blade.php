@@ -8,7 +8,7 @@
         aria-hidden="true">
 
         <!-- Change class .modal-sm to change the size of the modal -->
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-xl" role="document">
 
 
             <div class="modal-content">
@@ -19,10 +19,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <video width="100%" autoplay controls>
-                        <source src="https://i.imgur.com/EV5Tins.mp4" type="video/mp4">
-                      </video>
-                    <small>NOTE: This is a temporary placeholder for now. This is the way</small>
+                    <img src="https://i.ytimg.com/vi/_jx04EU1F-8/maxresdefault.jpg" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -50,7 +47,7 @@
                     </thead>
                     <tbody>
                         @foreach ($matchups as $matchup)
-                            <tr>
+                            <tr class="grey lighten-3">
                                 @php
                                 $dateString = $matchup->date_time;
                                 $date = new DateTime($dateString);

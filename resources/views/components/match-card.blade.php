@@ -25,7 +25,7 @@
                 $end_date = new DateTime($endString);
                 @endphp
 
-                <p>STATUS: {{ $matchup->state }}</p>
+                <p class="">STATUS: {{ $matchup->state }}</p>
 
                 @if ($endString != null)
                     <p>Finished at: {{ $end_date->format('d/m/Y @ H:i') }}</p>

@@ -14,6 +14,22 @@
             </button>
         @endif
 
+        <!--ALLOW A USER TO DISPUTE A RESULT -->
+        @if (!Auth::guest() &&
+        (Helper::checkUserTeam(Auth::user()->id, $matchup->team1_id, $matchup->team2_id)) &&
+        $matchup->state == "VERIFYING RESULT")
+            <button type="submit" form="dispute_result" value="submit" class="btn btn-danger shadow-none"><i class="fas fa-exclamation"></i> Dispute Result</button>
+            <form class="" action="{{ route('matchups.update', $matchup->id) }}" method="post" id="dispute_result">
+                @method('PUT')
+                @csrf
+
+                <input type="hidden" value="{{ $matchup->id }}" name="id">
+                <input type="hidden" value="{{ $matchup->team1_score }}" name="team_1_score">
+                <input type="hidden" value="{{ $matchup->team2_score }}" name="team_2_score">
+                <input type="hidden" value="RESULT DISPUTED" name="state">
+            </form>
+        @endif
+
 
         @if (!Auth::guest() &&
         (Helper::checkUserTeam(Auth::user()->id, $matchup->team1_id, $matchup->team2_id)) &&
@@ -93,10 +109,9 @@
 
                     <label for="state">Match State:</label>
                     <select class="form-control" id="state" name="state">
-                        <option value="" disabled selected>Select State...</option>
+                            <option value="RESULT CONFIRMED">RESULT CONFIRMED</option>
                             <option value="AWAITING RESULT">AWAITING RESULT</option>
                             <option value="VERIFYING RESULT">VERIFYING RESULT</option>
-                            <option value="RESULT CONFIRMED">RESULT CONFIRMED</option>
                             <option value="RESULT DISPUTED">RESULT DISPUTED</option>
                             <option value="MATCH CANCELLED">MATCH CANCELLED</option>
                     </select>
@@ -116,7 +131,6 @@
                     <button class="btn btn-primary btn-block" type="submit" value="Submit">Save</button>
                 </form>
             </div>
-
 
                         <hr>
 
