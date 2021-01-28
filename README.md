@@ -46,8 +46,8 @@ I have created a variety of reusable Laravel Components that can be used across 
 ### Matchup State Types:
 | Value | Meaning |
 | --- | --- |
-| AWAITING | The match is either awaiting results, or hasn't started yet |
-| VERIFYING | The result has been submitted and is waiting for an admin to verify them |
-| DISPUTED | The result has been disputed by another player/team |
-| CONFIRMED | Submitted results have been verified by an admin |
-| CANCELLED | Match has been abandoned/cancelled by an admin |
+| AWAITING RESULT | The match is either awaiting results, or hasn't started yet |
+| VERIFYING RESULT | The result has been submitted and is waiting for an admin to verify them |
+| RESULT DISPUTED | The result has been disputed by another player/team |
+| RESULT CONFIRMED | Submitted results have been verified by an admin |
+| MATCH CANCELLED | Match has been abandoned/cancelled by an admin |
