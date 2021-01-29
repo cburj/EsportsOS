@@ -139,7 +139,7 @@ class MatchupsController extends Controller
     public function adminMatchups()
     {
         $this->middleware('auth');
-        $matchups = Matchup::where('state', 'RESULT DISPUTED')->orWhere('state', 'MATCH CANCELLED')->orderBy('updated_at', 'ASC')->get();
+        $matchups = Matchup::where('state', 'RESULT DISPUTED')->orWhere('state', 'MATCH CANCELLED')->orWhere('state', 'VERIFYING RESULT')->orderBy('updated_at', 'ASC')->get();
 
         if(Auth::user()->isAdmin)
             return view('admin.matches')->with('matchups', $matchups);

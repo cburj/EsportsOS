@@ -29,10 +29,10 @@
 
     <div class="container">
         @if (count($matchups) > 0)
-            <h3 class="text-center">Matchup Issues</h3>
+            <h3 class="">Action Required</h3>
 
             <div class="admin-matches-table">
-                <table class="table admin-matches-table">
+                <table class="table admin-matches-table text-center">
                     <thead>
                         <tr>
                             <th scope="col">Match ID</th>
@@ -42,7 +42,7 @@
                             <th scope="col">Start Time</th>
                             <th scope="col">Match State</th>
                             <th scope="col">Evidence</th>
-                            <th scope="col">Mediate</th>
+                            <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
