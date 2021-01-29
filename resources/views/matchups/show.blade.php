@@ -6,7 +6,6 @@
         <x-match-card :matchup="$matchup" verbose="true"></x-match-card>
         <br>
 
-
         @if(!Auth::guest() && Auth::user()->isAdmin )
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-elegant shadow-none" data-toggle="modal" data-target="#fullHeightModalRight">
@@ -162,5 +161,57 @@
         </div>
         <!-- Full Height Modal Right -->
 
+        <hr>
+        <h3 class="text-center"><strong>TeamX</strong></h3>
+        <div class="match-additional-info-table">
+            <table class="table table-striped">
+                <thead class="elegant-color white-text">
+                    <tr>
+                        <th scope="col" class="elegant-color white-text">Player</th>
+                        <th scope="col" class="elegant-color white-text">Rating</th>
+                        <th scope="col" class="elegant-color white-text">Wins</th>
+                        <th scope="col" class="elegant-color white-text">Losses</th>
+                        <th scope="col" class="elegant-color white-text">Draws</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($matchup->team1->players as $player)
+                    <tr>
+                        <td><a href="/players/{{$player->id}}" class="text-primary">{{ $player->username }}</a> ({{ $player->full_name }})</td>
+                        <td>{{ $player->rating }}</td>
+                        <td>{{ $player->wins }}</td>
+                        <td>{{ $player->losses }}</td>
+                        <td>{{ $player->draws }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+        <hr>
+        <h3 class="text-center"><strong>TeamY</strong></h3>
+        <div class="match-additional-info-table">
+            <table class="table table-striped">
+                <thead class="elegant-color white-text">
+                    <tr>
+                        <th scope="col" class="elegant-color white-text">Player</th>
+                        <th scope="col" class="elegant-color white-text">Rating</th>
+                        <th scope="col" class="elegant-color white-text">Wins</th>
+                        <th scope="col" class="elegant-color white-text">Losses</th>
+                        <th scope="col" class="elegant-color white-text">Draws</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($matchup->team2->players as $player)
+                    <tr>
+                        <td><a href="/players/{{$player->id}}" class="text-primary">{{ $player->username }}</a> ({{ $player->full_name }})</td>
+                        <td>{{ $player->rating }}</td>
+                        <td>{{ $player->wins }}</td>
+                        <td>{{ $player->losses }}</td>
+                        <td>{{ $player->draws }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 @endsection
