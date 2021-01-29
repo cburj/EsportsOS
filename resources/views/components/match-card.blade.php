@@ -37,13 +37,16 @@
 
 
                 <h2>{{ $matchup->team1_score }}:{{ $matchup->team2_score }}</h2>
+                @if($matchup->state == "RESULT DISPUTED")
+                    <p><span class="red pl-5 pr-5 p-1 rounded-pill text-white"><i class="fas fa-exclamation"></i> PENDING INVESTIGATION <i class="fas fa-exclamation"></i><span></p>
+                @endif
                 @php
                 //Generate the URL for players to join the game.
                 $ip = $matchup->server_ip;
                 $conStr = "steam://connect/127.0.0.1/";
                 @endphp
                 <a href="" class="btn btn-elegant" onclick="location.href='{{ $conStr }}'">
-                    PLAYER JOIN
+                    <i class="fas fa-server pr-2"></i>JOIN SERVER
                 </a>
             </div>
         </div>

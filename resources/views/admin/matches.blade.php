@@ -66,7 +66,7 @@
                                     </button>
                                 </td>
                                 <td>
-                                    <button class="btn btn-elegant btn-sm"
+                                    <button class="btn btn-danger btn-sm"
                                         onclick="location.href='/matchups/{{ $matchup->id }}'">
                                         View Match
                                     </button>
