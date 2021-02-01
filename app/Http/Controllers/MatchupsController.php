@@ -120,7 +120,9 @@ class MatchupsController extends Controller
 
                 $newFileName = 'MATCH_' . $id . '_EVIDENCE.' . $extension;
 
-                $file->storeAs('docs', $newFileName);
+                $path = $file->storeAs('public/matchup_evidence', $newFileName);
+
+                //$file->storeAs('docs', $newFileName);
             }
 
             $matchup->save();

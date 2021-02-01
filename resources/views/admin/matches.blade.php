@@ -1,32 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
-    <!-- Central Modal Small -->
-    <div class="modal fade" id="matchEvidence" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-        aria-hidden="true">
-
-        <!-- Change class .modal-sm to change the size of the modal -->
-        <div class="modal-dialog modal-xl" role="document">
-
-
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title w-100" id="myModalLabel">User-uploaded Evidence</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <img src="https://i.ytimg.com/vi/_jx04EU1F-8/maxresdefault.jpg" class="img-fluid">
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Central Modal Small -->
-
-
     <div class="container">
         @if (count($matchups) > 0)
             <h3 class="">Action Required</h3>
@@ -41,7 +15,6 @@
                             <th scope="col">Score</th>
                             <th scope="col">Start Time</th>
                             <th scope="col">Match State</th>
-                            <th scope="col">Evidence</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -59,12 +32,6 @@
                                 <td>{{ $matchup->team1_score }}:{{ $matchup->team2_score }}</td>
                                 <td>{{ $date->format('d/m/Y @ H:i') }}</td>
                                 <td>{{ $matchup->state }}</td>
-                                <td>
-                                    <button class="btn btn-elegant btn-sm" type="button" data-toggle="modal"
-                                        data-target="#matchEvidence">
-                                        Evidence
-                                    </button>
-                                </td>
                                 <td>
                                     <button class="btn btn-danger btn-sm"
                                         onclick="location.href='/matchups/{{ $matchup->id }}'">

@@ -8,7 +8,7 @@
 
         @if(!Auth::guest() && Auth::user()->isAdmin )
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-elegant shadow-none" data-toggle="modal" data-target="#fullHeightModalRight">
+            <button type="button" class="btn btn-danger shadow-none" data-toggle="modal" data-target="#fullHeightModalRight">
                 <i class="fas fa-tools"></i> ADMIN Panel
             </button>
         @endif
@@ -29,6 +29,30 @@
             </form>
         @endif
 
+        @if($matchup->state != "AWAITING RESULT" && $matchup->state != "MATCH CANCELLED")
+        <div class="modal fade" id="matchEvidence" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <!-- Change class .modal-sm to change the size of the modal -->
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title w-100" id="myModalLabel">User-uploaded Evidence</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    </div>
+                    <div class="modal-body">
+                        <img src="/storage/matchup_evidence/MATCH_{{$matchup->id}}_EVIDENCE.png" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-elegant shadow-none" type="button" data-toggle="modal" data-target="#matchEvidence">
+            <i class="fas fa-image"></i> Evidence
+        </button>
+        <!-- Central Modal Small -->
+        @endif()
 
         @if (!Auth::guest() &&
         (Helper::checkUserTeam(Auth::user()->id, $matchup->team1_id, $matchup->team2_id)) &&
@@ -72,7 +96,7 @@
                         scoreboard for each match. This is so an admin can verify the score if a match result is disputed by
                         another team.</small>
 
-                    <button class="btn btn-primary btn-block" type="submit" value="Submit">Save</button>
+                    <button class="btn btn-elegant btn-block" type="submit" value="Submit">Save</button>
                 </form>
             </div>
         @endif
