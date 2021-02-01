@@ -51,3 +51,9 @@ I have created a variety of reusable Laravel Components that can be used across 
 | RESULT DISPUTED | The result has been disputed by another player/team |
 | RESULT CONFIRMED | Submitted results have been verified by an admin |
 | MATCH CANCELLED | Match has been abandoned/cancelled by an admin |
+
+
+<br>
+
+### Match Evidence File Format:
+"MATCH_X_EVIDENCE.PNG" (other extensions are allowed.)

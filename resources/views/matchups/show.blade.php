@@ -39,7 +39,7 @@
             </button>
 
             <div class="collapse" id="collapseExample">
-                <form class="border p-5" action="{{ route('matchups.update', $matchup->id) }}" method="post">
+                <form class="border p-5" action="{{ route('matchups.update', $matchup->id) }}" method="post" enctype="multipart/form-data">
                     @method('PUT')
                     @csrf
 
@@ -63,7 +63,7 @@
                             <span class="input-group-text">Scoreboard Screenshot</span>
                         </div>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="fileInput" aria-describedby="fileInput">
+                            <input type="file" class="custom-file-input" id="fileInput" name="matchEvidenceImage" aria-describedby="fileInput" required />
                             <label class="custom-file-label" for="fileInput"></label>
                         </div>
                     </div>

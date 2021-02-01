@@ -113,6 +113,16 @@ class MatchupsController extends Controller
             if ($request->state != null)
                 $matchup->state = $request->state;
 
+            if($request->file('matchEvidenceImage') != null)
+            {
+                $file = $request->file('matchEvidenceImage');
+                $extension = $file->extension();
+
+                $newFileName = 'MATCH_' . $id . '_EVIDENCE.' . $extension;
+
+                $file->storeAs('docs', $newFileName);
+            }
+
             $matchup->save();
             return redirect('matchups/' . $id . '');
         } catch (QueryException $e) {
