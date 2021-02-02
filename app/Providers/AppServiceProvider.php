@@ -2,7 +2,11 @@
 
 namespace App\Providers;
 
+//This was disabled to allow the other pagination
+//use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
+
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        //Tell Laravel we want to use Bootstrap rather than Tailwind.
+        Paginator::useBootstrap();
     }
 }

@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Controllers\Controller;
+
 class PlayersController extends Controller
 {
     /**
@@ -18,7 +20,7 @@ class PlayersController extends Controller
      */
     public function index()
     {
-        $players = Player::all();
+        $players = Player::paginate(5);
         return view('players.index')->with('players', $players);
     }
 

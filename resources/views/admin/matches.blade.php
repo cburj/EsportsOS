@@ -4,7 +4,6 @@
     <div class="container">
         @if (count($matchups) > 0)
             <h3 class="">Action Required</h3>
-
             <div class="admin-matches-table">
                 <table class="table admin-matches-table text-center">
                     <thead>

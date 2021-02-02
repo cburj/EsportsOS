@@ -71,13 +71,6 @@
                         </li>
                     </ul>
 
-                    <!--SEARCH FORM -->
-                    <form class="form-inline my-2 my-lg-0 search-form">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search for anything..." aria-label="Search">
-                        <button class="btn btn-dark my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                    <!--SEARCH FORM -->
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -130,6 +123,6 @@
         <div class="container">
           <span class="text-muted">EsportsOS - Created by Charlie Burgess (2020)</span>
         </div>
-      </footer>
+    </footer>
 </body>
 </html>

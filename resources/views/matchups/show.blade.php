@@ -42,7 +42,7 @@
                     </button>
                     </div>
                     <div class="modal-body">
-                        <img src="/storage/matchup_evidence/MATCH_{{$matchup->id}}_EVIDENCE.png" class="img-fluid">
+                        <img src="/storage/matchup_evidence/MATCH_{{$matchup->id}}_EVIDENCE.png" class="img-fluid" alt="user uploaded match result evidence">
                     </div>
                 </div>
             </div>
