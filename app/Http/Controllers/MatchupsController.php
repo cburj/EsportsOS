@@ -158,4 +158,14 @@ class MatchupsController extends Controller
         else
             return redirect('matchups');
     }
+
+    public function dashboard()
+    {
+        return view('matchups.dashboard');
+    }
+
+    public function generateMatchups()
+    {
+        
+    }
 }

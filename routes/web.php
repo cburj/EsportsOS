@@ -35,7 +35,8 @@ Route::get('/assets/player/', 'App\Http\Controllers\AssetsController@playerIndex
 Route::get('/assets/player/{id}/{verbose}', 'App\Http\Controllers\AssetsController@player');
 
 /* ADMIN-SPECIFIC ROUTES */
-Route::get('/admin/matches', 'App\Http\Controllers\MatchupsController@adminMatchups');
+Route::get('/admin/match_issues', 'App\Http\Controllers\MatchupsController@adminMatchups');
+Route::get('/admin/match_dashboard', 'App\Http\Controllers\MatchupsController@dashboard');
 
 
 /* API ROUTES */

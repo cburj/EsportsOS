@@ -94,8 +94,11 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if(!Auth::guest() && Auth::user()->isAdmin)
-                                    <a class="dropdown-item" href="/admin/matches">
-                                        <i class="fas fa-exclamation-circle"></i> Matchup Issues
+                                    <a class="dropdown-item" href="/admin/match_issues">
+                                        Matchup Issues
+                                    </a>
+                                    <a class="dropdown-item" href="/admin/match_dashboard">
+                                        Matchup Dashboard
                                     </a>
                                     <a class="dropdown-item" href="/assets">
                                         Stream Assets
