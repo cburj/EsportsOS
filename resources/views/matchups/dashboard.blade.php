@@ -10,13 +10,19 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content text-center">
                     <div class="modal-header">
-                        <h4 class="modal-title w-100" id="myModalLabel">Generating Matchups</h4>
+                        <h4 class="modal-title w-100" id="msg">🕖 Generating Match Data</h4>
                     </div>
                     <div class="modal-body">
-                        <h1 id="msg">Loading...</h1>
-                        <div class="spinner-border" role="status">
+                        <div class="spinner-border" role="status" id="spinner">
                             <span class="sr-only">Loading...</span>
                         </div>
+                        <!-- Collapsible element -->
+                        <div class="collapse" id="collapseExample">
+                            <div class="mt-3" id="success-img">
+                                <img alt="success!" src="https://media.giphy.com/media/5VKbvrjxpVJCM/giphy.gif"/>
+                            </div>
+                        </div>
+                        <!-- / Collapsible element -->
                     </div>
                 </div>
             </div>
@@ -95,9 +101,12 @@
                     data-target="#centralModalSm">Generate Matches</button>
 
                 <script type="text/javascript">
+                    const sleep = (milliseconds) => {
+                        return new Promise(resolve => setTimeout(resolve, milliseconds))
+                    }
+
                     var buttonId = document.getElementById("cburg-test");
                     buttonId.onclick = function() {
-                        console.log("Hello, World");
 
                         $.ajax({
                             type: 'POST',
@@ -107,6 +116,14 @@
                             },
                             success: function(data) {
                                 $("#msg").html(data.msg);
+                                document.getElementById("spinner").style.visibility = "hidden";
+                                $("#collapseExample").collapse();
+
+                                sleep(2000).then(() => {
+                                    $("#msg").html("Refreshing Feed...");
+                                    $('#centralModalSm').modal('hide');
+                                    window.location.replace("/matchups");
+                                })
                             }
                         });
 

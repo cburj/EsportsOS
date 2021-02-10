@@ -168,7 +168,7 @@ class MatchupsController extends Controller
     {
         sleep(3);
 
-        $msg = "This is a simple message.";
+        $msg = "✅ Matches Created";
         return response()->json(array('msg'=> $msg), 200);
     }
 }
