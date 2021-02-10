@@ -4,8 +4,8 @@
     <div class="container">
 
         <!-- Central Modal Small -->
-        <div class="modal fade" data-keyboard="false" data-backdrop="static" id="centralModalSm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" data-keyboard="false" data-backdrop="static" id="centralModalSm" tabindex="-1" role="dialog"
+            aria-labelledby="myModalLabel" aria-hidden="true">
             <!-- Change class .modal-sm to change the size of the modal -->
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content text-center">
@@ -13,9 +13,10 @@
                         <h4 class="modal-title w-100" id="myModalLabel">Generating Matchups</h4>
                     </div>
                     <div class="modal-body">
+                        <h1 id="msg">Loading...</h1>
                         <div class="spinner-border" role="status">
                             <span class="sr-only">Loading...</span>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -89,7 +90,30 @@
             </div>
             <div class="col-md-4">
                 <h3>Quick Actions</h3>
-                <button class="btn btn-block btn-elegant" data-toggle="modal" data-target="#centralModalSm">Generate Matches</button>
+
+                <button class="btn btn-block btn-elegant" id="cburg-test" type="button" data-toggle="modal"
+                    data-target="#centralModalSm">Generate Matches</button>
+
+                <script type="text/javascript">
+                    var buttonId = document.getElementById("cburg-test");
+                    buttonId.onclick = function() {
+                        console.log("Hello, World");
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/generateMatches',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(data) {
+                                $("#msg").html(data.msg);
+                            }
+                        });
+
+                    }
+
+                </script>
+
                 <br>
                 <br>
             </div>

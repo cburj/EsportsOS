@@ -166,6 +166,9 @@ class MatchupsController extends Controller
 
     public function generateMatchups()
     {
-        
+        sleep(3);
+
+        $msg = "This is a simple message.";
+        return response()->json(array('msg'=> $msg), 200);
     }
 }

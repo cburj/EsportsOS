@@ -46,3 +46,4 @@ Route::get('/api/players', 'App\Http\Controllers\PlayersController@api');
 Route::get('/api/matchups', 'App\Http\Controllers\MatchupsController@api');
 
 /* EXPERIMENTAL ROUTES */
+Route::post('/generateMatches', 'App\Http\Controllers\MatchupsController@generateMatchups');
