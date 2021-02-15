@@ -101,11 +101,10 @@
             </div>
         @endif
 
-        <!-- Full Height Modal Right -->
+        <!-- ADMIN PANEL -->
         <div class="modal fade right" id="fullHeightModalRight" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
             aria-hidden="true">
 
-            <!-- Add class .modal-full-height and then add class .modal-right (or other classes from list above) to set a position to the modal -->
             <div class="modal-dialog modal-full-height modal-right" role="document">
 
 
@@ -114,7 +113,27 @@
                         <h4 class="modal-title w-100" id="myModalLabel">ADMIN PANEL</h4>
                     </div>
                     <div class="modal-body">
+                        <!--Check if we can enter a date time -->
+                        @if($matchup->date_time == null)
+                            <button class="btn btn-elegant btn-block shadow-none" type="button" data-toggle="collapse" data-target="#adminDateTime" aria-expanded="false" aria-controls="adminDateTime">
+                            <i class="far fa-calendar-alt"></i> Set Match Date/Time
+                            </button>
+                            <div class="collapse" id="adminDateTime">
+                                <form class="border p-5" action="{{ route('matchups.update', $matchup->id) }}" method="post">
+                                    @method('PUT')
+                                    @csrf
+                
+                                    <input type="hidden" value="{{ $matchup->id }}" name="id">
 
+                                    <label for="date_time">Date/Time</label>
+                                    <input class="form-control" type="datetime-local" id="date_time" name="date_time">
+                
+                                    <hr>
+                                    <button class="btn btn-primary btn-block" type="submit" value="Submit">Save</button>
+                                </form>
+                                </div>
+                                <hr>
+                        @endif
 
                         <button class="btn btn-elegant btn-block shadow-none" type="button" data-toggle="collapse" data-target="#adminOverride"
                 aria-expanded="false" aria-controls="adminOverride">
@@ -153,37 +172,33 @@
 
                     <button class="btn btn-primary btn-block" type="submit" value="Submit">Save</button>
                 </form>
-            </div>
+                </div>
+                <hr>
+                    <form class="" action="{{ route('matchups.update', $matchup->id) }}" method="post" id="confirm_result">
+                     @method('PUT')
+                        @csrf
+                        <input type="hidden" value="{{ $matchup->id }}" name="id">
+                        <input type="hidden" value="{{ $matchup->team1_score }}" name="team_1_score">
+                        <input type="hidden" value="{{ $matchup->team2_score }}" name="team_2_score">
+                        <input type="hidden" value="RESULT CONFIRMED" name="state">
+                    </form>
+                    <button type="submit" form="confirm_result" value="submit" class="btn btn-success btn-block shadow-none"><i class="fas fa-check"></i> Confirm Result</button>
+                    <br>
 
-                        <hr>
-
-                        <form class="" action="{{ route('matchups.update', $matchup->id) }}" method="post" id="confirm_result">
-                            @method('PUT')
-                            @csrf
-        
-                            <input type="hidden" value="{{ $matchup->id }}" name="id">
-                            <input type="hidden" value="{{ $matchup->team1_score }}" name="team_1_score">
-                            <input type="hidden" value="{{ $matchup->team2_score }}" name="team_2_score">
-                            <input type="hidden" value="RESULT CONFIRMED" name="state">
-                        </form>
-                        <button type="submit" form="confirm_result" value="submit" class="btn btn-success btn-block shadow-none"><i class="fas fa-check"></i> Confirm Result</button>
-                        <br>
-
-                        <form class="" action="{{ route('matchups.update', $matchup->id) }}" method="post" id="cancel_match">
-                            @method('PUT')
-                            @csrf
-        
-                            <input type="hidden" value="{{ $matchup->id }}" name="id">
-                            <input type="hidden" value="0" name="team_1_score">
-                            <input type="hidden" value="0" name="team_2_score">
-                            <input type="hidden" value="MATCH CANCELLED" name="state">
-                        </form>
-                        <button type="submit" form="cancel_match" value="submit" class="btn btn-danger btn-block shadow-none"><i class="fas fa-times"></i> Cancel Match</button>
-                    </div>
+                    <form class="" action="{{ route('matchups.update', $matchup->id) }}" method="post" id="cancel_match">
+                        @method('PUT')
+                        @csrf
+                        <input type="hidden" value="{{ $matchup->id }}" name="id">
+                        <input type="hidden" value="0" name="team_1_score">
+                        <input type="hidden" value="0" name="team_2_score">
+                        <input type="hidden" value="MATCH CANCELLED" name="state">
+                    </form>
+                    <button type="submit" form="cancel_match" value="submit" class="btn btn-danger btn-block shadow-none"><i class="fas fa-times"></i> Cancel Match</button>
+                </div>
                 </div>
             </div>
         </div>
-        <!-- Full Height Modal Right -->
+        <!-- ADMIN PANEL -->
 
         <hr>
         <h3 class="text-center"><strong>TeamX</strong></h3>

@@ -9,6 +9,7 @@ use App\Models\Team;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Database\QueryException;
 use App\Helper\Helper;
+use DateTime;
 
 class MatchupsController extends Controller
 {
@@ -103,17 +104,25 @@ class MatchupsController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            //dd($request);
             $matchup = Matchup::find($id);
 
-            $matchup->team1_score = $request->team_1_score;
+            if($request->team_1_score != null)
+                $matchup->team1_score = $request->team_1_score;
 
-            $matchup->team2_score = $request->team_2_score;
+            if($request->team_2_score != null)
+                $matchup->team2_score = $request->team_2_score;
 
             if ($request->state != null)
                 $matchup->state = $request->state;
 
-            if($request->file('matchEvidenceImage') != null)
+            if($request->date_time != null)
+            {
+                $timestamp = strtotime($request->date_time);
+                $date_time = date("Y-m-d H:i:s", $timestamp);
+                $matchup->date_time = $date_time;
+            }
+
+            if ($request->file('matchEvidenceImage') != null)
             {
                 $file = $request->file('matchEvidenceImage');
                 $extension = $file->extension();
@@ -153,7 +162,7 @@ class MatchupsController extends Controller
         $this->middleware('auth');
         $matchups = Matchup::where('state', 'RESULT DISPUTED')->orWhere('state', 'MATCH CANCELLED')->orWhere('state', 'VERIFYING RESULT')->orderBy('updated_at', 'ASC')->get();
 
-        if(Auth::user()->isAdmin)
+        if (Auth::user()->isAdmin)
             return view('admin.matches')->with('matchups', $matchups);
         else
             return redirect('matchups');
@@ -166,9 +175,29 @@ class MatchupsController extends Controller
 
     public function generateMatchups()
     {
-        sleep(3);
+        //sleep(3);
+        $status = "ERROR";
 
-        $msg = "✅ Matches Created";
-        return response()->json(array('msg'=> $msg), 200);
+        $teams = Team::orderBy('rating', 'DESC')->get();
+        $maxTeams = sizeof($teams);
+
+        //Create maxTeams-1 blank matches
+        Matchup::create([
+            'team1_id' => 1,
+            'team2_id' => 2,
+            'child1_id' => null,
+            'child2_id' => null,
+            'date_time' => null,
+            'start_time' => null,
+            'end_time' => null,
+            'team1_score' => 0,
+            'team2_score' => 0,
+            'server_ip' => '127.0.0.1',
+            'state' => 'AWAITING RESULT'
+        ]);
+
+        $status = "SUCCESS";
+        $msg = "Matches Created ✅";
+        return response()->json(array('status' => $status, 'msg' => $msg), 200);
     }
 }

@@ -115,7 +115,8 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(data) {
-                                $("#msg").html(data.msg);
+                                var output = data.status + ": " + data.msg;
+                                $("#msg").html(output);
                                 document.getElementById("spinner").style.visibility = "hidden";
                                 $("#collapseExample").collapse();
 

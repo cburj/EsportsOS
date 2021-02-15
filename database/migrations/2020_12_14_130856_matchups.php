@@ -17,15 +17,15 @@ class Matchups extends Migration
             $table->id();
             $table->timestamps();
             //Points to one of the teams.
-            $table->unsignedBigInteger('team1_id');
+            $table->unsignedBigInteger('team1_id')->nullable();
             //Points to one of the teams.
-            $table->unsignedBigInteger('team2_id');
+            $table->unsignedBigInteger('team2_id')->nullable();
             // One of the matches that feeds winners into the current match.
             $table->unsignedBigInteger('child1_id')->nullable();
             // One of the other matches that feeds winners into the current match.
             $table->unsignedBigInteger('child2_id')->nullable();
             //The datetime when the match was scheduled to start.
-            $table->dateTime('date_time');
+            $table->dateTime('date_time')->nullable()->default(null);
             //The datetime when the match actually started.
             $table->dateTime('start_time')->nullable()->default(null);
             //The datetime when the match finished.
@@ -37,7 +37,7 @@ class Matchups extends Migration
             $table->string('server_ip')->default('127.0.0.1');
 
             //Matchup Status
-            $table->string('state')->default('AWAITING');
+            $table->string('state')->default('AWAITING RESULT');
 
             /**
              * Foreign Key Constraints
