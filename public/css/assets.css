@@ -90,3 +90,25 @@ body{
     margin-left: 10vw;
     font-style: italic;
 }
+
+.vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 95vh; /* These two lines are counted as one :-)       */
+  
+    display: flex;
+    align-items: center;
+}
+
+.countdownClock{
+    font-size: 3vw;
+}
+
+.countdownBanner{
+    font-size: 2vw;
+}
+
+.countdownContainer{
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 3vw;
+    padding: 3vw;
+}

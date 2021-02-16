@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2020 at 02:21 PM
+-- Generation Time: Feb 16, 2021 at 03:42 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -48,24 +48,18 @@ CREATE TABLE `matchups` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `team1_id` bigint(20) UNSIGNED NOT NULL,
-  `team2_id` bigint(20) UNSIGNED NOT NULL,
+  `team1_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `team2_id` bigint(20) UNSIGNED DEFAULT NULL,
   `child1_id` bigint(20) UNSIGNED DEFAULT NULL,
   `child2_id` bigint(20) UNSIGNED DEFAULT NULL,
-  `date_time` datetime NOT NULL,
+  `date_time` datetime DEFAULT NULL,
   `start_time` datetime DEFAULT NULL,
   `end_time` datetime DEFAULT NULL,
   `team1_score` int(11) NOT NULL DEFAULT 0,
   `team2_score` int(11) NOT NULL DEFAULT 0,
-  `server_ip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '127.0.0.1'
+  `server_ip` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '127.0.0.1',
+  `state` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'AWAITING RESULT'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `matchups`
---
-
-INSERT INTO `matchups` (`id`, `created_at`, `updated_at`, `team1_id`, `team2_id`, `child1_id`, `child2_id`, `date_time`, `start_time`, `end_time`, `team1_score`, `team2_score`, `server_ip`) VALUES
-(1, '2020-12-14 13:17:48', '2020-12-14 13:17:48', 1, 2, NULL, NULL, '2020-12-23 13:17:00', NULL, NULL, 0, 0, '192.168.0.1');
 
 -- --------------------------------------------------------
 
@@ -86,12 +80,12 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (64, '2014_10_12_100000_create_password_resets_table', 1),
 (65, '2014_10_12_200000_add_two_factor_columns_to_users_table', 1),
-(96, '2014_10_12_000000_create_users_table', 2),
-(97, '2019_08_19_000000_create_failed_jobs_table', 2),
-(98, '2020_11_09_175917_create_teams_table', 2),
-(100, '2020_11_09_180413_create_players_table', 2),
 (102, '2020_11_09_180403_create_matches_table', 3),
-(104, '2020_12_14_130856_matchups', 4);
+(110, '2014_10_12_000000_create_users_table', 4),
+(111, '2019_08_19_000000_create_failed_jobs_table', 4),
+(112, '2020_11_09_175917_create_teams_table', 4),
+(113, '2020_11_09_180413_create_players_table', 4),
+(116, '2020_12_14_130856_matchups', 5);
 
 -- --------------------------------------------------------
 
@@ -140,16 +134,20 @@ CREATE TABLE `players` (
 --
 
 INSERT INTO `players` (`id`, `created_at`, `updated_at`, `username`, `full_name`, `country`, `twitter`, `discord`, `team_id`, `wins`, `losses`, `draws`, `rating`, `user_id`) VALUES
-(1, '2020-11-29 13:16:00', '2020-11-29 13:16:00', 'Deckard', 'Rick Deckard', 'USA', '@twitter', 'deckard#2049', 1, 5, 2, 3, 0.00, 1),
-(2, '2020-11-29 13:17:02', '2020-11-29 13:17:02', 'Gaff', 'E.Gaff', 'USA', '@twitter', 'gaff#2049', 1, 0, 0, 0, 0.00, 1),
-(3, '2020-11-29 13:17:46', '2020-11-29 13:17:46', 'Bryant', 'Harry Bryant', 'USA', '@twitter', 'Bryant#2019', 1, 0, 0, 0, 0.00, 1),
-(4, '2020-11-29 13:18:27', '2020-11-29 13:18:27', 'Sebastian', 'J. F. Sebastian', 'USA', '@twitter', 'Sebastian#2019', 1, 0, 0, 0, 0.00, 1),
-(5, '2020-11-29 13:19:02', '2020-11-29 13:19:02', 'Tyrell', 'Eldon Tyrell', 'USA', '@twitter', 'Tyrell#2019', 1, 0, 0, 0, 0.00, 1),
-(6, '2020-11-29 13:19:31', '2020-11-29 13:19:31', 'Roy', 'Roy Batty', 'USA', '@twitter', 'Roy#2019', 2, 0, 0, 0, 0.00, 1),
-(7, '2020-11-29 13:19:58', '2020-11-29 13:19:58', 'Leon', 'Leon Kowalski', 'USA', '@twitter', 'Leon#2019', 2, 0, 0, 0, 0.00, 1),
-(8, '2020-11-29 13:20:29', '2020-11-29 13:20:29', 'Pris', 'Pris Stratton', 'USA', '@twitter', 'Pris#2019', 2, 0, 0, 0, 0.00, 1),
-(9, '2020-11-29 13:21:24', '2020-11-29 13:21:24', 'Rachel', 'Rachel', 'USA', '@twitter', 'Rachel#2049', 2, 0, 0, 0, 0.00, 1),
-(10, '2020-11-29 13:22:36', '2020-11-29 13:22:36', 'Zhora Salome', 'Zhora', 'USA', '@twitter', 'Zhora#2019', 2, 0, 0, 0, 0.00, 1);
+(1, '2021-02-11 15:02:10', '2021-02-11 15:02:10', 'Deckard', 'Rick Deckard', 'USA', '@twitter', 'deckard#1234', 1, 15, 4, 1, 0.00, 1),
+(2, '2021-02-11 15:03:05', '2021-02-11 15:03:05', 'Roy', 'Roy Batty', 'USA', '@twitter', 'Roy#2019', 2, 8, 2, 1, 0.00, 1),
+(3, '2021-02-16 14:33:18', '2021-02-16 14:33:18', 'OfficerK', 'Officer kd6-3.7', 'USA', '@twitter', 'officerk#1234', 1, 15, 4, 1, 0.00, 1),
+(4, '2021-02-16 14:33:37', '2021-02-16 14:33:37', 'JOI', 'JOI', 'USA', '@twitter', 'joi#1234', 1, 15, 4, 1, 0.00, 1),
+(5, '2021-02-16 14:34:04', '2021-02-16 14:34:04', 'Sebastian', 'J. F. Sebastian', 'USA', '@twitter', 'Sebastian#2019', 1, 15, 4, 1, 0.00, 1),
+(6, '2021-02-16 14:34:26', '2021-02-16 14:34:26', 'Joshi', 'Lt. Joshi', 'USA', '@twitter', 'joshi#1234', 1, 15, 4, 1, 0.00, 1),
+(7, '2021-02-16 14:34:45', '2021-02-16 14:34:45', 'Leon', 'Leon Kowalski', 'USA', '@twitter', 'Leon#2019', 2, 8, 2, 1, 0.00, 1),
+(8, '2021-02-16 14:35:11', '2021-02-16 14:35:11', 'Pris', 'Pris Stratton', 'USA', '@twitter', 'Pris#2019', 2, 8, 2, 1, 0.00, 1),
+(9, '2021-02-16 14:35:34', '2021-02-16 14:35:34', 'Zhora', 'Zhora Salome', 'USA', '@twitter', 'Zhora#2019', 2, 8, 2, 1, 0.00, 1),
+(10, '2021-02-16 14:35:51', '2021-02-16 14:35:51', 'Gaff', 'E.Gaff', 'USA', '@twitter', 'gaff#2019', 2, 8, 2, 1, 0.00, 1),
+(11, '2021-02-16 14:38:06', '2021-02-16 14:38:06', 'Rachel', 'Rachel Tyrell', 'USA', '@twitter', 'Rachel#2049', 3, 3, 6, 2, 0.00, 1),
+(12, '2021-02-16 14:38:20', '2021-02-16 14:38:20', 'Tyrell', 'Eldon Tyrell', 'USA', '@twitter', 'Tyrell#2019', 3, 3, 6, 2, 0.00, 1),
+(13, '2021-02-16 14:38:34', '2021-02-16 14:38:34', 'Bryant', 'Harry Bryant', 'USA', '@twitter', 'Bryant#2019', 4, 2, 9, 1, 0.00, 1),
+(14, '2021-02-16 14:39:03', '2021-02-16 14:39:03', 'Chew', 'Hannibal Chew', 'USA', '@twitter', 'chew#1234', 4, 2, 9, 1, 0.00, 1);
 
 -- --------------------------------------------------------
 
@@ -176,10 +174,10 @@ CREATE TABLE `teams` (
 --
 
 INSERT INTO `teams` (`id`, `created_at`, `updated_at`, `name`, `abbreviation`, `coach_name`, `country`, `rating`, `twitter`, `primary_sponsor`, `secondary_sponsor`) VALUES
-(1, '2020-11-29 13:12:52', '2020-11-29 13:12:52', 'TeamX', 'TX', 'John Doe', 'United Kingdom', 0.00, '@twitter', 'Overpriced PC Company', 'Useless Gaming Drink'),
-(2, '2020-11-29 13:13:37', '2020-11-29 13:13:37', 'TeamY', 'TY', 'Jane Doe', 'Germany', 0.00, '@twitter', 'Expensive Fashion Brand', 'Crypto Scam'),
-(3, '2020-12-03 14:53:51', '2020-12-03 14:53:51', 'TeamZ', 'TZ', 'John Doe', 'United Kingdom', 0.00, '@twitter', 'Brand', 'Brand'),
-(4, '2020-12-03 14:54:23', '2020-12-03 14:54:23', 'TeamA', 'TA', 'John Doe', 'United Kingdom', 0.00, '@twitter', 'Brand', 'Brand');
+(1, '2021-02-11 15:01:11', '2021-02-11 15:01:11', 'TeamX', 'TX', 'Unknown', 'United Kingdom', 0.00, '@twitter', 'Useless Energy Drink', 'Expensive Clothing Brand'),
+(2, '2021-02-11 15:01:51', '2021-02-11 15:01:51', 'TeamY', 'TY', 'Unknown', 'United Kingdom', 0.00, '@twitter', 'Overpriced Peripherals Company', 'Crypto Scam'),
+(3, '2021-02-16 14:36:29', '2021-02-16 14:36:29', 'TeamZ', 'TZ', 'Unknown', 'Denmark', 0.00, '@twitter', 'Overpriced Peripherals Company', 'Crypto Scam'),
+(4, '2021-02-16 14:37:30', '2021-02-16 14:37:30', 'TeamA', 'TA', 'Unknown', 'Brazil', 0.00, '@twitter', 'Fake Fashion Brand', 'Low Quality Laptops');
 
 -- --------------------------------------------------------
 
@@ -204,8 +202,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `isAdmin`) VALUES
-(1, 'Charlie Burgess', 'charlie@cburg.co.uk', NULL, '$2y$10$lcYqkUAlPpSlMAniSMbjNuSE84YK3ywaL5GQNY6UIlYekx3dYyaRW', NULL, '2020-11-29 13:11:41', '2020-11-29 13:11:41', 1),
-(2, 'John Doe', 'john@example.com', NULL, '$2y$10$etl9nlDANjkEELw2.DX2w..j2jaQzegCAgaxYfnfYNAAurcb6eSym', NULL, '2020-12-02 10:51:21', '2020-12-02 10:51:21', 0);
+(1, 'Charlie Burgess', 'charlie@cburg.co.uk', NULL, '$2y$10$v5.fjwnnZyfaPEw02g70Ae2QOg/jsjw4za0LtQau4BgnaPlikdmsm', NULL, '2021-02-11 15:00:08', '2021-02-11 15:00:08', 1);
 
 --
 -- Indexes for dumped tables
@@ -278,19 +275,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `matchups`
 --
 ALTER TABLE `matchups`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
 
 --
 -- AUTO_INCREMENT for table `players`
 --
 ALTER TABLE `players`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `teams`
@@ -302,7 +299,7 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables

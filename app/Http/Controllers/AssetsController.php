@@ -53,4 +53,10 @@ class AssetsController extends Controller
         $teams = Team::select('name', 'id')->get();
         return view('assets.playerIndex')->with('players', $players)->with('teams', $teams);
     }
+
+    public function countdown()
+    {
+        $matchup = Matchup::where('date_time', '>=', date('Y-m-d H:i:s'))->orderBy('date_time', 'ASC')->take(1)->get();
+        return view('assets.countdown')->with('matchup', $matchup);
+    }
 }

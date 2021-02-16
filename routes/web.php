@@ -33,6 +33,7 @@ Route::get('/assets/matchfocus', 'App\Http\Controllers\AssetsController@matchfoc
 Route::get('/assets/schedule', 'App\Http\Controllers\AssetsController@schedule');
 Route::get('/assets/player/', 'App\Http\Controllers\AssetsController@playerIndex');
 Route::get('/assets/player/{id}/{verbose}', 'App\Http\Controllers\AssetsController@player');
+Route::get('/assets/countdown', 'App\Http\Controllers\AssetsController@countdown');
 
 /* ADMIN-SPECIFIC ROUTES */
 Route::get('/admin/match_issues', 'App\Http\Controllers\MatchupsController@adminMatchups');

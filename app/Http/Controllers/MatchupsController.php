@@ -175,7 +175,7 @@ class MatchupsController extends Controller
 
     public function generateMatchups()
     {
-        //sleep(3);
+        sleep(3);
         $status = "ERROR";
 
         $teams = Team::orderBy('rating', 'DESC')->get();
