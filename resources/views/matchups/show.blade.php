@@ -82,9 +82,10 @@
 
                     <hr>
 
+                    <p>Match Evidence Screenshot:</p>
                     <div class="input-group mb-4">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">Scoreboard Screenshot</span>
+                            <span class="input-group-text">Screenshot</span>
                         </div>
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="fileInput" name="matchEvidenceImage" aria-describedby="fileInput" required />
