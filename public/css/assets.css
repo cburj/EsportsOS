@@ -109,6 +109,13 @@ body{
 
 .countdownContainer{
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 3vw;
     padding: 3vw;
+}
+
+.sponsor-container{
+    background-color: rgba(0, 0, 0, 0.5);
+    padding-left: 5vw;
+    padding-right: 10vw;
+    padding-top: 5vw;
+    padding-bottom: 5vw;
 }

@@ -34,6 +34,7 @@ Route::get('/assets/schedule', 'App\Http\Controllers\AssetsController@schedule')
 Route::get('/assets/player/', 'App\Http\Controllers\AssetsController@playerIndex');
 Route::get('/assets/player/{id}/{verbose}', 'App\Http\Controllers\AssetsController@player');
 Route::get('/assets/countdown', 'App\Http\Controllers\AssetsController@countdown');
+Route::get('/assets/sponsors', 'App\Http\Controllers\AssetsController@sponsors');
 
 /* ADMIN-SPECIFIC ROUTES */
 Route::get('/admin/match_issues', 'App\Http\Controllers\MatchupsController@adminMatchups');

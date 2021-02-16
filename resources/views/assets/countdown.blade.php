@@ -6,7 +6,7 @@
             @if (count($matchup) == 0)
                 <h1>No Upcoming Matches</h1>
             @else
-                <h1 class="countdownBanner"><img class="" src="/img/teams/{{$matchup[0]->team1->name}}.png" class=""/>VS<img class="" src="/img/teams/{{$matchup[0]->team2->name}}.png" class=""/></h1>
+                <h1 class="countdownBanner"><img class="" src="/img/teams/{{$matchup[0]->team1->name}}.png"/>VS<img class="" src="/img/teams/{{$matchup[0]->team2->name}}.png" class=""/></h1>
                 <br>
                 @php
                     $date_time = $matchup[0]->date_time;

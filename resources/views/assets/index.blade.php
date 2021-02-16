@@ -29,6 +29,9 @@
                 <h3>Upcoming Match Countdown</h3>
                 <a href="/assets/countdown" class="btn btn-dark">Launch</a>
                 <hr />
+                <h3>Sponsor Banner</h3>
+                <a href="/assets/sponsors" class="btn btn-dark">Launch</a>
+                <hr />
             </div>
         </div>
     </div>

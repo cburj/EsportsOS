@@ -59,4 +59,9 @@ class AssetsController extends Controller
         $matchup = Matchup::where('date_time', '>=', date('Y-m-d H:i:s'))->orderBy('date_time', 'ASC')->take(1)->get();
         return view('assets.countdown')->with('matchup', $matchup);
     }
+    
+    public function sponsors()
+    {
+        return view('assets.sponsors');
+    }
 }
