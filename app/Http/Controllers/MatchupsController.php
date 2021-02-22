@@ -175,28 +175,48 @@ class MatchupsController extends Controller
 
     public function generateMatchups()
     {
-        sleep(3);
+        /**
+         * NOTES:
+         * if we have a number of team not equal to 2^0, 2^1, 2^2 etc, then
+         * we need an alternate algorithm! For now, just working on a algorithm
+         * for 2,4,8,16,24 etc.
+         */
+        //sleep(3);
         $status = "ERROR";
 
         $teams = Team::orderBy('rating', 'DESC')->get();
-        $maxTeams = sizeof($teams);
+        $maxTeams = sizeof($teams) - 1;
 
         //Create maxTeams-1 blank matches
-        Matchup::create([
-            'team1_id' => 1,
-            'team2_id' => 2,
-            'child1_id' => null,
-            'child2_id' => null,
-            'date_time' => null,
-            'start_time' => null,
-            'end_time' => null,
-            'team1_score' => 0,
-            'team2_score' => 0,
-            'server_ip' => '127.0.0.1',
-            'state' => 'AWAITING RESULT'
-        ]);
+        for($i = 0; $i < ($maxTeams); $i++)
+        {
+            $match = Matchup::create([
+                'team1_id' => null,
+                'team2_id' => null,
+                'child1_id' => null,
+                'child2_id' => null,
+                'date_time' => null,
+                'start_time' => null,
+                'end_time' => null,
+                'team1_score' => 0,
+                'team2_score' => 0,
+                'server_ip' => '127.0.0.1',
+                'state' => 'AWAITING RESULT'
+            ]);
+        }
 
-        $status = "SUCCESS";
+        $bottomSeed = 0;
+        $topSeed = $maxTeams-1;
+
+        $matchups = Matchup::all();
+        foreach($matchups as $matchup)
+        {
+            $matchup->team1_id = $teams[$bottomSeed];
+            $matchup->team2_id = $teams[$topSeed];
+            $matchup->save();
+        }
+
+        $status = $maxTeams . " ";
         $msg = "Matches Created ✅";
         return response()->json(array('status' => $status, 'msg' => $msg), 200);
     }
