@@ -154,10 +154,12 @@ input {
 }
 
 .disputeMessages{
-    max-height: 15vh;
+    max-height: 30vh;
 }
 
 .messageContainer{
+    padding-top: .5vw;
+    padding-bottom: .5vw;
 }
 
 .messagePadding{

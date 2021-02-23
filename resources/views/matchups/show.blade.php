@@ -208,7 +208,9 @@
 
 
 
-
+        @if($matchup->state == "RESULT DISPUTED")
+        <hr>
+        <p>To assist the administrators with verifying the match result, please use the chat box below:</p>
         <!--DISPUTE CHAT BOXES-->
         <div class="disputeChatContainer">
             <div class="disputeMessages overflow-auto">
@@ -221,10 +223,10 @@
                 <p class="messageContainer messageLocal"><span class="messageRight messagePadding">Lorem ipsum dolor sit amet, consectetur aquam iaculis tincidunt felis.</span></p>
             </div>
             <div class="form-group purple-border">
-                <label for="exampleFormControlTextarea4">Colorful border</label>
+                <label for="exampleFormControlTextarea4">Post a message:</label>
                 <textarea class="form-control" id="messageTextArea" rows="3"></textarea>
             </div>
-            <button class="btn btn-block btn-elegant" id="send-message" type="button">buttom</button>
+            <button class="btn btn-inline btn-small btn-elegant" id="send-message" type="button">Send</button>
 
                 <script type="text/javascript">
                     var buttonId = document.getElementById("send-message");
@@ -255,7 +257,7 @@
                 </script>
         </div>
         <!--DISPUTE CHAT BOXES-->
-
+        @endif
 
 
 
