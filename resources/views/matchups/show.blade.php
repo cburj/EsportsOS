@@ -201,6 +201,74 @@
         </div>
         <!-- ADMIN PANEL -->
 
+
+
+
+
+
+
+
+
+        <!--DISPUTE CHAT BOXES-->
+        <div class="disputeChatContainer">
+            <div class="disputeMessages overflow-auto">
+                <p class="messageContainer messageLocal"><span class="messageRight messagePadding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquamidunt felis.</span></p>
+                <p class="messageContainer messageForeign"><span class="messageLeft messagePadding">Lorem ipsum doloetur adipiscing elit. Aliquam iaculis tincidunt felis.</span></p>
+                <p class="messageContainer messageLocal"><span class="messageRight messagePadding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquais tincidunt felis.</span></p>
+                <p class="messageContainer messageForeign"><span class="messageLeft messagePadding">Lorem ipsum dolor sit amet, Aliquam iaculis tincidunt felis.</span></p>
+                <p class="messageContainer messageLocal"><span class="messageRight messagePadding">Lorem ipsum dolor sit amet, consectetur adipiscing e iaculis tincidunt felis.</span></p>
+                <p class="messageContainer messageForeign"><span class="messageLeft messagePadding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam iaculis tinct felis.</span></p>
+                <p class="messageContainer messageLocal"><span class="messageRight messagePadding">Lorem ipsum dolor sit amet, consectetur aquam iaculis tincidunt felis.</span></p>
+            </div>
+            <div class="form-group purple-border">
+                <label for="exampleFormControlTextarea4">Colorful border</label>
+                <textarea class="form-control" id="messageTextArea" rows="3"></textarea>
+            </div>
+            <button class="btn btn-block btn-elegant" id="send-message" type="button">buttom</button>
+
+                <script type="text/javascript">
+                    var buttonId = document.getElementById("send-message");
+                    buttonId.onclick = function() {
+
+                        var message_content = document.getElementById("messageTextArea").value;
+
+                        $.ajax({
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {
+                                "user_id":{{Auth::user()->id}},
+                                "message": message_content,
+                                "matchup_id": {{$matchup->id}}
+                            },
+                            url: '/sendMessage',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(data) {
+                                console.log(data.status);
+                                document.getElementById("messageTextArea").value = "";
+                            }
+                        });
+
+                    }
+
+                </script>
+        </div>
+        <!--DISPUTE CHAT BOXES-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         <hr>
         <h3 class="text-center"><strong>TeamX</strong></h3>
         <div class="match-additional-info-table">

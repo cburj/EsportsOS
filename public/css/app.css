@@ -152,3 +152,32 @@ input {
     text-decoration: none !important;
     color: black;
 }
+
+.disputeMessages{
+    max-height: 15vh;
+}
+
+.messageContainer{
+}
+
+.messagePadding{
+    padding: .5vw;
+    border-radius: 1vw;
+}
+
+.messageLocal{
+    text-align: right;
+
+}
+
+.messageForeign{
+    text-align: left;
+}
+
+.messageRight{
+    background-color: #ff3547;
+}
+
+.messageLeft{
+    background-color: rgb(158, 158, 158);
+}
