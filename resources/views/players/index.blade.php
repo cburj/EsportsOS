@@ -45,9 +45,7 @@
                             </div>
                         @endforeach
                         <br>
-                        <div class="">
                             {{ $players->links() }}
-                            </span>
                         @else
                             <p>Oops, no players found 😢</p>
                     @endif
