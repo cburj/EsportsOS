@@ -10,26 +10,48 @@
         <div class="row">
             <div class="col-10">
                 <h3>Players</h3>
-                @if (count($players) > 0)
-                    @foreach ($players as $player)
-                        <div class="row border rounded p-2">
-                            <div class="col-sm-2">
-                                <a class="" href="/players/{{ $player->id }}">
-                                    <img src="/img/players/{{$player->username}}.png" class="img-fluid animated fadeIn slower" onerror="this.onerror=null; this.src='/img/players/Default.png'"/>
-                                </a>
+
+                <div class="row row-cols-1 row-cols-md-3">
+                    @if (count($players) > 0)
+                        @foreach ($players as $player)
+                            <div class="col mb-4">
+                                <!-- Card -->
+                                <div class="card">
+                                    <!--Card image-->
+                                    <div class="view overlay">
+                                        <a class="" href="/players/{{ $player->id }}">
+                                            <img class="card-img-top" src="/img/players/{{ $player->username }}.png"
+                                                alt="Card image cap"
+                                                onerror="this.onerror=null; this.src='/img/players/Default.png'">
+                                        </a>
+                                    </div>
+                                    <!--Card content-->
+                                    <div class="card-body">
+                                        <!--Title-->
+                                        <a href="/players/{{ $player->id }}">
+                                            <h4 class="card-title">{{ $player->username }}</h4>
+                                        </a>
+                                        <hr>
+                                        <!--Text-->
+                                        <p class="card-text">Name: {{ $player->full_name }}</p>
+                                        <p class="card-text">Team: <a href="/teams/{{ $player->team_id }}"
+                                                class="no-decoration font-weight-bold">{{ $player->team->name }}</a></p>
+                                        <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                                        <a type="button" href="/players/{{ $player->id }}"
+                                            class="btn btn-elegant btn-block">Profile</a>
+                                    </div>
+                                </div>
+                                <!-- Card -->
                             </div>
-                            <div class="col-sm-8">
-                                <a href="/players/{{ $player->id }}"><h4 class="font-weight-bold no-decoration">{{$player->username}}</h4></a>
-                                <p>Name: {{$player->full_name}}</p>
-                                <p>Team: <a href="/teams/{{$player->team_id}}" class="no-decoration font-weight-bold">{{$player->team->name}}</a></p>
-                            </div>
-                        </div>
+                        @endforeach
                         <br>
-                    @endforeach
-                    {{ $players->links() }}
-                @else
-                    <p>Oops, no players found 😢</p>
-                @endif
+                        <div class="">
+                            {{ $players->links() }}
+                            </span>
+                        @else
+                            <p>Oops, no players found 😢</p>
+                    @endif
+                </div>
 
             </div>
             <div class="col-sm">

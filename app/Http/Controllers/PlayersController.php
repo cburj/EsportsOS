@@ -20,7 +20,7 @@ class PlayersController extends Controller
      */
     public function index()
     {
-        $players = Player::paginate(5);
+        $players = Player::paginate(6);
         return view('players.index')->with('players', $players);
     }
 
