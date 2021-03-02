@@ -10,6 +10,7 @@ use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Database\QueryException;
 use App\Helper\Helper;
 use DateTime;
+use App\Models\DisputeMessage;
 
 class MatchupsController extends Controller
 {
@@ -219,5 +220,18 @@ class MatchupsController extends Controller
         $status = $maxTeams . " ";
         $msg = "Matches Created ✅";
         return response()->json(array('status' => $status, 'msg' => $msg), 200);
+    }
+
+    public function refreshDisputeMessages(Request $request)
+    {
+        try
+        {
+            $messages = DisputeMessage::where('matchup_id', $request->matchup_id)->get();
+            return response()->json(array('messages' => $messages, 'lastRequest' => $request->last_request), 200);
+        }
+        catch(\Illuminate\Database\QueryException $exception)
+        {
+            return response()->json(array('status' => $exception->errorInfo), 200);
+        }
     }
 }

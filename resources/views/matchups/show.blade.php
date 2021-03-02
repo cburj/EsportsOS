@@ -227,7 +227,6 @@
                 <textarea class="form-control" id="messageTextArea" rows="3"></textarea>
             </div>
             <button class="btn btn-inline btn-small btn-elegant" id="send-message" type="button">Send</button>
-
                 <script type="text/javascript">
                     var buttonId = document.getElementById("send-message");
                     buttonId.onclick = function() {
@@ -252,6 +251,35 @@
                             }
                         });
 
+                    }
+
+                </script>
+
+                <p id="textHere"></p>
+                <script type="text/javascript">
+                    var targetText = document.getElementById("textHere");
+                    var lastRequest;
+                    var request = setInterval(getMessages,5000);
+
+                    function getMessages() {
+                        $.ajax({
+                            type: 'GET',
+                            dataType: 'json',
+                            data: {
+                                "matchup_id": {{$matchup->id}},
+                                "last_request": lastRequest
+                            },
+                            url: '/getMessages',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(data) {
+                                for (var i = 0; i < data.messages.length; i++) {
+                                    targetText.insertAdjacentHTML( 'afterend', data.messages[i].content);
+                                }
+                                lastRequest = Date.now();
+                            }
+                        });
                     }
 
                 </script>
