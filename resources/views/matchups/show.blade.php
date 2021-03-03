@@ -213,14 +213,8 @@
         <p>To assist the administrators with verifying the match result, please use the chat box below:</p>
         <!--DISPUTE CHAT BOXES-->
         <div class="disputeChatContainer">
-            <div class="disputeMessages overflow-auto">
-                <p class="messageContainer messageLocal"><span class="messageRight messagePadding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquamidunt felis.</span></p>
-                <p class="messageContainer messageForeign"><span class="messageLeft messagePadding">Lorem ipsum doloetur adipiscing elit. Aliquam iaculis tincidunt felis.</span></p>
-                <p class="messageContainer messageLocal"><span class="messageRight messagePadding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquais tincidunt felis.</span></p>
-                <p class="messageContainer messageForeign"><span class="messageLeft messagePadding">Lorem ipsum dolor sit amet, Aliquam iaculis tincidunt felis.</span></p>
-                <p class="messageContainer messageLocal"><span class="messageRight messagePadding">Lorem ipsum dolor sit amet, consectetur adipiscing e iaculis tincidunt felis.</span></p>
-                <p class="messageContainer messageForeign"><span class="messageLeft messagePadding">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam iaculis tinct felis.</span></p>
-                <p class="messageContainer messageLocal"><span class="messageRight messagePadding">Lorem ipsum dolor sit amet, consectetur aquam iaculis tincidunt felis.</span></p>
+            <div class="disputeMessages overflow-auto" id="messageWindow">
+                <div id="messageTarget"></div>
             </div>
             <div class="form-group purple-border">
                 <label for="exampleFormControlTextarea4">Post a message:</label>
@@ -255,9 +249,8 @@
 
                 </script>
 
-                <p id="textHere"></p>
                 <script type="text/javascript">
-                    var targetText = document.getElementById("textHere");
+                    var targetText = document.getElementById("messageTarget");
                     var lastRequest;
                     var request = setInterval(getMessages,5000);
 
@@ -275,8 +268,19 @@
                             },
                             success: function(data) {
                                 for (var i = 0; i < data.messages.length; i++) {
-                                    targetText.insertAdjacentHTML( 'afterend', data.messages[i].content);
+                                    var uid = {{Auth::user()->id}};
+                                    if(data.messages[i].user_id == uid){
+                                        var newMsg = '<p class="messageContainer messageLocal"><span class="messageRight messagePadding">' + data.messages[i].content + '</span></p>';
+                                        targetText.insertAdjacentHTML( 'beforebegin', newMsg);
+                                    }
+                                    else{
+                                        var newMsg = '<p class="messageContainer messageForeign"><span class="messageLeft messagePadding">' + data.messages[i].content + '</span></p>';
+                                        targetText.insertAdjacentHTML( 'beforebegin', newMsg);
+                                    }
                                 }
+                                
+
+                                $('#messageWindow').stop().animate({scrollTop: $('#messageWindow')[0].scrollHeight}, 800);
                                 lastRequest = Date.now();
                             }
                         });
