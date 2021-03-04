@@ -169,11 +169,12 @@ input {
 
 .messageLocal{
     text-align: right;
-
+    color: white;
 }
 
 .messageForeign{
     text-align: left;
+    color: white;
 }
 
 .messageRight{
@@ -181,7 +182,7 @@ input {
 }
 
 .messageLeft{
-    background-color: rgb(158, 158, 158);
+    background-color: rgb(44, 44, 44);
 }
 
 .disputeTimestamp{

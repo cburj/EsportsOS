@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2021 at 03:42 PM
+-- Generation Time: Mar 04, 2021 at 02:23 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -21,6 +21,33 @@ SET time_zone = "+00:00";
 --
 -- Database: `fyp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dispute_messages`
+--
+
+CREATE TABLE `dispute_messages` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `content` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `visible` tinyint(1) NOT NULL DEFAULT 1,
+  `matchup_id` bigint(20) UNSIGNED NOT NULL,
+  `user_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `dispute_messages`
+--
+
+INSERT INTO `dispute_messages` (`id`, `created_at`, `updated_at`, `content`, `visible`, `matchup_id`, `user_id`) VALUES
+(28, '2021-03-04 13:06:57', '2021-03-04 13:06:57', 'Hi, so basically, I think the score should be the other way around. You can see it clearly in the evidence they uploaded.', 1, 90, 1),
+(29, '2021-03-04 13:07:22', '2021-03-04 13:07:22', 'That\'s from an old match, we uploaded the wrong screenshot.', 1, 90, 2),
+(30, '2021-03-04 13:07:29', '2021-03-04 13:07:29', 'Can you sort this out @admin?', 1, 90, 2),
+(31, '2021-03-04 13:08:54', '2021-03-04 13:08:54', 'I\'m looking at it now. Just give me 5 mins to pull up the GOTV Demo. 😊', 1, 90, 1),
+(32, '2021-03-04 13:09:06', '2021-03-04 13:09:06', 'Okay, thanks again.', 1, 90, 2);
 
 -- --------------------------------------------------------
 
@@ -61,6 +88,13 @@ CREATE TABLE `matchups` (
   `state` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'AWAITING RESULT'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `matchups`
+--
+
+INSERT INTO `matchups` (`id`, `created_at`, `updated_at`, `team1_id`, `team2_id`, `child1_id`, `child2_id`, `date_time`, `start_time`, `end_time`, `team1_score`, `team2_score`, `server_ip`, `state`) VALUES
+(90, '2021-02-22 15:55:30', '2021-03-04 10:18:05', 1, 2, NULL, NULL, '2021-02-22 20:00:00', NULL, NULL, 11, 16, '127.0.0.1', 'RESULT DISPUTED');
+
 -- --------------------------------------------------------
 
 --
@@ -85,7 +119,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (111, '2019_08_19_000000_create_failed_jobs_table', 4),
 (112, '2020_11_09_175917_create_teams_table', 4),
 (113, '2020_11_09_180413_create_players_table', 4),
-(116, '2020_12_14_130856_matchups', 5);
+(116, '2020_12_14_130856_matchups', 5),
+(118, '2021_02_22_155716_dispute_messages', 6);
 
 -- --------------------------------------------------------
 
@@ -202,11 +237,20 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `isAdmin`) VALUES
-(1, 'Charlie Burgess', 'charlie@cburg.co.uk', NULL, '$2y$10$v5.fjwnnZyfaPEw02g70Ae2QOg/jsjw4za0LtQau4BgnaPlikdmsm', NULL, '2021-02-11 15:00:08', '2021-02-11 15:00:08', 1);
+(1, 'Charlie Burgess', 'charlie@cburg.co.uk', NULL, '$2y$10$v5.fjwnnZyfaPEw02g70Ae2QOg/jsjw4za0LtQau4BgnaPlikdmsm', NULL, '2021-02-11 15:00:08', '2021-02-11 15:00:08', 1),
+(2, 'test', 'test@test.com', NULL, '$2y$10$9p7eKGc/08U/arVSsGAkR.Wjz2KhlL43hm8bRMdszAXigdDEhy75G', NULL, '2021-03-03 11:34:12', '2021-03-03 11:34:12', 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `dispute_messages`
+--
+ALTER TABLE `dispute_messages`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `dispute_messages_matchup_id_foreign` (`matchup_id`),
+  ADD KEY `dispute_messages_user_id_foreign` (`user_id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -266,6 +310,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `dispute_messages`
+--
+ALTER TABLE `dispute_messages`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -275,13 +325,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `matchups`
 --
 ALTER TABLE `matchups`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
 
 --
 -- AUTO_INCREMENT for table `players`
@@ -293,17 +343,24 @@ ALTER TABLE `players`
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `dispute_messages`
+--
+ALTER TABLE `dispute_messages`
+  ADD CONSTRAINT `dispute_messages_matchup_id_foreign` FOREIGN KEY (`matchup_id`) REFERENCES `matchups` (`id`),
+  ADD CONSTRAINT `dispute_messages_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `matchups`
