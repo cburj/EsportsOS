@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use DisputeMessages;
 use Illuminate\Http\Request;
 use App\Models\DisputeMessage;
+use Illuminate\Support\Facades\Log;
 
 class DisputeMessagesController extends Controller
 {
@@ -44,6 +45,8 @@ class DisputeMessagesController extends Controller
             'user_id'=> $request->user_id,
             ]);
             $status = "SUCCESS: Message Posted!";
+
+            Log::channel('general')->info('USER_ID: ' . $request->user_id . '|| ACTION: DISPUTE_MESSAGE_POSTED || CONTENT: "' . $request->message . '"');
         }
         catch(\Illuminate\Database\QueryException $exception)
         {

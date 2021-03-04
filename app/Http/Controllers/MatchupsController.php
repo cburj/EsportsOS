@@ -229,8 +229,6 @@ class MatchupsController extends Controller
         {
             $date_time = date("Y-m-d H:i:s", $request->last_request);
 
-            //Log::channel('general')->info('>>> DATETIME:' . $date_time . ', JS timestamp: ' . $request->last_request . '');
-
             $messages = DisputeMessage::where('matchup_id', $request->matchup_id)->where('created_at', '>', $date_time)->get();
             return response()->json(array('messages' => $messages), 200);
         }
