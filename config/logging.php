@@ -99,6 +99,16 @@ return [
         'emergency' => [
             'path' => storage_path('logs/laravel.log'),
         ],
+
+        /**
+         * General debugging channel for EsportsOS actions carried
+         * out by users. Logs can be accessed via storage/logs/eos.log
+         */
+        'general' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/eos.log'),
+            'level' => 'debug',
+        ],
     ],
 
 ];

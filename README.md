@@ -57,3 +57,16 @@ I have created a variety of reusable Laravel Components that can be used across 
 
 ### Match Evidence File Format:
 "MATCH_X_EVIDENCE.PNG" (other extensions are allowed.)
+
+<br>
+
+### Logging:
+To log actions in EsportOS, you can make use of the Laravel Logging system. There is currently a single logging file found here "storage/logs/eos.log". To log text to the file, simply use the following code:
+
+```Log::channel('general')->info('<<YOUR LOG TEXT HERE>>');```
+
+It's also required that you use the following Laravel package for the logging to work correctly:
+
+```use Illuminate\Support\Facades\Log;```
+
+In the future, EsportOS will have multiple logging channels, separated out for all database entities as well as general logging.
