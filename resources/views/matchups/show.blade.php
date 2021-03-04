@@ -214,6 +214,9 @@
         <!--DISPUTE CHAT BOXES-->
         <div class="disputeChatContainer">
             <div class="disputeMessages overflow-auto" id="messageWindow">
+                <div class="text-center overflow-hidden" id="messageSpinner">
+                    <div class="spinner-border" role="status"></div>
+                </div>
                 <div id="messageTarget"></div>
             </div>
             <div class="form-group purple-border">
@@ -251,10 +254,11 @@
 
                 <script type="text/javascript">
                     var targetText = document.getElementById("messageTarget");
-                    var lastRequest;
-                    var request = setInterval(getMessages,5000);
+                    var lastRequest = 0;
+                    var request = setInterval(getMessages,3000);
 
                     function getMessages() {
+                        console.log('LAST REQUEST: ', lastRequest);
                         $.ajax({
                             type: 'GET',
                             dataType: 'json',
@@ -267,8 +271,18 @@
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(data) {
+                                document.getElementById('messageSpinner').style.display = "none";
+                                var scrolled = false;
+                                var messageWindow = document.getElementById('messageWindow');
+
+                                if( messageWindow.scrollTop === (messageWindow.scrollHeight - messageWindow.offsetHeight))
+                                {
+                                    scrolled = true;
+                                }
+
                                 for (var i = 0; i < data.messages.length; i++) {
                                     var uid = {{Auth::user()->id}};
+
                                     if(data.messages[i].user_id == uid){
                                         var newMsg = '<p class="messageContainer messageLocal"><span class="messageRight messagePadding">' + data.messages[i].content + '</span></p>';
                                         targetText.insertAdjacentHTML( 'beforebegin', newMsg);
@@ -279,11 +293,12 @@
                                     }
                                 }
                                 
-
-                                $('#messageWindow').stop().animate({scrollTop: $('#messageWindow')[0].scrollHeight}, 800);
-                                lastRequest = Date.now();
+                                if(scrolled == true){
+                                    $('#messageWindow').stop().animate({scrollTop: $('#messageWindow')[0].scrollHeight}, 800);
+                                }
                             }
                         });
+                        lastRequest = Math.floor(Date.now() / 1000);
                     }
 
                 </script>

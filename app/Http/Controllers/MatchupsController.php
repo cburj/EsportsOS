@@ -226,8 +226,10 @@ class MatchupsController extends Controller
     {
         try
         {
-            $messages = DisputeMessage::where('matchup_id', $request->matchup_id)->get();
-            return response()->json(array('messages' => $messages, 'lastRequest' => $request->last_request), 200);
+            $timestamp = strtotime($request->last_request);
+            $date_time = date("Y-m-d H:i:s", $timestamp);
+            $messages = DisputeMessage::where('matchup_id', $request->matchup_id)->where('created_at', '>', $date_time)->get();
+            return response()->json(array('messages' => $messages), 200);
         }
         catch(\Illuminate\Database\QueryException $exception)
         {
