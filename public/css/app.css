@@ -183,3 +183,8 @@ input {
 .messageLeft{
     background-color: rgb(158, 158, 158);
 }
+
+.disputeTimestamp{
+    font-size: 0.75em;
+    color: rgb(158, 158, 158);
+}

@@ -282,13 +282,14 @@
 
                                 for (var i = 0; i < data.messages.length; i++) {
                                     var uid = {{Auth::user()->id}};
+                                    var timestamp = data.messages[i].created_at;
 
                                     if(data.messages[i].user_id == uid){
-                                        var newMsg = '<p class="messageContainer messageLocal"><span class="messageRight messagePadding">' + data.messages[i].content + '</span></p>';
+                                        var newMsg = '<p class="disputeTimestamp text-center">' + timestamp.substr(11,5) + '</p><p class="messageContainer messageLocal"><span class="messageRight messagePadding">' + data.messages[i].content + '</span></p>';
                                         targetText.insertAdjacentHTML( 'beforebegin', newMsg);
                                     }
                                     else{
-                                        var newMsg = '<p class="messageContainer messageForeign"><span class="messageLeft messagePadding">' + data.messages[i].content + '</span></p>';
+                                        var newMsg = '<p class="disputeTimestamp text-center">' + timestamp.substr(11,5) + '</p><p class="messageContainer messageForeign"><span class="messageLeft messagePadding">' + data.messages[i].content + '</span></p>';
                                         targetText.insertAdjacentHTML( 'beforebegin', newMsg);
                                     }
                                 }
