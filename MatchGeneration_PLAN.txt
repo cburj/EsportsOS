@@ -1,0 +1,28 @@
+teams = Teams::all()->orderBy(rating, DESC).
+numTeams = number of teams in the tournament.
+if(numTeams%2 == 0)	//We have an even number of teams
+{
+	//create numTeams-1 blank matches
+	for(i=1; i<numTeams-1; i++)
+		Matchup::create()
+	
+	matchups = Matchup::all()
+
+	//Counters for top and bottom of teams list.
+	bottomSeed = 0
+	topSeed = numTeams-1	
+
+	foreach(matchup)
+	{
+		team1 = teams[topSeed]
+		team2 = teams[bottomSeed]
+		
+		topSeed--
+		bottomSeed++
+		
+		matchup->save()
+	}
+}
+else	//We have an odd number of teams.
+{
+}

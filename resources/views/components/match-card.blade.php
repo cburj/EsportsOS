@@ -3,19 +3,27 @@
         <div class="card-body">
             @if ($verbose == 'true')
                 <div class="matches-index-logos">
+                    @if($matchup->team1_id != null)
                     <a href="/teams/{{ $matchup->team1->id }}">
                         <img src="/img/teams/{{ $matchup->team1->name }}.png" class="img-thumbnail float-left"
                             onerror="this.onerror=null; this.src='/img/teams/Default.png'" />
                     </a>
+                    @endif
+                    @if($matchup->team1_id != null)
                     <a href="/teams/{{ $matchup->team2->id }}">
                         <img src="/img/teams/{{ $matchup->team2->name }}.png" class="img-thumbnail float-right"
                             onerror="this.onerror=null; this.src='/img/teams/Default.png'" />
                     </a>
+                    @endif
                 </div>
             @endif
             <div class="text-center">
                 <a href="/matchups/{{ $matchup->id }}" class="matchup-link">
+                    @if(($matchup->team1_id != null) && ($matchup->team2_id != null))
                     <h3><strong>{{ $matchup->team1->name }} vs {{ $matchup->team2->name }}</strong></h3>
+                    @else
+                        <h3><strong>UNCONFIRMED MATCHUP</strong></h3>
+                    @endif
                 </a>
                 @php
                 $dateString = $matchup->date_time;

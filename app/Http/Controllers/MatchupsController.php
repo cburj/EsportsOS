@@ -177,48 +177,65 @@ class MatchupsController extends Controller
 
     public function generateMatchups()
     {
-        /**
-         * NOTES:
-         * if we have a number of team not equal to 2^0, 2^1, 2^2 etc, then
-         * we need an alternate algorithm! For now, just working on a algorithm
-         * for 2,4,8,16,24 etc.
-         */
         //sleep(3);
         $status = "ERROR";
 
+        //Do some house keeping before we start - needs to be in a func!
+
         $teams = Team::orderBy('rating', 'DESC')->get();
-        $maxTeams = sizeof($teams) - 1;
+        $numTeams = sizeof($teams);
 
-        //Create maxTeams-1 blank matches
-        for($i = 0; $i < ($maxTeams); $i++)
+
+        //Check if we have an even number of teams.
+        if( $numTeams % 2 == 0 )
         {
-            $match = Matchup::create([
-                'team1_id' => null,
-                'team2_id' => null,
-                'child1_id' => null,
-                'child2_id' => null,
-                'date_time' => null,
-                'start_time' => null,
-                'end_time' => null,
-                'team1_score' => 0,
-                'team2_score' => 0,
-                'server_ip' => '127.0.0.1',
-                'state' => 'AWAITING RESULT'
-            ]);
+            //Create the required number of blank matchups.
+            for($i = 1; $i < $numTeams; $i++)
+            {
+                $match = Matchup::create([
+                    'team1_id' => null,
+                    'team2_id' => null,
+                    'child1_id' => null,
+                    'child2_id' => null,
+                    'date_time' => null,
+                    'start_time' => null,
+                    'end_time' => null,
+                    'team1_score' => 0,
+                    'team2_score' => 0,
+                    'server_ip' => '127.0.0.1',
+                    'state' => 'AWAITING RESULT'
+                ]);
+            }
+
+            //Get all the matchups we just created.
+            $matchups = Matchup::all();
+
+            //Counter for the top and bottom of the list
+            $bottomSeed = 0;
+            $topSeed = $numTeams - 1; //Zero based, so we need to take 1.
+
+            for($j = 0; $j < $numTeams/2; $j++)
+            {
+                $matchups[$j]->team1_id = $teams[$topSeed]->id;
+                $matchups[$j]->team2_id = $teams[$bottomSeed]->id;
+
+                Log::channel('general')->info($matchups[$j]);
+                
+                $matchups[$j]->save();
+
+                $topSeed--;
+                $bottomSeed++;
+            }
+
+
+        }
+        //We have an odd number of teams.
+        else
+        {
+            //Create matches for odd number of teams.
         }
 
-        $bottomSeed = 0;
-        $topSeed = $maxTeams-1;
-
-        $matchups = Matchup::all();
-        foreach($matchups as $matchup)
-        {
-            $matchup->team1_id = $teams[$bottomSeed];
-            $matchup->team2_id = $teams[$topSeed];
-            $matchup->save();
-        }
-
-        $status = $maxTeams . " ";
+        $status = "SUCCESS";
         $msg = "Matches Created ✅";
         return response()->json(array('status' => $status, 'msg' => $msg), 200);
     }
