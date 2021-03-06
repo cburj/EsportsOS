@@ -222,19 +222,4 @@ class MatchupsController extends Controller
         $msg = "Matches Created ✅";
         return response()->json(array('status' => $status, 'msg' => $msg), 200);
     }
-
-    public function refreshDisputeMessages(Request $request)
-    {
-        try
-        {
-            $date_time = date("Y-m-d H:i:s", $request->last_request);
-
-            $messages = DisputeMessage::where('matchup_id', $request->matchup_id)->where('created_at', '>', $date_time)->get();
-            return response()->json(array('messages' => $messages), 200);
-        }
-        catch(\Illuminate\Database\QueryException $exception)
-        {
-            return response()->json(array('status' => $exception->errorInfo), 200);
-        }
-    }
 }

@@ -208,7 +208,7 @@
 
 
 
-        @if($matchup->state == "RESULT DISPUTED")
+        @if($matchup->state == "RESULT DISPUTED" && !Auth::guest())
         <hr>
         <p>To assist the administrators with verifying the match result, please use the chat box below:</p>
         <!--DISPUTE CHAT BOXES-->

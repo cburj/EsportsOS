@@ -50,4 +50,4 @@ Route::get('/api/matchups', 'App\Http\Controllers\MatchupsController@api');
 /* EXPERIMENTAL ROUTES */
 Route::post('/generateMatches', 'App\Http\Controllers\MatchupsController@generateMatchups');
 Route::post('/sendMessage', 'App\Http\Controllers\DisputeMessagesController@store');
-Route::get('/getMessages', 'App\Http\Controllers\MatchupsController@refreshDisputeMessages');
+Route::get('/getMessages', 'App\Http\Controllers\DisputeMessagesController@refreshDisputeMessages');

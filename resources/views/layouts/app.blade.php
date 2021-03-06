@@ -124,7 +124,7 @@
     </div>
     <footer class="footer">
         <div class="container">
-          <span class="text-muted">EsportsOS - Created by Charlie Burgess (2020)</span>
+          <span class="text-muted">EsportsOS - Created by Charlie Burgess (2020/2021)</span>
         </div>
     </footer>
 </body>
