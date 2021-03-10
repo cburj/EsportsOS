@@ -214,12 +214,18 @@ class MatchupsController extends Controller
             $bottomSeed = 0;
             $topSeed = $numTeams - 1; //Zero based, so we need to take 1.
 
+            /**
+             * Now we need to go back through the list of created matches
+             * and for the first #teams/2, we put the current highest and 
+             * lowest rated teams against each other. For a completely
+             * random seed, simply leave team ratings blank/null.
+             */
             for($j = 0; $j < $numTeams/2; $j++)
             {
                 $matchups[$j]->team1_id = $teams[$topSeed]->id;
                 $matchups[$j]->team2_id = $teams[$bottomSeed]->id;
 
-                Log::channel('general')->info($matchups[$j]);
+                //Log::channel('general')->info($matchups[$j]);
                 
                 $matchups[$j]->save();
 
@@ -227,16 +233,40 @@ class MatchupsController extends Controller
                 $bottomSeed++;
             }
 
+            /**
+             * Next, we need to assign all the children matches to
+             * the empty matches. E.g. match in round 2 is linked
+             * to two matches in round 1.
+             */
+            $parentIndex = $numTeams/2;
+            $childIndex = 0;
+            while($parentIndex < ($numTeams-1))
+            {
+                $matchups[$parentIndex]->child1_id = $matchups[$childIndex]->id;
+                $matchups[$parentIndex]->child2_id = $matchups[$childIndex+1]->id;
+
+                $matchups[$parentIndex]->save();
+
+                //We add 2 as we've incremented twice (locally) above.
+                $childIndex += 2;
+                Log::channel('general')->info('CHILD INDEX IS NOW --> ' . $childIndex);
+
+                $parentIndex++;
+                Log::channel('general')->info('PARENT INDEX IS NOW --> ' . $parentIndex);
+            }
+
+            $status = "SUCCESS";
+            $msg = "Matches Created ✅";
 
         }
         //We have an odd number of teams.
         else
         {
             //Create matches for odd number of teams.
+            $status = "ERROR";
+            $msg = "Odd Number of teams, consider adding more!";
         }
 
-        $status = "SUCCESS";
-        $msg = "Matches Created ✅";
         return response()->json(array('status' => $status, 'msg' => $msg), 200);
     }
 }
