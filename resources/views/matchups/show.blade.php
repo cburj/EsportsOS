@@ -6,6 +6,8 @@
         <x-match-card :matchup="$matchup" verbose="true"></x-match-card>
         <br>
 
+        @if(($matchup->team1_id != null) && ($matchup->team2_id != null))
+
         @if(!Auth::guest() && Auth::user()->isAdmin )
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-danger shadow-none" data-toggle="modal" data-target="#fullHeightModalRight">
@@ -372,5 +374,6 @@
                 </tbody>
             </table>
         </div>
+        @endif
     </div>
 @endsection

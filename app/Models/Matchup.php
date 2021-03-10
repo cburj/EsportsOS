@@ -27,4 +27,15 @@ class Matchup extends Model
     {
         return $this->belongsTo('App\Models\Team');
     }
+
+    public function child1()
+    {
+        return $this->belongsTo(('App\Models\Matchup'));
+    }
+
+    
+    public function child2()
+    {
+        return $this->belongsTo(('App\Models\Matchup'));
+    }
 }

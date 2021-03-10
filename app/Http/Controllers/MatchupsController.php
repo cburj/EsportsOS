@@ -186,8 +186,8 @@ class MatchupsController extends Controller
         $numTeams = sizeof($teams);
 
 
-        //Check if we have an even number of teams.
-        if( $numTeams % 2 == 0 )
+        //Check if we have a number of teams that is a power of two.
+        if( ($numTeams & ($numTeams - 1)) == 0 )
         {
             //Create the required number of blank matchups.
             for($i = 1; $i < $numTeams; $i++)
@@ -249,10 +249,8 @@ class MatchupsController extends Controller
 
                 //We add 2 as we've incremented twice (locally) above.
                 $childIndex += 2;
-                Log::channel('general')->info('CHILD INDEX IS NOW --> ' . $childIndex);
 
                 $parentIndex++;
-                Log::channel('general')->info('PARENT INDEX IS NOW --> ' . $parentIndex);
             }
 
             $status = "SUCCESS";
