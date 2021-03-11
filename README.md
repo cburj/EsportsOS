@@ -89,7 +89,7 @@ Testing for EsportsOS is done using PHPUnit. To run a test, simply type:
 
 ```vendor/bin/phpunit --filter <<test_function_name>>```
 
-It is advised that you run tests individually, rather than all in a single command.
+It is advised that you run tests individually, rather than all in a single command. Please ensure that you create a copy of the development database and rename it to 'fyp-testing' to ensure that your regular data is not overwritten/destroyed whilst running the unit tests.
 
 Unit tests have been written for the following Models:
 
