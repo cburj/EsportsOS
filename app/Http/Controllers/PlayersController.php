@@ -52,6 +52,7 @@ class PlayersController extends Controller
      */
     public function store(Request $request)
     {
+
         /* Validation */
         $this->validate($request, [
             'username' => 'required'

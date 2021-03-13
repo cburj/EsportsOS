@@ -20,9 +20,11 @@ class PlayersTest extends TestCase
     }
 
     /** @test */
-    public function authenticated_users_can_create_players()
+    public function admin_users_can_create_players()
     {
-        $this->actingAs(User::factory()->create());
+        $this->actingAs(User::factory()->create([
+            'isAdmin' => 1
+        ]));
 
         $response = $this->get('/players/create')->assertOk();
     }
@@ -30,6 +32,13 @@ class PlayersTest extends TestCase
     /** @test */
     public function a_player_can_be_created_via_the_form()
     {
+        /**
+         * This doesn't take the admin status of the user
+         * into account, as the endpoint should only be
+         * accessible via the form - which is secured via
+         * admin checks.
+         */
+
         $this->withoutExceptionHandling();
 
         $this->actingAs(User::factory()->create());
@@ -41,8 +50,8 @@ class PlayersTest extends TestCase
             'coach_name' => 'Unknown',
             'country' => 'United Kingdom',
             'twitter' => '@team1_esports',
-            'primary_sponsor' => 'crypto scam',
-            'secondary_sponsor' => 'harmful energy drink',
+            'primary_sponsor' => 'Sponsor #1',
+            'secondary_sponsor' => 'Sponsor #2',
         ]);
 
         //Now make the player...

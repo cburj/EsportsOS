@@ -161,18 +161,21 @@ class MatchupsController extends Controller
 
     public function adminMatchups()
     {
-        $this->middleware('auth');
-        $matchups = Matchup::where('state', 'RESULT DISPUTED')->orWhere('state', 'MATCH CANCELLED')->orWhere('state', 'VERIFYING RESULT')->orderBy('updated_at', 'ASC')->get();
-
-        if (Auth::user()->isAdmin)
+        if(Auth::user() && Auth::user()->isAdmin)
+        {
+            $matchups = Matchup::where('state', 'RESULT DISPUTED')->orWhere('state', 'MATCH CANCELLED')->orWhere('state', 'VERIFYING RESULT')->orderBy('updated_at', 'ASC')->get();
             return view('admin.matches')->with('matchups', $matchups);
+        }
         else
-            return redirect('matchups');
+            return redirect('/matchups')->with('errorMessage', 'You must be an admin to perform this action.');
     }
 
     public function dashboard()
     {
-        return view('matchups.dashboard');
+        if(Auth::user() && Auth::user()->isAdmin)
+            return view('matchups.dashboard');
+        else
+            return redirect('/matchups')->with('errorMessage', 'You must be an admin to perform this action.');
     }
 
     public function generateMatchups()
