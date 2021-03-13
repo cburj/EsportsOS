@@ -28,7 +28,7 @@ class TeamsController extends Controller
      */
     public function create()
     {
-        if(Auth::user())
+        if(Auth::user() && Auth::user()->isAdmin)
             return view('teams.create');
         else
             return redirect('/teams')->with('errorMessage', 'You must be logged in to perform this action.');

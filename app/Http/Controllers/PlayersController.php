@@ -31,7 +31,7 @@ class PlayersController extends Controller
      */
     public function create()
     {
-        if (Auth::user())
+        if (Auth::user() && Auth::user()->isAdmin)
         {
             //Import all of the required Teams/Users for dropdowns etc.
             $teams = Team::all();

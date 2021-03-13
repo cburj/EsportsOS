@@ -39,7 +39,7 @@ class MatchupsController extends Controller
      */
     public function create()
     {
-        if (Auth::user()) {
+        if (Auth::user() && Auth::user()->isAdmin) {
             $teams = Team::all();
             $matchups = Matchup::get();
             return view('matchups.create')->with('matchups', $matchups)->with('teams', $teams);
