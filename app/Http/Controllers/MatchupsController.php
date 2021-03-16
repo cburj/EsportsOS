@@ -18,7 +18,7 @@ class MatchupsController extends Controller
 
     public function __construct()
     {
-        //$this->middleware('auth');
+        $this->middleware('auth');
     }
 
     /**
@@ -178,19 +178,25 @@ class MatchupsController extends Controller
             return redirect('/matchups')->with('errorMessage', 'You must be an admin to perform this action.');
     }
 
+    /**
+     * Returns whether a number is a power of two.
+     */
+    private function powerOfTwo($num)
+    {
+        return (($num & ($num - 1)) == 0);
+    }
+
     public function generateMatchups()
     {
         //sleep(3);
         $status = "ERROR";
-
-        //Do some house keeping before we start - needs to be in a func!
 
         $teams = Team::orderBy('rating', 'DESC')->get();
         $numTeams = sizeof($teams);
 
 
         //Check if we have a number of teams that is a power of two.
-        if( ($numTeams & ($numTeams - 1)) == 0 )
+        if( $this->powerOfTwo($numTeams) )
         {
             //Create the required number of blank matchups.
             for($i = 1; $i < $numTeams; $i++)
@@ -265,7 +271,7 @@ class MatchupsController extends Controller
         {
             //Create matches for odd number of teams.
             $status = "ERROR";
-            $msg = "Odd Number of teams, consider adding more!";
+            $msg = "Must have number of teams equal to a power of two!";
         }
 
         return response()->json(array('status' => $status, 'msg' => $msg), 200);

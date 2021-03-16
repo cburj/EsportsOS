@@ -19,7 +19,7 @@
                         <!-- Collapsible element -->
                         <div class="collapse" id="collapseExample">
                             <div class="mt-3" id="success-img">
-                                <img alt="success!" src="https://media.giphy.com/media/5VKbvrjxpVJCM/giphy.gif"/>
+                                <img alt="success!" src="https://media.giphy.com/media/5VKbvrjxpVJCM/giphy.gif" />
                             </div>
                         </div>
                         <!-- / Collapsible element -->
@@ -29,7 +29,85 @@
         </div>
         <!-- Central Modal Small -->
 
+        <!-- Event Timings Modal -->
+        <div class="modal fade" id="modalEventTimings" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header text-center">
+                        <h4 class="modal-title w-100 font-weight-bold">Set Event Timings</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body mx-3">
+                        <p>EsportOS can quickly generate rough match timings based on the information, you provide below. These can easily be tweaked from the admin panel on each match's details screen!</p>
+                        <hr>
+                        <div class="md-form mb-5">
+                            <h5>Earliest Match Start Time</h5>
+                            <input class="form-control" type="datetime-local" id="date_time" name="date_time">
+                            <h5>Average Match Duration (Minutes)</h5>
+                            <input class="form-control" type="number" id="matchDuration" name="matchDuration" step="10">
+                            <h5>Break Between Rounds (Minutes)</h5>
+                            <input class="form-control" type="number" id="breakDuration" name="breakDuration" step="5">
+                        </div>
+
+                    </div>
+                    <div class="modal-footer d-flex justify-content-center">
+                        <button class="btn btn-danger">Generate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Event Timings Modal -->
+
         <div class="row">
+            <div class="col-md-4">
+                <h3>Quick Actions</h3>
+
+                <button class="btn btn-block btn-elegant" id="generate-matches" type="button" data-toggle="modal"
+                    data-target="#centralModalSm">Generate Matches</button>
+
+                <br>
+
+                <button class="btn btn-block btn-elegant" id="set-event-timing" type="button" data-toggle="modal"
+                    data-target="#modalEventTimings">Set Event Timings</button>
+
+                <script type="text/javascript">
+                    const sleep = (milliseconds) => {
+                        return new Promise(resolve => setTimeout(resolve, milliseconds))
+                    }
+
+                    var buttonId = document.getElementById("generate-matches");
+                    buttonId.onclick = function() {
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/generateMatches',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(data) {
+                                var output = data.status + ": " + data.msg;
+                                $("#msg").html(output);
+                                document.getElementById("spinner").style.visibility = "hidden";
+                                $("#collapseExample").collapse();
+
+                                sleep(2000).then(() => {
+                                    $("#msg").html("Refreshing Feed...");
+                                    $('#centralModalSm').modal('hide');
+                                    window.location.replace("/matchups");
+                                })
+                            }
+                        });
+
+                    }
+
+                </script>
+
+                <br>
+                <br>
+            </div>
             <div class="col-md-8">
                 <h3>Matchup Dashboard</h3>
                 <canvas id="myChart" style=""></canvas>
@@ -93,47 +171,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <h3>Quick Actions</h3>
-
-                <button class="btn btn-block btn-elegant" id="cburg-test" type="button" data-toggle="modal"
-                    data-target="#centralModalSm">Generate Matches</button>
-
-                <script type="text/javascript">
-                    const sleep = (milliseconds) => {
-                        return new Promise(resolve => setTimeout(resolve, milliseconds))
-                    }
-
-                    var buttonId = document.getElementById("cburg-test");
-                    buttonId.onclick = function() {
-
-                        $.ajax({
-                            type: 'POST',
-                            url: '/generateMatches',
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success: function(data) {
-                                var output = data.status + ": " + data.msg;
-                                $("#msg").html(output);
-                                document.getElementById("spinner").style.visibility = "hidden";
-                                $("#collapseExample").collapse();
-
-                                sleep(2000).then(() => {
-                                    $("#msg").html("Refreshing Feed...");
-                                    $('#centralModalSm').modal('hide');
-                                    window.location.replace("/matchups");
-                                })
-                            }
-                        });
-
-                    }
-
-                </script>
-
-                <br>
-                <br>
             </div>
         </div>
     </div>
