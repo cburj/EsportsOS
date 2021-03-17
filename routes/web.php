@@ -40,6 +40,8 @@ Route::get('/assets/sponsors', 'App\Http\Controllers\AssetsController@sponsors')
 Route::get('/admin/match_issues', 'App\Http\Controllers\MatchupsController@adminMatchups');
 Route::get('/admin/match_dashboard', 'App\Http\Controllers\MatchupsController@dashboard');
 
+/* LOGGING ROUTES */
+Route::get('/logs', 'App\Http\Controllers\LogsController@show')->name('logs');
 
 /* API ROUTES */
 /* Not sure if there is an easier way, but this works for now */
