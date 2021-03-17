@@ -276,4 +276,44 @@ class MatchupsController extends Controller
 
         return response()->json(array('status' => $status, 'msg' => $msg), 200);
     }
+
+    public function generateTimings(Request $request)
+    {
+        //VALIDATION NEEDS TO BE DONE HERE
+
+        $datetime = $request->date_time;
+        $matchDuration = $request->matchDuration;
+        $breakDuration = $request->breakDuration;
+
+        //Log this action.
+        Log::channel('general')->info($request);
+
+
+        /**
+         * EVENT TIMINGS ALGORITHM
+         * 
+         * Get total number of teams
+         * Half this number will be the number of matches in the first round.
+         * Set the first X number of match records set the start time equal to the one in the form
+         * 
+         * half the number of first round matches, these next x/2 matches will be datetime + duration + break.
+         * continue halfing until x/y == 1 (this is the final match).
+         */
+
+        /**
+         * For now, lets just set all match times to the ones provided
+         */
+        $matchups = Matchup::all();
+
+        //$timestamp = strtotime($request->date_time);
+        //$date_time = date("Y-m-d H:i:s", $timestamp);
+
+        foreach($matchups as $matchup)
+        {
+            $matchup->date_time = $request->date_time;
+            $matchup->save();
+        }
+
+        return redirect('/matchups')->with('successMessage', 'Matchup timings have been set. You can adjust them via the admin control panel.');
+    }
 }

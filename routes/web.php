@@ -51,3 +51,4 @@ Route::get('/api/matchups', 'App\Http\Controllers\MatchupsController@api');
 Route::post('/generateMatches', 'App\Http\Controllers\MatchupsController@generateMatchups');
 Route::post('/sendMessage', 'App\Http\Controllers\DisputeMessagesController@store');
 Route::get('/getMessages', 'App\Http\Controllers\DisputeMessagesController@refreshDisputeMessages');
+Route::post('/generateTimings', 'App\Http\Controllers\MatchupsController@generateTimings')->name('matchups.generateTimings');;

@@ -43,18 +43,19 @@
                     <div class="modal-body mx-3">
                         <p>EsportOS can quickly generate rough match timings based on the information, you provide below. These can easily be tweaked from the admin panel on each match's details screen!</p>
                         <hr>
-                        <div class="md-form mb-5">
-                            <h5>Earliest Match Start Time</h5>
-                            <input class="form-control" type="datetime-local" id="date_time" name="date_time">
-                            <h5>Average Match Duration (Minutes)</h5>
-                            <input class="form-control" type="number" id="matchDuration" name="matchDuration" step="10">
-                            <h5>Break Between Rounds (Minutes)</h5>
-                            <input class="form-control" type="number" id="breakDuration" name="breakDuration" step="5">
-                        </div>
+                        
+                        <form class="" action="{{ route('matchups.generateTimings') }}" method="POST">
+                            @csrf
+                            <label for="date_time">Earliest Match Start Time</label>
+                            <input class="" type="datetime-local" id="date_time" name="date_time" required>
+                            <label for="matchDuration">Average Match Duration (Minutes)</label>
+                            <input class="" type="number" id="matchDuration" name="matchDuration" step="10" required>
+                            <label for="breakDuration">Break Between Rounds (Minutes)</label>
+                            <input class="" type="number" id="breakDuration" name="breakDuration" step="5" required>
 
-                    </div>
-                    <div class="modal-footer d-flex justify-content-center">
-                        <button class="btn btn-danger">Generate</button>
+                            <hr>
+                            <input type="submit" value="Generate" class="btn btn-danger btn-block">
+                        </form>
                     </div>
                 </div>
             </div>

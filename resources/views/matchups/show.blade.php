@@ -323,7 +323,7 @@
 
 
         <hr>
-        <h3 class="text-center"><strong>TeamX</strong></h3>
+        <h3 class="text-center"><strong>{{$matchup->team1->name}}</strong></h3>
         <div class="match-additional-info-table">
             <table class="table table-striped">
                 <thead class="elegant-color white-text">
@@ -349,7 +349,7 @@
             </table>
         </div>
         <hr>
-        <h3 class="text-center"><strong>TeamY</strong></h3>
+        <h3 class="text-center"><strong>{{$matchup->team2->name}}</strong></h3>
         <div class="match-additional-info-table">
             <table class="table table-striped">
                 <thead class="elegant-color white-text">
