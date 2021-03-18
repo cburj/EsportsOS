@@ -14,7 +14,6 @@ class LogsController extends Controller
      */
     public function show(Request $request)
     {
-
         if(Auth::guest() || (!Auth::user()->isAdmin))
         {
             return redirect('/');
@@ -26,12 +25,9 @@ class LogsController extends Controller
         if(File::exists($filePath))
         {
             $data = [
-                'lastModified' => new Carbon(File::lastModified(($filePath))),
-                'size' => File::size($filePath),
                 'file' => File::get($filePath),
             ];
         }
-
         return view('logs.logs', compact('data'));
     }
 }

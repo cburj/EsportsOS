@@ -2,16 +2,23 @@
 
 namespace App\Http\Controllers;
 
+//ILLUMINATE
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Matchup;
-use App\Models\Team;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\File;
 use Illuminate\Database\Events\QueryExecuted;
 use Illuminate\Database\QueryException;
+
+//MODELS
+use App\Models\Matchup;
+use App\Models\Team;
 use App\Helper\Helper;
-use DateTime;
 use App\Models\DisputeMessage;
-use Illuminate\Support\Facades\Log;
+
+
+//OTHER
+use DateTime;
 
 class MatchupsController extends Controller
 {
@@ -173,7 +180,18 @@ class MatchupsController extends Controller
     public function dashboard()
     {
         if(Auth::user() && Auth::user()->isAdmin)
-            return view('matchups.dashboard');
+        {
+            $filePath = storage_path(("logs/eos.log"));
+            $data = [];
+    
+            if(File::exists($filePath))
+            {
+                $data = [
+                    'file' => File::get($filePath),
+                ];
+            }
+            return view('matchups.dashboard', compact('data'));
+        }
         else
             return redirect('/matchups')->with('errorMessage', 'You must be an admin to perform this action.');
     }

@@ -135,65 +135,71 @@ input {
 }
 
 /* Get rid of horrible drop shadow on buttons*/
-.btn{
+.btn {
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
 }
 
-.admin-matches-table{
+.admin-matches-table {
     overflow: auto;
 }
 
-.match-additional-info-table{
+.match-additional-info-table {
     overflow: auto;
 }
 
-.no-decoration{
+.no-decoration {
     text-decoration: none !important;
     color: black;
 }
 
-.disputeMessages{
+.disputeMessages {
     max-height: 30vh;
 }
 
-.messageContainer{
-    padding-top: .5vw;
-    padding-bottom: .5vw;
+.messageContainer {
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
 }
 
-.messagePadding{
-    padding: .5vw;
+.messagePadding {
+    padding: 0.5vw;
     border-radius: 1vw;
 }
 
-.messageLocal{
+.messageLocal {
     text-align: right;
     color: white;
 }
 
-.messageForeign{
+.messageForeign {
     text-align: left;
     color: white;
 }
 
-.messageRight{
+.messageRight {
     background-color: #ff3547;
 }
 
-.messageLeft{
+.messageLeft {
     background-color: rgb(44, 44, 44);
 }
 
-.disputeTimestamp{
+.disputeTimestamp {
     font-size: 0.75em;
     color: rgb(158, 158, 158);
 }
 
-pre{
+pre {
     white-space: -moz-pre-wrap; /* Mozilla, supported since 1999 */
     white-space: -pre-wrap; /* Opera */
     white-space: -o-pre-wrap; /* Opera */
     white-space: pre-wrap; /* CSS3 - Text module (Candidate Recommendation) http://www.w3.org/TR/css3-text/#white-space */
     word-wrap: break-word; /* IE 5.5+ */
+}
+
+.dashboard-log-container {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    max-height: 50vh;
 }

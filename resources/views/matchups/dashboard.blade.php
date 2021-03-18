@@ -41,9 +41,10 @@
                         </button>
                     </div>
                     <div class="modal-body mx-3">
-                        <p>EsportOS can quickly generate rough match timings based on the information, you provide below. These can easily be tweaked from the admin panel on each match's details screen!</p>
+                        <p>EsportOS can quickly generate rough match timings based on the information, you provide below.
+                            These can easily be tweaked from the admin panel on each match's details screen!</p>
                         <hr>
-                        
+
                         <form class="" action="{{ route('matchups.generateTimings') }}" method="POST">
                             @csrf
                             <label for="date_time">Earliest Match Start Time</label>
@@ -106,8 +107,19 @@
 
                 </script>
 
-                <br>
-                <br>
+                <hr>
+                <h3>System Logs</h3>
+
+                @if (empty($data['file']))
+                    <h3 class="text-center">Whoops, there are no logs to display 😿</h3>
+                @else
+                    <div class="dashboard-log-container" id="log-container">
+                        @foreach ($data as $file)
+                            <pre>{{ print nl2br($file, true) }}</pre>
+                        @endforeach
+                    </div>
+                @endif
+
             </div>
             <div class="col-md-8">
                 <h3>Matchup Dashboard</h3>
