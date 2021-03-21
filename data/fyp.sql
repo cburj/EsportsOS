@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2021 at 02:23 PM
+-- Generation Time: Mar 21, 2021 at 05:28 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -37,17 +37,6 @@ CREATE TABLE `dispute_messages` (
   `matchup_id` bigint(20) UNSIGNED NOT NULL,
   `user_id` bigint(20) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `dispute_messages`
---
-
-INSERT INTO `dispute_messages` (`id`, `created_at`, `updated_at`, `content`, `visible`, `matchup_id`, `user_id`) VALUES
-(28, '2021-03-04 13:06:57', '2021-03-04 13:06:57', 'Hi, so basically, I think the score should be the other way around. You can see it clearly in the evidence they uploaded.', 1, 90, 1),
-(29, '2021-03-04 13:07:22', '2021-03-04 13:07:22', 'That\'s from an old match, we uploaded the wrong screenshot.', 1, 90, 2),
-(30, '2021-03-04 13:07:29', '2021-03-04 13:07:29', 'Can you sort this out @admin?', 1, 90, 2),
-(31, '2021-03-04 13:08:54', '2021-03-04 13:08:54', 'I\'m looking at it now. Just give me 5 mins to pull up the GOTV Demo. 😊', 1, 90, 1),
-(32, '2021-03-04 13:09:06', '2021-03-04 13:09:06', 'Okay, thanks again.', 1, 90, 2);
 
 -- --------------------------------------------------------
 
@@ -93,7 +82,13 @@ CREATE TABLE `matchups` (
 --
 
 INSERT INTO `matchups` (`id`, `created_at`, `updated_at`, `team1_id`, `team2_id`, `child1_id`, `child2_id`, `date_time`, `start_time`, `end_time`, `team1_score`, `team2_score`, `server_ip`, `state`) VALUES
-(90, '2021-02-22 15:55:30', '2021-03-04 10:18:05', 1, 2, NULL, NULL, '2021-02-22 20:00:00', NULL, NULL, 11, 16, '127.0.0.1', 'RESULT DISPUTED');
+(103, '2021-03-21 15:36:47', '2021-03-21 15:43:01', 10, 1, NULL, NULL, '2021-03-27 20:01:00', NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT'),
+(104, '2021-03-21 15:36:47', '2021-03-21 15:43:01', 9, 2, NULL, NULL, '2021-03-27 20:00:00', NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT'),
+(105, '2021-03-21 15:36:47', '2021-03-21 15:43:01', 8, 3, NULL, NULL, '2021-03-27 20:00:00', NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT'),
+(106, '2021-03-21 15:36:47', '2021-03-21 15:43:01', 7, 4, NULL, NULL, '2021-03-27 20:00:00', NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT'),
+(107, '2021-03-21 15:36:47', '2021-03-21 15:36:47', NULL, NULL, 103, 104, NULL, NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT'),
+(108, '2021-03-21 15:36:47', '2021-03-21 15:36:47', NULL, NULL, 105, 106, NULL, NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT'),
+(109, '2021-03-21 15:36:47', '2021-03-21 15:36:47', NULL, NULL, 107, 108, NULL, NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT');
 
 -- --------------------------------------------------------
 
@@ -212,7 +207,11 @@ INSERT INTO `teams` (`id`, `created_at`, `updated_at`, `name`, `abbreviation`, `
 (1, '2021-02-11 15:01:11', '2021-02-11 15:01:11', 'TeamX', 'TX', 'Unknown', 'United Kingdom', 0.00, '@twitter', 'Useless Energy Drink', 'Expensive Clothing Brand'),
 (2, '2021-02-11 15:01:51', '2021-02-11 15:01:51', 'TeamY', 'TY', 'Unknown', 'United Kingdom', 0.00, '@twitter', 'Overpriced Peripherals Company', 'Crypto Scam'),
 (3, '2021-02-16 14:36:29', '2021-02-16 14:36:29', 'TeamZ', 'TZ', 'Unknown', 'Denmark', 0.00, '@twitter', 'Overpriced Peripherals Company', 'Crypto Scam'),
-(4, '2021-02-16 14:37:30', '2021-02-16 14:37:30', 'TeamA', 'TA', 'Unknown', 'Brazil', 0.00, '@twitter', 'Fake Fashion Brand', 'Low Quality Laptops');
+(4, '2021-02-16 14:37:30', '2021-02-16 14:37:30', 'TeamA', 'TA', 'Unknown', 'Brazil', 0.00, '@twitter', 'Fake Fashion Brand', 'Low Quality Laptops'),
+(7, '2021-03-21 15:34:44', '2021-03-21 15:34:44', 'Team1', 'T1', 'Unknown', 'United Kingdom', 0.00, '@twitter', 'Overpriced Peripherals Company', 'Brand'),
+(8, '2021-03-21 15:35:04', '2021-03-21 15:35:04', 'Team2', 'T2', 'Unknown', 'United States of America', 0.00, '@twitter', 'Brand', 'Crypto Scam'),
+(9, '2021-03-21 15:35:56', '2021-03-21 15:35:56', 'Team3', 'T3', 'Unknown', 'Denmark', 0.00, '@twitter', 'Brand', 'Brand'),
+(10, '2021-03-21 15:36:11', '2021-03-21 15:36:11', 'Team4', 'T4', 'Unknown', 'Brazil', 0.00, '@twitter', 'Brand', 'Brand');
 
 -- --------------------------------------------------------
 
@@ -313,7 +312,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `dispute_messages`
 --
 ALTER TABLE `dispute_messages`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -325,7 +324,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `matchups`
 --
 ALTER TABLE `matchups`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -343,7 +342,7 @@ ALTER TABLE `players`
 -- AUTO_INCREMENT for table `teams`
 --
 ALTER TABLE `teams`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
