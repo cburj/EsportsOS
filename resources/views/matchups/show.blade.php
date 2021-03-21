@@ -116,8 +116,6 @@
                         <h4 class="modal-title w-100" id="myModalLabel">ADMIN PANEL</h4>
                     </div>
                     <div class="modal-body">
-                        <!--Check if we can enter a date time -->
-                        @if($matchup->date_time == null)
                             <button class="btn btn-elegant btn-block shadow-none" type="button" data-toggle="collapse" data-target="#adminDateTime" aria-expanded="false" aria-controls="adminDateTime">
                             <i class="far fa-calendar-alt"></i> Set Match Date/Time
                             </button>
@@ -136,7 +134,6 @@
                                 </form>
                                 </div>
                                 <hr>
-                        @endif
 
                         <button class="btn btn-elegant btn-block shadow-none" type="button" data-toggle="collapse" data-target="#adminOverride"
                 aria-expanded="false" aria-controls="adminOverride">

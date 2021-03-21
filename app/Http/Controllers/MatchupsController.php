@@ -35,7 +35,7 @@ class MatchupsController extends Controller
      */
     public function index()
     {
-        $matchups = Matchup::orderBy('date_time', 'ASC')->get();
+        $matchups = Matchup::orderBy('date_time', 'DESC')->get();
         return view('matchups.index')->with('matchups', $matchups);
     }
 
@@ -321,20 +321,19 @@ class MatchupsController extends Controller
          * half the number of first round matches, these next x/2 matches will be datetime + duration + break.
          * continue halfing until x/y == 1 (this is the final match).
          */
-
-        /**
-         * For now, lets just set all match times to the ones provided
-         */
+        $teams = Team::all();
         $matchups = Matchup::all();
 
-        //$timestamp = strtotime($request->date_time);
-        //$date_time = date("Y-m-d H:i:s", $timestamp);
+        $numTeams = sizeof($teams);
+        $firstRound = $numTeams/2;
 
-        foreach($matchups as $matchup)
+        for($i=0; $i < $firstRound; $i++)
         {
-            $matchup->date_time = $request->date_time;
-            $matchup->save();
+            $matchups[$i]->date_time = $request->date_time;
+            $matchups[$i]->save();
         }
+
+        $round = sizeof($matchups) - $firstRound;
 
         //Log this action.
         Log::channel('general')->info('USER_ID: ' . Auth::user()->id . '| ACTION: Generated automatic timing for matchups');
