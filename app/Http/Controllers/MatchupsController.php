@@ -283,6 +283,9 @@ class MatchupsController extends Controller
             $status = "SUCCESS";
             $msg = "Matches Created ✅";
 
+            //Log this action.
+            Log::channel('general')->info('USER_ID: ' . Auth::user()->id . '| ACTION: Generated Matchups for ' . $numTeams . ' teams.');
+
         }
         //We have an odd number of teams.
         else
@@ -290,10 +293,15 @@ class MatchupsController extends Controller
             //Create matches for odd number of teams.
             $status = "ERROR";
             $msg = "Must have number of teams equal to a power of two!";
+                        
+            //Log this action.
+            Log::channel('general')->info('USER_ID: ' . Auth::user()->id . '| ACTION: Failed to generate Matchups for ' . $numTeams . ' teams.');
         }
 
         return response()->json(array('status' => $status, 'msg' => $msg), 200);
     }
+
+
 
     public function generateTimings(Request $request)
     {
@@ -302,10 +310,6 @@ class MatchupsController extends Controller
         $datetime = $request->date_time;
         $matchDuration = $request->matchDuration;
         $breakDuration = $request->breakDuration;
-
-        //Log this action.
-        Log::channel('general')->info($request);
-
 
         /**
          * EVENT TIMINGS ALGORITHM
@@ -331,6 +335,9 @@ class MatchupsController extends Controller
             $matchup->date_time = $request->date_time;
             $matchup->save();
         }
+
+        //Log this action.
+        Log::channel('general')->info('USER_ID: ' . Auth::user()->id . '| ACTION: Generated automatic timing for matchups');
 
         return redirect('/matchups')->with('successMessage', 'Matchup timings have been set. You can adjust them via the admin control panel.');
     }

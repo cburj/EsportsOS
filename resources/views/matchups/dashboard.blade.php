@@ -115,7 +115,7 @@
                 @else
                     <div class="dashboard-log-container" id="log-container">
                         @foreach ($data as $file)
-                            <pre>{{ print nl2br($file, true) }}</pre>
+                            <pre id="log-text">{{ print nl2br($file, true) }}</pre>
                         @endforeach
                     </div>
                 @endif
