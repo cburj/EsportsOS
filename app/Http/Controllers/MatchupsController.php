@@ -353,6 +353,6 @@ class MatchupsController extends Controller
         //Log this action.
         Log::channel('general')->info('USER_ID: ' . Auth::user()->id . '| ACTION: Generated automatic timing for matchups');
 
-        return redirect('/matchups')->with('successMessage', 'Matchup timings have been set. You can adjust them via the admin control panel.');
+        return redirect('/matchups')->with('successMessage', 'Matchup timings have been set. You can manually adjust them via the admin control panel.');
     }
 }
