@@ -15,10 +15,11 @@ use App\Models\Matchup;
 use App\Models\Team;
 use App\Helper\Helper;
 use App\Models\DisputeMessage;
-
-
+use DateInterval;
 //OTHER
 use DateTime;
+
+use function PHPUnit\Framework\matches;
 
 class MatchupsController extends Controller
 {
@@ -115,24 +116,22 @@ class MatchupsController extends Controller
         try {
             $matchup = Matchup::find($id);
 
-            if($request->team_1_score != null)
+            if ($request->team_1_score != null)
                 $matchup->team1_score = $request->team_1_score;
 
-            if($request->team_2_score != null)
+            if ($request->team_2_score != null)
                 $matchup->team2_score = $request->team_2_score;
 
             if ($request->state != null)
                 $matchup->state = $request->state;
 
-            if($request->date_time != null)
-            {
+            if ($request->date_time != null) {
                 $timestamp = strtotime($request->date_time);
                 $date_time = date("Y-m-d H:i:s", $timestamp);
                 $matchup->date_time = $date_time;
             }
 
-            if ($request->file('matchEvidenceImage') != null)
-            {
+            if ($request->file('matchEvidenceImage') != null) {
                 $file = $request->file('matchEvidenceImage');
                 $extension = $file->extension();
 
@@ -168,31 +167,26 @@ class MatchupsController extends Controller
 
     public function adminMatchups()
     {
-        if(Auth::user() && Auth::user()->isAdmin)
-        {
+        if (Auth::user() && Auth::user()->isAdmin) {
             $matchups = Matchup::where('state', 'RESULT DISPUTED')->orWhere('state', 'MATCH CANCELLED')->orWhere('state', 'VERIFYING RESULT')->orderBy('updated_at', 'ASC')->get();
             return view('admin.matches')->with('matchups', $matchups);
-        }
-        else
+        } else
             return redirect('/matchups')->with('errorMessage', 'You must be an admin to perform this action.');
     }
 
     public function dashboard()
     {
-        if(Auth::user() && Auth::user()->isAdmin)
-        {
+        if (Auth::user() && Auth::user()->isAdmin) {
             $filePath = storage_path(("logs/eos.log"));
             $data = [];
-    
-            if(File::exists($filePath))
-            {
+
+            if (File::exists($filePath)) {
                 $data = [
                     'file' => File::get($filePath),
                 ];
             }
             return view('matchups.dashboard', compact('data'));
-        }
-        else
+        } else
             return redirect('/matchups')->with('errorMessage', 'You must be an admin to perform this action.');
     }
 
@@ -214,11 +208,9 @@ class MatchupsController extends Controller
 
 
         //Check if we have a number of teams that is a power of two.
-        if( $this->powerOfTwo($numTeams) )
-        {
+        if ($this->powerOfTwo($numTeams)) {
             //Create the required number of blank matchups.
-            for($i = 1; $i < $numTeams; $i++)
-            {
+            for ($i = 1; $i < $numTeams; $i++) {
                 $match = Matchup::create([
                     'team1_id' => null,
                     'team2_id' => null,
@@ -247,13 +239,12 @@ class MatchupsController extends Controller
              * lowest rated teams against each other. For a completely
              * random seed, simply leave team ratings blank/null.
              */
-            for($j = 0; $j < $numTeams/2; $j++)
-            {
+            for ($j = 0; $j < $numTeams / 2; $j++) {
                 $matchups[$j]->team1_id = $teams[$topSeed]->id;
                 $matchups[$j]->team2_id = $teams[$bottomSeed]->id;
 
                 //Log::channel('general')->info($matchups[$j]);
-                
+
                 $matchups[$j]->save();
 
                 $topSeed--;
@@ -265,12 +256,11 @@ class MatchupsController extends Controller
              * the empty matches. E.g. match in round 2 is linked
              * to two matches in round 1.
              */
-            $parentIndex = $numTeams/2;
+            $parentIndex = $numTeams / 2;
             $childIndex = 0;
-            while($parentIndex < ($numTeams-1))
-            {
+            while ($parentIndex < ($numTeams - 1)) {
                 $matchups[$parentIndex]->child1_id = $matchups[$childIndex]->id;
-                $matchups[$parentIndex]->child2_id = $matchups[$childIndex+1]->id;
+                $matchups[$parentIndex]->child2_id = $matchups[$childIndex + 1]->id;
 
                 $matchups[$parentIndex]->save();
 
@@ -285,15 +275,13 @@ class MatchupsController extends Controller
 
             //Log this action.
             Log::channel('general')->info('USER_ID: ' . Auth::user()->id . '| ACTION: Generated Matchups for ' . $numTeams . ' teams.');
-
         }
         //We have an odd number of teams.
-        else
-        {
+        else {
             //Create matches for odd number of teams.
             $status = "ERROR";
             $msg = "Must have number of teams equal to a power of two!";
-                        
+
             //Log this action.
             Log::channel('general')->info('USER_ID: ' . Auth::user()->id . '| ACTION: Failed to generate Matchups for ' . $numTeams . ' teams.');
         }
@@ -305,35 +293,58 @@ class MatchupsController extends Controller
 
     public function generateTimings(Request $request)
     {
-        //VALIDATION NEEDS TO BE DONE HERE
-
         $datetime = $request->date_time;
         $matchDuration = $request->matchDuration;
         $breakDuration = $request->breakDuration;
 
-        /**
-         * EVENT TIMINGS ALGORITHM
-         * 
-         * Get total number of teams
-         * Half this number will be the number of matches in the first round.
-         * Set the first X number of match records set the start time equal to the one in the form
-         * 
-         * half the number of first round matches, these next x/2 matches will be datetime + duration + break.
-         * continue halfing until x/y == 1 (this is the final match).
-         */
         $teams = Team::all();
         $matchups = Matchup::all();
 
         $numTeams = sizeof($teams);
-        $firstRound = $numTeams/2;
+        $firstRound = $numTeams / 2;
 
-        for($i=0; $i < $firstRound; $i++)
+        $lastVisited = 0;
+
+        for ($i = 0; $i < $firstRound; $i++)
         {
             $matchups[$i]->date_time = $request->date_time;
             $matchups[$i]->save();
+            $lastVisited = $i;
         }
 
-        $round = sizeof($matchups) - $firstRound;
+        $completed = false;
+        $roundSize = $firstRound;
+
+        while ($completed == false)
+        {
+            $roundSize = $roundSize / 2;
+            //Log::channel('general')->info('Round size = ' . $roundSize);
+
+            if ($roundSize < 1)
+            {
+                $completed = true;
+                //Log::channel('general')->info('|     ENDING LOOP --> Round size = ' . $roundSize);
+            }
+            else
+            {
+                $tempLastVisited = 0;
+                $endOfRound = $lastVisited + $roundSize;
+
+                for ($j = ($lastVisited + 1); $j <= $endOfRound; $j++)
+                {
+                    //Log::channel('general')->info('|        For Loop SOP, J=' . $j . ', lastVisited= ' . $lastVisited . '--> Round size = ' . $roundSize);
+                    $date_time = date_create($request->date_time);
+                    date_add($date_time, date_interval_create_from_date_string("2 days"));
+                    $matchups[$j]->date_time = $date_time;
+                    $matchups[$j]->save();
+                    $tempLastVisited = $j;
+                    //Log::channel('general')->info('|        For Loop EOP, J=' . $j . '--> Round size = ' . $roundSize);
+                }
+
+                $lastVisited = $tempLastVisited;
+                //Log::channel('general')->info('|     End of For Loop, LastVisited = ' . $lastVisited . ' --> Round size = ' . $roundSize);
+            }
+        }
 
         //Log this action.
         Log::channel('general')->info('USER_ID: ' . Auth::user()->id . '| ACTION: Generated automatic timing for matchups');

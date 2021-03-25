@@ -111,7 +111,7 @@
                 <h3>System Logs</h3>
 
                 @if (empty($data['file']))
-                    <h3 class="text-center">Whoops, there are no logs to display 😿</h3>
+                    <p class="text-center">Whoops, there are no logs to display 😿</p>
                 @else
                     <div class="dashboard-log-container" id="log-container">
                         @foreach ($data as $file)
