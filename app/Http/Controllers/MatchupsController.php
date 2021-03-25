@@ -36,7 +36,7 @@ class MatchupsController extends Controller
      */
     public function index()
     {
-        $matchups = Matchup::orderBy('date_time', 'DESC')->get();
+        $matchups = Matchup::orderBy('date_time', 'ASC')->get();
         return view('matchups.index')->with('matchups', $matchups);
     }
 
@@ -315,15 +315,19 @@ class MatchupsController extends Controller
         $completed = false;
         $roundSize = $firstRound;
 
+        //Represents how much time each round slot is allocated.
+        $minutesToAdd = $matchDuration + $breakDuration;
+        $roundNumber = 1;
+
         while ($completed == false)
         {
             $roundSize = $roundSize / 2;
-            //Log::channel('general')->info('Round size = ' . $roundSize);
+
+            $interval = $minutesToAdd * $roundNumber;
 
             if ($roundSize < 1)
             {
                 $completed = true;
-                //Log::channel('general')->info('|     ENDING LOOP --> Round size = ' . $roundSize);
             }
             else
             {
@@ -332,17 +336,17 @@ class MatchupsController extends Controller
 
                 for ($j = ($lastVisited + 1); $j <= $endOfRound; $j++)
                 {
-                    //Log::channel('general')->info('|        For Loop SOP, J=' . $j . ', lastVisited= ' . $lastVisited . '--> Round size = ' . $roundSize);
                     $date_time = date_create($request->date_time);
-                    date_add($date_time, date_interval_create_from_date_string("2 days"));
+                    date_add($date_time, date_interval_create_from_date_string( $interval . ' minutes'));
+
+
                     $matchups[$j]->date_time = $date_time;
                     $matchups[$j]->save();
                     $tempLastVisited = $j;
-                    //Log::channel('general')->info('|        For Loop EOP, J=' . $j . '--> Round size = ' . $roundSize);
                 }
 
                 $lastVisited = $tempLastVisited;
-                //Log::channel('general')->info('|     End of For Loop, LastVisited = ' . $lastVisited . ' --> Round size = ' . $roundSize);
+                $roundNumber++;
             }
         }
 

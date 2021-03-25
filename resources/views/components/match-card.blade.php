@@ -16,7 +16,7 @@
                 @endif
                 <div class="text-center">
                     <a href="/matchups/{{ $matchup->id }}" class="matchup-link">
-                    <h3><strong>{{ $matchup->team1->name }} vs {{ $matchup->team2->name }}</strong></h3>
+                        <h3><strong>{{ $matchup->team1->name }} vs {{ $matchup->team2->name }}</strong></h3>
                     </a>
                     @php
                         $dateString = $matchup->date_time;
@@ -54,22 +54,36 @@
                 </div>
             @else
                 <div class="matches-index-logos">
-                    <img src='/img/teams/Default.png' class="img-thumbnail float-right"/>
-                    <img src='/img/teams/Default.png' class="img-thumbnail float-left"/>
+                    <img src='/img/teams/Default.png' class="img-thumbnail float-right" />
+                    <img src='/img/teams/Default.png' class="img-thumbnail float-left" />
                 </div>
                 <div class="text-center">
                     <h3>UNCONFIRMED MATCHUP*</h3>
-                    @if(($matchup->child1->team1 != null) &&
-                        ($matchup->child1->team2 != null) &&
-                        ($matchup->child2->team1 != null) &&
-                        ($matchup->child2->team2 != null))
-                    <p><strong>{{$matchup->child1->team1->name}} or {{$matchup->child1->team2->name}}</strong></p>
-                    <p>VS</p>
-                    <p><strong>{{$matchup->child2->team1->name}} or {{$matchup->child2->team2->name}}</strong></p>
+                    @if ($matchup->child1->team1 != null && $matchup->child1->team2 != null && $matchup->child2->team1 != null && $matchup->child2->team2 != null)
+                        <p><strong>{{ $matchup->child1->team1->name }} or {{ $matchup->child1->team2->name }}</strong>
+                        </p>
+                        <p>VS</p>
+                        <p><strong>{{ $matchup->child2->team1->name }} or {{ $matchup->child2->team2->name }}</strong>
+                        </p>
                     @else
-                        <p><strong>Winner of <a href="/matchups/{{$matchup->child1->id}}">Match #{{$matchup->child1->id}}</a> VS Winner of <a href="/matchups/{{$matchup->child2->id}}">Match #{{$matchup->child2->id}}</a></strong></p>
+                        <p><strong>Winner of <a href="/matchups/{{ $matchup->child1->id }}">Match
+                                    #{{ $matchup->child1->id }}</a> VS Winner of <a
+                                    href="/matchups/{{ $matchup->child2->id }}">Match
+                                    #{{ $matchup->child2->id }}</a></strong></p>
                     @endif
-                    <small>*The participants of this match are determined by the outcomes of matches which haven't yet been played.</small>
+
+                    @php
+                        $dateString = $matchup->date_time;
+                        $date = new DateTime($dateString);
+                        $cur_date = new DateTime();
+                        $endString = $matchup->end_time;
+                        $end_date = new DateTime($endString);
+                    @endphp
+                    
+                    <p>Starts at: {{ $date->format('d/m/Y @ H:i') }}</p>
+
+                    <small>*The participants of this match are determined by the outcomes of matches which haven't yet
+                        been played.</small>
                 </div>
             @endif
         </div>
