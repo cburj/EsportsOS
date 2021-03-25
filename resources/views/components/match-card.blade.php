@@ -80,7 +80,11 @@
                         $end_date = new DateTime($endString);
                     @endphp
                     
+                    @if($dateString == null)
+                        <p>Unscheduled (TBD)</p>
+                    @else
                     <p>Starts at: {{ $date->format('d/m/Y @ H:i') }}</p>
+                    @endif
 
                     <small>*The participants of this match are determined by the outcomes of matches which haven't yet
                         been played.</small>
