@@ -174,6 +174,9 @@
                 </form>
                 </div>
                 <hr>
+                <div>
+                    <p class="" style="word-wrap: break-word;">Click "Confirm Result" to approve the score and update any other matches that are dependent on this one.</p>
+                </div>
                     <form class="" action="{{ route('matchups.update', $matchup->id) }}" method="post" id="confirm_result">
                      @method('PUT')
                         @csrf

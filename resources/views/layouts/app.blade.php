@@ -61,13 +61,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/players">Players</a>
+                            <a class="nav-link" href="/matchups"><i class="fas fa-gamepad"></i> Matches</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/matchups">Matches</a>
+                            <a class="nav-link" href="/players"><i class="fas fa-user"></i> Players</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/teams">Teams</a>
+                            <a class="nav-link" href="/teams"> <i class="fas fa-users"></i>Teams</a>
                         </li>
                     </ul>
 
@@ -95,22 +95,22 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     @if(!Auth::guest() && Auth::user()->isAdmin)
                                     <a class="dropdown-item" href="/admin/match_issues">
-                                        Matchup Issues
+                                        <i class="fas fa-bell"></i> Matchup Issues 
                                     </a>
                                     <a class="dropdown-item" href="/admin/match_dashboard">
-                                        Matchup Dashboard
+                                        <i class="fas fa-tachometer-alt"></i> Matchup Dashboard
                                     </a>
                                     <a class="dropdown-item" href="/assets">
-                                        Stream Assets
+                                        <i class="fas fa-video"></i> Stream Assets
                                     </a>
                                     <a class="dropdown-item" href="/logs">
-                                        System Logs
+                                        <i class="far fa-file-alt"></i> System Logs
                                     </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">
-                                     {{ __('Logout') }}
+                                     <i class="fas fa-sign-out-alt"></i> Logout
                                  </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

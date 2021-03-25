@@ -82,6 +82,49 @@ class MatchupsController extends Controller
         return redirect('matchups');
     }
 
+
+    public function progressTournament($matchupId)
+    {
+        /**
+         * Look through all matchups.
+         * If a matchup has this matchup as one of its children, then update the team 1 id or team2 id.
+         */
+        $matchup = Matchup::find($matchupId);
+
+        //Figure out the winning team.
+        $winningTeam = null;
+        $winningBracket = 0; //Just to keep track of whether its a team1 or team2
+
+        if($matchup->team1_score > $matchup->team2_score)
+        {
+            $winningTeam = $matchup->team1_id;
+            $winningBracket = 1;
+        }
+        else if($matchup->team2_score > $matchup->team1_score)
+        {
+            $winningTeam = $matchup->team2_id;
+            $winningBracket = 2;
+        } 
+        else
+            return; //Don't allow draws.
+
+        //Figure out any matches that depend on this one.
+        $matchups = Matchup::where('child1_id', $matchupId)->orWhere('child2_id', $matchupId)->get();
+        foreach($matchups as $matchX)
+        {
+            if($winningBracket == 1)
+            {
+                $matchX->team1_id = $winningTeam;
+            }
+            else if($winningBracket == 2)
+            {
+                $matchX->team2_id = $winningTeam;
+            }
+            $matchX->save();
+        }
+    }
+
+
     /**
      * Display the specified resource.
      *
@@ -140,6 +183,16 @@ class MatchupsController extends Controller
                 $path = $file->storeAs('public/matchup_evidence', $newFileName);
 
                 //$file->storeAs('docs', $newFileName);
+            }
+
+            /**
+             * We must now update the records for any matches that
+             * depend on this matchup. E.g. update a Semi-Final matchup
+             * to include the winner of this matchup.
+             */
+            if(($request->state != null) && ($request->state == "RESULT CONFIRMED"))
+            {
+                $this->progressTournament($id);
             }
 
             $matchup->save();

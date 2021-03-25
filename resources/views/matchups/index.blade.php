@@ -15,7 +15,8 @@
                 <hr />
             @endforeach
         @else
-            <p>Oops, no matches found 😢</p>
+            <h3>Oops, no matches found 😢</h3>
+            <p>Speak to an admin about generating matchups!</p>
         @endif
     </div>
 @endsection
