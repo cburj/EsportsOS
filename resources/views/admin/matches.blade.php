@@ -26,10 +26,27 @@
                                 @endphp
 
                                 <th scope="row">{{ $matchup->id }}</th>
-                                <td>{{ $matchup->team1->name }}</td>
-                                <td>{{ $matchup->team2->name }}</td>
-                                <td>{{ $matchup->team1_score }}:{{ $matchup->team2_score }}</td>
-                                <td>{{ $date->format('d/m/Y @ H:i') }}</td>
+                                @if($matchup->team1_id != null)
+                                    <td>{{ $matchup->team1->name }}</td>
+                                @else
+                                    <td>TBA</td>
+                                @endif
+                                @if($matchup->team2_id != null)
+                                    <td>{{ $matchup->team2->name }}</td>
+                                @else
+                                    <td>TBA</td>
+                                @endif
+                                @if($matchup->team1_id != null && $matchup->team2_id != null)
+                                    <td>{{ $matchup->team1_score }}:{{ $matchup->team2_score }}</td>
+                                @else
+                                    <td>N/A</td>
+                                @endif
+
+                                @if($matchup->date_time != null)
+                                    <td>{{ $date->format('d/m/Y @ H:i') }}</td>
+                                @else
+                                    <td>TBA</td>
+                                @endif
                                 <td>{{ $matchup->state }}</td>
                                 <td>
                                     <button class="btn btn-danger btn-sm"
