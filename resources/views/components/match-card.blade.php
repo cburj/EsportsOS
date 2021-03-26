@@ -46,7 +46,7 @@
                     @php
                         //Generate the URL for players to join the game.
                         $ip = $matchup->server_ip;
-                        $conStr = 'steam://connect/127.0.0.1/';
+                        $conStr = 'steam://connect/' . $matchup->server_ip .'/';
                     @endphp
                     <a href="" class="btn btn-elegant" onclick="location.href='{{ $conStr }}'">
                         <i class="fas fa-server pr-2"></i>JOIN SERVER
@@ -119,11 +119,6 @@
                     <p>VS</p>
                     <p><strong>{{ $matchup->team2->name }}</strong></p>
                 </div>
-
-
-
-
-
 
             @else
                 @if ($verbose == 'true')

@@ -174,6 +174,9 @@ class MatchupsController extends Controller
                 $matchup->date_time = $date_time;
             }
 
+            if($request->server_ip != null)
+                $matchup->server_ip = $request->server_ip;
+
             if ($request->file('matchEvidenceImage') != null) {
                 $file = $request->file('matchEvidenceImage');
                 $extension = $file->extension();

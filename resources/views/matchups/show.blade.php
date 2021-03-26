@@ -135,6 +135,32 @@
                                 </div>
                                 <hr>
 
+
+
+
+                                <button class="btn btn-elegant btn-block shadow-none" type="button" data-toggle="collapse" data-target="#adminServer" aria-expanded="false" aria-controls="adminServer">
+                                    <i class="far fa-calendar-alt"></i> Set Server IP
+                                    </button>
+                                    <div class="collapse" id="adminServer">
+                                        <form class="border p-5" action="{{ route('matchups.update', $matchup->id) }}" method="post">
+                                            @method('PUT')
+                                            @csrf
+                        
+                                            <input type="hidden" value="{{ $matchup->id }}" name="id">
+        
+                                            <label for="date_time">Server IP Address:</label>
+                                            <input class="form-control" type="text" id="server_ip" name="server_ip">
+                        
+                                            <hr>
+                                            <button class="btn btn-primary btn-block" type="submit" value="Submit">Save</button>
+                                        </form>
+                                    </div>
+                                <hr>
+
+
+
+
+
                         <button class="btn btn-elegant btn-block shadow-none" type="button" data-toggle="collapse" data-target="#adminOverride"
                 aria-expanded="false" aria-controls="adminOverride">
                 <i class="fas fa-edit"></i> Override Result
