@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\User;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Log;
+
+use App\Models\User;
 
 
 class UsersController extends Controller
@@ -33,6 +35,9 @@ class UsersController extends Controller
 
             $user[0]->isAdmin = !($user[0]->isAdmin);
             $user[0]->save();
+
+            //Log the action
+            Log::channel('general')->info('USER_ID: ' . Auth::user()->id . '| ACTION: Changed admin status for ' . $user[0]->name . ' (ID: ' . $request->id . ')');
 
             return redirect('/admin/users')->with('successMessage', 'Action Successful!');
 

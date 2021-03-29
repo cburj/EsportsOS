@@ -9,9 +9,8 @@
                 @else
                     <div>
                         @foreach($data as $file)
-                            {{print(nl2br($file, true))}}
+                        <pre>{{print(nl2br($file, true))}}</pre>
                         @endforeach
-                        <pre></pre>
                     </div>
                 @endif
     </div>
