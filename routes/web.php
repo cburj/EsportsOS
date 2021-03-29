@@ -36,9 +36,13 @@ Route::get('/assets/player/{id}/{verbose}', 'App\Http\Controllers\AssetsControll
 Route::get('/assets/countdown', 'App\Http\Controllers\AssetsController@countdown');
 Route::get('/assets/sponsors', 'App\Http\Controllers\AssetsController@sponsors');
 
+/* Users */
+Route::post('/admin/users/update/{id}', 'App\Http\Controllers\UsersController@adminModify')->name('admin.modify');
+
 /* ADMIN-SPECIFIC ROUTES */
 Route::get('/admin/match_issues', 'App\Http\Controllers\MatchupsController@adminMatchups');
 Route::get('/admin/match_dashboard', 'App\Http\Controllers\MatchupsController@dashboard');
+Route::get('/admin/users', 'App\Http\Controllers\UsersController@showAdmins');
 
 /* LOGGING ROUTES */
 Route::get('/logs', 'App\Http\Controllers\LogsController@show')->name('logs');
@@ -53,4 +57,4 @@ Route::get('/api/matchups', 'App\Http\Controllers\MatchupsController@api');
 Route::post('/generateMatches', 'App\Http\Controllers\MatchupsController@generateMatchups');
 Route::post('/sendMessage', 'App\Http\Controllers\DisputeMessagesController@store');
 Route::get('/getMessages', 'App\Http\Controllers\DisputeMessagesController@refreshDisputeMessages');
-Route::post('/generateTimings', 'App\Http\Controllers\MatchupsController@generateTimings')->name('matchups.generateTimings');;
+Route::post('/generateTimings', 'App\Http\Controllers\MatchupsController@generateTimings')->name('matchups.generateTimings');

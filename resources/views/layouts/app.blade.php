@@ -89,7 +89,7 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} @if(Auth::user()->isAdmin)(ADMIN) @endif
+                                    {{ Auth::user()->name }} @if(Auth::user()->isAdmin)<i class="fas fa-check-circle"></i>@endif
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -105,6 +105,9 @@
                                     </a>
                                     <a class="dropdown-item" href="/logs">
                                         <i class="far fa-file-alt"></i> System Logs
+                                    </a>
+                                    <a class="dropdown-item" href="/admin/users">
+                                        <i class="fas fa-users"></i> Administrators
                                     </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"

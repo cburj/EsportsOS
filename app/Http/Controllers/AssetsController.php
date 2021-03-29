@@ -11,7 +11,7 @@ class AssetsController extends Controller
 {
     public function bracket()
     {
-        $matchups = Matchup::orderBy('id', 'ASC')->get();
+        $matchups = Matchup::orderBy('id', 'DESC')->get();
         return view('assets.bracket')->with('matchups', $matchups);
     }
 
