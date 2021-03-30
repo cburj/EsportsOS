@@ -43,6 +43,8 @@
                         <p><span class="red pl-5 pr-5 p-1 rounded-pill text-white"><i class="fas fa-exclamation"></i>
                                 PENDING INVESTIGATION <i class="fas fa-exclamation"></i><span></p>
                     @endif
+
+                    @if($matchup->state != "RESULT CONFIRMED")
                     @php
                         //Generate the URL for players to join the game.
                         $ip = $matchup->server_ip;
@@ -51,6 +53,7 @@
                     <a href="" class="btn btn-elegant" onclick="location.href='{{ $conStr }}'">
                         <i class="fas fa-server pr-2"></i>JOIN SERVER
                     </a>
+                    @endif
                 </div>
 
 

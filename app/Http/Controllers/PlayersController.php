@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Player;
 use App\Models\Team;
 use App\Models\User;
+use App\Models\Matchup;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Auth;
 
@@ -86,7 +87,9 @@ class PlayersController extends Controller
      */
     public function show($id)
     {
-        return view('players.show', ['player' => Player::findOrFail($id)]);
+        $player = Player::findOrFail($id);
+        $matchups = Matchup::where('team1_id', $player->team_id)->orWhere('team2_id', $player->team_id)->get();
+        return view('players.show')->with('player', $player)->with('matchups', $matchups);
     }
 
     /**

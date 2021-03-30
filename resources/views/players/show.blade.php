@@ -38,37 +38,23 @@
                 <div class="row p-2">
                     <div class="col-md">
                         <h4>Complete</h4>
-                        <table class="table">
-                          <tbody>
-                            <tr class="text-center">
-                              <th>TeamX</th>
-                              <td>(11:16)</td>
-                              <td>TeamY</td>
-                            </tr>
-                            <tr class="text-center">
-                              <th>TeamX</th>
-                              <td>(16:5)</td>
-                              <td>TeamA</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                        @foreach ($matchups as $matchup)
+                            @if ($matchup->state == 'RESULT CONFIRMED')
+                                <div class="text-center">
+                                    <x-match-card :matchup="$matchup" verbose="false"></x-match-card>
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                     <div class="col-md">
                         <h4>Upcoming</h4>
-                        <table class="table">
-                          <tbody>
-                            <tr class="text-center">
-                              <th>TeamX</th>
-                              <td>20:30 (GMT)</td>
-                              <td>TeamY</td>
-                            </tr>
-                            <tr class="text-center">
-                              <th>TeamX</th>
-                              <td>22:15 (GMT)</td>
-                              <td>TeamA</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                        @foreach ($matchups as $matchup)
+                        @if ($matchup->state != 'RESULT CONFIRMED')
+                            <div class="text-center">
+                                <x-match-card :matchup="$matchup" verbose="false"></x-match-card>
+                            </div>
+                        @endif
+                    @endforeach
                     </div>
                 </div>
             </div>
