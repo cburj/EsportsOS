@@ -14,11 +14,37 @@
                 <p>Sponsor: {{ $team->primary_sponsor }}</p>
                 <p>Secondary Sponsor: {{ $team->secondary_sponsor }}</p>
 
-                <strong>Players:</strong>
+                <hr>
+                <h2>Players:</h2>
                 <p>
+                    <div class="row row-cols-1 row-cols-md-3 text-center">
                     @foreach ($team->players as $player)
-                        <a href="/players/{{ $player->id }}">{{ $player->username . ',' }}</a>
+                    <div class="col mb-4">
+                        <!-- Card -->
+                        <div class="card">
+                            <!--Card image-->
+                            <div class="view overlay">
+                                <a class="" href="/players/{{ $player->id }}">
+                                    <img class="card-img-top" src="/img/players/{{ $player->username }}.png"
+                                        alt="Card image cap"
+                                        onerror="this.onerror=null; this.src='/img/players/Default.png'">
+                                </a>
+                            </div>
+                            <!--Card content-->
+                            <div class="card-body">
+                                <!--Title-->
+                                <a href="/players/{{ $player->id }}">
+                                    <h4 class="card-title">{{ $player->username }}</h4>
+                                </a>
+                                <hr>
+                                <!--Text-->
+                                <p class="card-text">Name: {{ $player->full_name }}</p>
+                            </div>
+                        </div>
+                        <!-- Card -->
+                    </div>
                     @endforeach
+                    </div>
                 </p>
             </div>
             <div class="col-m">

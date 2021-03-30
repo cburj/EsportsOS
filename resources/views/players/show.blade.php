@@ -25,6 +25,7 @@
                         <h3>{{ strtoupper($player->username) }}</h3>
                         <hr>
                         <p>Name: {{ $player->full_name }}</p>
+                        <p>Team: <a href="/teams/{{$player->team->id}}">{{$player->team->name}}</a></p>
                         <p>Country: {{ $player->country }}</p>
                         <p>Rating: {{ $player->rating }}</p>
                         @if ($player->twitter != null)
