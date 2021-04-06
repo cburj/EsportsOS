@@ -49,9 +49,9 @@ Route::get('/logs', 'App\Http\Controllers\LogsController@show')->name('logs');
 
 /* API ROUTES */
 /* Not sure if there is an easier way, but this works for now */
-Route::get('/api/teams', 'App\Http\Controllers\TeamsController@api');
-Route::get('/api/players', 'App\Http\Controllers\PlayersController@api');
-Route::get('/api/matchups', 'App\Http\Controllers\MatchupsController@api');
+Route::middleware('auth:api')->get('/api/teams', 'App\Http\Controllers\TeamsController@api');
+Route::middleware('auth:api')->get('/api/players', 'App\Http\Controllers\PlayersController@api');
+Route::middleware('auth:api')->get('/api/matchups', 'App\Http\Controllers\MatchupsController@api');
 
 /* EXPERIMENTAL ROUTES */
 Route::post('/generateMatches', 'App\Http\Controllers\MatchupsController@generateMatchups');

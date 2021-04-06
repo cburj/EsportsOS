@@ -56,8 +56,7 @@
                 <!-- If user is logged in and is an admin, then show the button -->
                 @if (!Auth::guest() && Auth::user()->isAdmin)
                     <h5>Admin Actions</h5>
-                    <button type="button" class="btn btn-dark" onclick="location.href='/players/create'">Register
-                        Player</button>
+                    <button type="button" class="btn btn-dark" onclick="location.href='/players/create'">Register Player</button>
                 @endif
             </div>
         </div>
