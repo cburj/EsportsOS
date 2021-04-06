@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Str;
 
 use App\Models\User;
 
@@ -44,6 +45,42 @@ class UsersController extends Controller
         }
         catch (QueryException $e) {
             return redirect('/admin/users');
+        }
+    }
+
+    public function apiConfig()
+    {
+        $users = User::all();
+
+        if (Auth::user() && Auth::user()->isAdmin)
+        {
+            return view('admin.apiconfig')->with('users', $users);
+        }
+        else
+        {
+            return redirect('/');
+        }
+    }
+
+    public function regenerateApiToken(Request $request)
+    {
+        if(Auth::user() && Auth::user()->isAdmin)
+        {
+            $user = User::where('id', $request->user_id)->first();
+
+            //dd($request->user_id);
+
+            $new_token = Str::random(60);
+
+            $user->api_token = $new_token;
+
+            $user->save();
+
+            return redirect('/api/config')->with('successMessage', 'New Token: ' . $new_token);
+        }
+        else
+        {
+            return redirect('/');
         }
     }
 }

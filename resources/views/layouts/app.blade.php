@@ -103,6 +103,9 @@
                                     <a class="dropdown-item" href="/assets">
                                         <i class="fas fa-video"></i> Stream Assets
                                     </a>
+                                    <a class="dropdown-item" href="/api/config">
+                                        <i class="fas fa-key"></i> API Config
+                                    </a>
                                     <a class="dropdown-item" href="/logs">
                                         <i class="far fa-file-alt"></i> System Logs
                                     </a>
