@@ -106,11 +106,11 @@
                                     <a class="dropdown-item" href="/api/config">
                                         <i class="fas fa-key"></i> API Config
                                     </a>
-                                    <a class="dropdown-item" href="/logs">
-                                        <i class="far fa-file-alt"></i> System Logs
-                                    </a>
                                     <a class="dropdown-item" href="/admin/users">
                                         <i class="fas fa-users"></i> Administrators
+                                    </a>
+                                    <a class="dropdown-item" href="/logs">
+                                        <i class="far fa-file-alt"></i> System Logs
                                     </a>
                                     @endif
                                     <a class="dropdown-item" href="{{ route('logout') }}"

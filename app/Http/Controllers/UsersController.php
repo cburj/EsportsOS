@@ -68,8 +68,6 @@ class UsersController extends Controller
         {
             $user = User::where('id', $request->user_id)->first();
 
-            //dd($request->user_id);
-
             $new_token = Str::random(60);
 
             $user->api_token = $new_token;
@@ -80,6 +78,27 @@ class UsersController extends Controller
             Log::channel('general')->info('USER_ID: ' . Auth::user()->id . '| ACTION: Generated API Token for USER ' . $request->user_id);
 
             return redirect('/api/config')->with('successMessage', 'New Token: ' . $new_token);
+        }
+        else
+        {
+            return redirect('/');
+        }
+    }
+
+    public function revokeApiToken(Request $request)
+    {
+        if(Auth::user() && Auth::user()->isAdmin)
+        {
+            $user = User::where('id', $request->user_id)->first();
+
+            $user->api_token = null;
+
+            $user->save();
+
+            //Log the action
+            Log::channel('general')->info('USER_ID: ' . Auth::user()->id . '| ACTION: Revoked API Access/Token for USER ' . $request->user_id);
+
+            return redirect('/api/config')->with('successMessage', 'API Access Revoked');
         }
         else
         {

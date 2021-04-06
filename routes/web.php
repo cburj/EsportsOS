@@ -53,7 +53,8 @@ Route::middleware('auth:api')->get('/api/teams', 'App\Http\Controllers\TeamsCont
 Route::middleware('auth:api')->get('/api/players', 'App\Http\Controllers\PlayersController@api');
 Route::middleware('auth:api')->get('/api/matchups', 'App\Http\Controllers\MatchupsController@api');
 Route::get('/api/config', 'App\Http\Controllers\UsersController@apiConfig');
-Route::post('/regenerateToken', 'App\Http\Controllers\UsersController@regenerateApiToken')->name('api.generate');
+Route::post('/api/regenerateToken', 'App\Http\Controllers\UsersController@regenerateApiToken')->name('api.generate');
+Route::post('/api/revokeToken', 'App\Http\Controllers\UsersController@revokeApiToken')->name('api.revoke');
 
 /* EXPERIMENTAL ROUTES */
 Route::post('/generateMatches', 'App\Http\Controllers\MatchupsController@generateMatchups');
