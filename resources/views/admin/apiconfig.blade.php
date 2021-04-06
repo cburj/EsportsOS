@@ -7,7 +7,7 @@
             <x-alert message="{{ session('successMessage') }}" type="success" dismiss="1"></x-alert>
         @endif
 
-        <p>Once a token is generated, it will appear as a success message at the top of this page. <strong>It will not be show
+        <p>Once a token is generated, it will appear as a success message at the top of this page. <strong class="animated flash" style="color: red;">It will not be show
             again.</strong> If a token is lost or forgotten, please regenerate a new one as soon as possible </p>
 
 
