@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 21, 2021 at 05:28 PM
+-- Generation Time: Apr 06, 2021 at 04:46 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.3
 
@@ -82,13 +82,9 @@ CREATE TABLE `matchups` (
 --
 
 INSERT INTO `matchups` (`id`, `created_at`, `updated_at`, `team1_id`, `team2_id`, `child1_id`, `child2_id`, `date_time`, `start_time`, `end_time`, `team1_score`, `team2_score`, `server_ip`, `state`) VALUES
-(103, '2021-03-21 15:36:47', '2021-03-21 15:43:01', 10, 1, NULL, NULL, '2021-03-27 20:01:00', NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT'),
-(104, '2021-03-21 15:36:47', '2021-03-21 15:43:01', 9, 2, NULL, NULL, '2021-03-27 20:00:00', NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT'),
-(105, '2021-03-21 15:36:47', '2021-03-21 15:43:01', 8, 3, NULL, NULL, '2021-03-27 20:00:00', NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT'),
-(106, '2021-03-21 15:36:47', '2021-03-21 15:43:01', 7, 4, NULL, NULL, '2021-03-27 20:00:00', NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT'),
-(107, '2021-03-21 15:36:47', '2021-03-21 15:36:47', NULL, NULL, 103, 104, NULL, NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT'),
-(108, '2021-03-21 15:36:47', '2021-03-21 15:36:47', NULL, NULL, 105, 106, NULL, NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT'),
-(109, '2021-03-21 15:36:47', '2021-03-21 15:36:47', NULL, NULL, 107, 108, NULL, NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT');
+(32, '2021-03-25 16:44:06', '2021-04-06 10:32:54', 4, 1, NULL, NULL, '2021-04-09 12:00:00', NULL, NULL, 0, 0, '192.168.0.1', 'AWAITING RESULT'),
+(33, '2021-03-25 16:44:06', '2021-04-06 10:32:54', 3, 2, NULL, NULL, '2021-04-09 12:00:00', NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT'),
+(34, '2021-03-25 16:44:06', '2021-04-06 10:32:54', NULL, NULL, 32, 33, '2021-04-09 13:00:00', NULL, NULL, 0, 0, '127.0.0.1', 'AWAITING RESULT');
 
 -- --------------------------------------------------------
 
@@ -115,7 +111,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (112, '2020_11_09_175917_create_teams_table', 4),
 (113, '2020_11_09_180413_create_players_table', 4),
 (116, '2020_12_14_130856_matchups', 5),
-(118, '2021_02_22_155716_dispute_messages', 6);
+(118, '2021_02_22_155716_dispute_messages', 6),
+(119, '2021_04_06_100733_userapi', 7);
 
 -- --------------------------------------------------------
 
@@ -134,7 +131,7 @@ CREATE TABLE `password_resets` (
 --
 
 INSERT INTO `password_resets` (`email`, `token`, `created_at`) VALUES
-('charlie@cburg.co.uk', '$2y$10$Q3IVmkguAfH/tA1a1XkrAeVQIAlN/5UwTbP4YX00ieNGHx9YffihS', '2020-11-24 14:14:07');
+('charlie@cburg.co.uk', '$2y$10$aLc8E3gNaO8CSaaxRRxqHumC9Krf2RM3B6Bema4Vtwa8FQHCdTnFO', '2021-03-25 15:47:53');
 
 -- --------------------------------------------------------
 
@@ -207,11 +204,7 @@ INSERT INTO `teams` (`id`, `created_at`, `updated_at`, `name`, `abbreviation`, `
 (1, '2021-02-11 15:01:11', '2021-02-11 15:01:11', 'TeamX', 'TX', 'Unknown', 'United Kingdom', 0.00, '@twitter', 'Useless Energy Drink', 'Expensive Clothing Brand'),
 (2, '2021-02-11 15:01:51', '2021-02-11 15:01:51', 'TeamY', 'TY', 'Unknown', 'United Kingdom', 0.00, '@twitter', 'Overpriced Peripherals Company', 'Crypto Scam'),
 (3, '2021-02-16 14:36:29', '2021-02-16 14:36:29', 'TeamZ', 'TZ', 'Unknown', 'Denmark', 0.00, '@twitter', 'Overpriced Peripherals Company', 'Crypto Scam'),
-(4, '2021-02-16 14:37:30', '2021-02-16 14:37:30', 'TeamA', 'TA', 'Unknown', 'Brazil', 0.00, '@twitter', 'Fake Fashion Brand', 'Low Quality Laptops'),
-(7, '2021-03-21 15:34:44', '2021-03-21 15:34:44', 'Team1', 'T1', 'Unknown', 'United Kingdom', 0.00, '@twitter', 'Overpriced Peripherals Company', 'Brand'),
-(8, '2021-03-21 15:35:04', '2021-03-21 15:35:04', 'Team2', 'T2', 'Unknown', 'United States of America', 0.00, '@twitter', 'Brand', 'Crypto Scam'),
-(9, '2021-03-21 15:35:56', '2021-03-21 15:35:56', 'Team3', 'T3', 'Unknown', 'Denmark', 0.00, '@twitter', 'Brand', 'Brand'),
-(10, '2021-03-21 15:36:11', '2021-03-21 15:36:11', 'Team4', 'T4', 'Unknown', 'Brazil', 0.00, '@twitter', 'Brand', 'Brand');
+(4, '2021-02-16 14:37:30', '2021-02-16 14:37:30', 'TeamA', 'TA', 'Unknown', 'Brazil', 0.00, '@twitter', 'Fake Fashion Brand', 'Low Quality Laptops');
 
 -- --------------------------------------------------------
 
@@ -225,6 +218,7 @@ CREATE TABLE `users` (
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `api_token` varchar(80) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
@@ -235,9 +229,11 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `isAdmin`) VALUES
-(1, 'Charlie Burgess', 'charlie@cburg.co.uk', NULL, '$2y$10$v5.fjwnnZyfaPEw02g70Ae2QOg/jsjw4za0LtQau4BgnaPlikdmsm', NULL, '2021-02-11 15:00:08', '2021-02-11 15:00:08', 1),
-(2, 'test', 'test@test.com', NULL, '$2y$10$9p7eKGc/08U/arVSsGAkR.Wjz2KhlL43hm8bRMdszAXigdDEhy75G', NULL, '2021-03-03 11:34:12', '2021-03-03 11:34:12', 0);
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `api_token`, `remember_token`, `created_at`, `updated_at`, `isAdmin`) VALUES
+(1, 'Charlie Burgess', 'charlie@cburg.co.uk', NULL, '$2y$10$v5.fjwnnZyfaPEw02g70Ae2QOg/jsjw4za0LtQau4BgnaPlikdmsm', NULL, NULL, '2021-02-11 15:00:08', '2021-04-06 13:46:01', 1),
+(2, 'test', 'test@test.com', NULL, '$2y$10$9p7eKGc/08U/arVSsGAkR.Wjz2KhlL43hm8bRMdszAXigdDEhy75G', NULL, NULL, '2021-03-03 11:34:12', '2021-04-06 10:06:00', 0),
+(3, 'Rick Deckard', 'rick.deckard@lapd.gov', NULL, '$2y$10$caajSY1rpKNLHi2QYa151OWbAhBPtfx5MbvJrQoCliFWpDIeczLlq', NULL, NULL, '2021-03-29 14:36:02', '2021-04-06 10:06:05', 0),
+(5, '[API] Charlie Burgess', 'api@esportsos.com', NULL, '$2y$10$UzO0iBv7TOTUjh.WlmRJW.Ws4c0Q20vWp.9y1w/GtGoSqpAPt7aCy', NULL, NULL, '2021-04-06 09:18:45', '2021-04-06 13:46:11', 0);
 
 --
 -- Indexes for dumped tables
@@ -302,7 +298,8 @@ ALTER TABLE `teams`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `users_api_token_unique` (`api_token`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -324,13 +321,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `matchups`
 --
 ALTER TABLE `matchups`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=120;
 
 --
 -- AUTO_INCREMENT for table `players`
@@ -348,7 +345,7 @@ ALTER TABLE `teams`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- Constraints for dumped tables
