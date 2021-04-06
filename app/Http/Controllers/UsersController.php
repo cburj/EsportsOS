@@ -76,6 +76,9 @@ class UsersController extends Controller
 
             $user->save();
 
+            //Log the action
+            Log::channel('general')->info('USER_ID: ' . Auth::user()->id . '| ACTION: Generated API Token for USER ' . $request->user_id);
+
             return redirect('/api/config')->with('successMessage', 'New Token: ' . $new_token);
         }
         else
