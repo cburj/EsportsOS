@@ -50,9 +50,12 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark  shadow-sm custom-nav">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'EsportsOS') }}
+                <a class="navbar-brand" href="/">
+                    <img src="/img/icon-100.png" height="30" alt="mdb logo">
                 </a>
+                <!--<a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'EsportsOS') }}
+                </a>-->
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>

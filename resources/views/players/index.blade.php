@@ -8,9 +8,12 @@
         @endif
 
         <div class="row">
-            <div class="col-10">
+            @if (Auth::guest() || !Auth::user()->isAdmin)
+                <div class="p-2">
+            @else
+                <div class="col-10">
+            @endif
                 <h3>Players</h3>
-
                 <div class="row row-cols-1 row-cols-md-3">
                     @if (count($players) > 0)
                         @foreach ($players as $player)
@@ -50,7 +53,6 @@
                             <p>Oops, no players found 😢</p>
                     @endif
                 </div>
-
             </div>
             <div class="col-sm">
                 <!-- If user is logged in and is an admin, then show the button -->

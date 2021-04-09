@@ -94,8 +94,8 @@
           <div class="card text-center">
             <div class="card-body">
               <p class="mt-4 pt-2"><i class="fas fa-users fa-4x grey-text"></i></i></p>
-              <h5 class="font-weight-normal my-4 py-2"><a class="dark-grey-text" href="#">User-Friendly</a></h5>
-              <p class="text-muted mb-4">Participants can easily login to their account, submit scores and keep up to date on their event schedule.</p>
+              <h5 class="font-weight-normal my-4 py-2"><a class="dark-grey-text" href="#">API</a></h5>
+              <p class="text-muted mb-4">Thanks to our custom API, you can easily retrieve info from the database. You choose who gets acces to the API!</p>
             </div>
           </div>
         </div>

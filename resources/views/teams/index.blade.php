@@ -8,7 +8,11 @@
         @endif
 
         <div class="row">
-            <div class="col-10">
+            @if (Auth::guest() || !Auth::user()->isAdmin)
+                <div class="col">
+            @else
+                <div class="col-lg-10">
+            @endif
                 @if (count($teams) > 0)
                     @foreach ($teams as $team)
                         <x-team-card :team="$team"></x-team-card>
@@ -18,13 +22,13 @@
                     <p>Oops, no teams found 😢</p>
                 @endif
             </div>
-            <div class="col-sm">
                 <!-- If user is logged in and is an admin, then show the button -->
                 @if(!Auth::guest() && Auth::user()->isAdmin)
-                    <h5>Admin Actions</h5>
-                    <button type="button" class="btn btn-dark" onclick="location.href='/teams/create'">Register Team</button>
+                    <div class="col-sm">
+                        <h5>Admin Actions</h5>
+                        <button type="button" class="btn btn-dark" onclick="location.href='/teams/create'">Register Team</button>
+                    </div>
                 @endif
-            </div>
         </div>
     </div>
 
