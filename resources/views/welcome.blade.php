@@ -12,7 +12,7 @@
       <div class="col-md-7 mb-4">
 
         <div class="view">
-          <img src="/img/homepage_img.png" class="img-fluid" alt="smaple image">
+          <img src="/img/home.gif" class="img-fluid" alt="smaple image">
         </div>
 
       </div>
