@@ -188,6 +188,8 @@ class MatchupsController extends Controller
                 //$file->storeAs('docs', $newFileName);
             }
 
+            $matchup->save();
+
             /**
              * We must now update the records for any matches that
              * depend on this matchup. E.g. update a Semi-Final matchup
@@ -197,8 +199,6 @@ class MatchupsController extends Controller
             {
                 $this->progressTournament($id);
             }
-
-            $matchup->save();
             return redirect('matchups/' . $id . '');
         } catch (QueryException $e) {
             return redirect('matchups/' . $id . '');

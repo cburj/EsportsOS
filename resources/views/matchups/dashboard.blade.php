@@ -19,7 +19,7 @@
                         <!-- Collapsible element -->
                         <div class="collapse" id="collapseExample">
                             <div class="mt-3" id="success-img">
-                                <img alt="success!" src="https://media.giphy.com/media/13G7hmmFr9yuxG/source.gif" />
+                                <img alt="success!" src="https://i.stack.imgur.com/iwjbC.gif" />
                             </div>
                         </div>
                         <!-- / Collapsible element -->
