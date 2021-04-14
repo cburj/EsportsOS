@@ -21,7 +21,7 @@
           
           <h3 class="font-weight-bold mb-4">Welcome to EsportsOS!</h3>
 
-        	<p>The Esports Organisation System is designed to hell small-scale Esports events get up and running, without the need to develop their own software.</p>
+        	<p>The Esports Organisation System is designed to help small-scale Esports events get up and running, without the need to develop their own software.</p>
         	<p>The application is designed to be as user-friendly as possible, with just a few clicks you can input all of your players & teams and generate a full event schedule.</p>
 
         	<a type="button" class="btn btn-danger btn-rounded mx-0" href="/matchups">View Matches</a>
