@@ -5,11 +5,11 @@
                 @if ($verbose == 'true')
                     <div class="matches-index-logos">
                         <a href="/teams/{{ $matchup->team1->id }}">
-                            <img src="/img/teams/{{ $matchup->team1->name }}.png" class="img-thumbnail float-left"
+                            <img src="/img/teams/{{ $matchup->team1->name }}.png" alt="Image of {{ $matchup->team1->name }}s Logo" class="img-thumbnail float-left"
                                 onerror="this.onerror=null; this.src='/img/teams/Default.png'" />
                         </a>
                         <a href="/teams/{{ $matchup->team2->id }}">
-                            <img src="/img/teams/{{ $matchup->team2->name }}.png" class="img-thumbnail float-right"
+                            <img src="/img/teams/{{ $matchup->team2->name }}.png" alt="Image of {{ $matchup->team1->name }}s Logo" class="img-thumbnail float-right"
                                 onerror="this.onerror=null; this.src='/img/teams/Default.png'" />
                         </a>
                     </div>
@@ -40,7 +40,7 @@
 
                     <h2>{{ $matchup->team1_score }}:{{ $matchup->team2_score }}</h2>
                     @if ($matchup->state == 'RESULT DISPUTED')
-                        <p><span class="red pl-5 pr-5 p-1 rounded-pill text-white"><i class="fas fa-exclamation"></i>
+                        <p><span class="danger-color pl-5 pr-5 p-1 rounded-pill text-white matchup-investigation"><i class="fas fa-exclamation"></i>
                                 PENDING INVESTIGATION <i class="fas fa-exclamation"></i><span></p>
                     @endif
 
@@ -61,7 +61,7 @@
                 @if ($verbose == 'true')
                     <div class="matches-index-logos">
                         <a href="/teams/{{ $matchup->team1->id }}">
-                            <img src="/img/teams/{{ $matchup->team1->name }}.png" class="img-thumbnail float-left"
+                            <img src="/img/teams/{{ $matchup->team1->name }}.png" alt="Image of {{ $matchup->team1->name }}s Logo" class="img-thumbnail float-left"
                                 onerror="this.onerror=null; this.src='/img/teams/Default.png'" />
                         </a>
                         <img src='/img/teams/Default.png' class="img-thumbnail float-right" />
@@ -96,7 +96,7 @@
                     <div class="matches-index-logos">
                         <img src='/img/teams/Default.png' class="img-thumbnail float-left" />
                         <a href="/teams/{{ $matchup->team2->id }}">
-                            <img src="/img/teams/{{ $matchup->team2->name }}.png" class="img-thumbnail float-right"
+                            <img src="/img/teams/{{ $matchup->team2->name }}.png" alt="Image of {{ $matchup->team1->name }}s Logo" class="img-thumbnail float-right"
                                 onerror="this.onerror=null; this.src='/img/teams/Default.png'" />
                         </a>
                     </div>
@@ -126,8 +126,8 @@
             @else
                 @if ($verbose == 'true')
                     <div class="matches-index-logos">
-                        <img src='/img/teams/Default.png' class="img-thumbnail float-right" />
-                        <img src='/img/teams/Default.png' class="img-thumbnail float-left" />
+                        <img src='/img/teams/Default.png' alt="Image of a Generic Team Logo" class="img-thumbnail float-right" />
+                        <img src='/img/teams/Default.png' alt="Image of a Second Generic Team Logo"class="img-thumbnail float-left" />
                     </div>
                 @endif
                 <div class="text-center">

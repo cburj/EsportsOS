@@ -18,7 +18,7 @@
                 <div class="row border rounded p-2">
                     <div class="col-md-4">
                         <img src="/img/players/{{ $player->username }}.png"
-                            class="img-fluid img-thumbnail animated fadeIn slower"
+                            class="img-fluid img-thumbnail animated fadeIn slower" alt="Profile picture for player called {{$player->username}}"
                             onerror="this.onerror=null; this.src='/img/players/Default.png'" />
                     </div>
                     <div class="col-8">

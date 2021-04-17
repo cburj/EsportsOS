@@ -26,7 +26,7 @@
                             <div class="view overlay">
                                 <a class="" href="/players/{{ $player->id }}">
                                     <img class="card-img-top" src="/img/players/{{ $player->username }}.png"
-                                        alt="Card image cap"
+                                        alt="Profile Picture for player named {{$player->username}}"
                                         onerror="this.onerror=null; this.src='/img/players/Default.png'">
                                 </a>
                             </div>

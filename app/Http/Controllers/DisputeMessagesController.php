@@ -38,8 +38,10 @@ class DisputeMessagesController extends Controller
     public function store(Request $request)
     {
         try{
+            $content = htmlspecialchars($request->message, ENT_QUOTES);
+
             $message = DisputeMessage::create([
-            'content' => $request->message,
+            'content' => $content,
             'visible' => true,
             'matchup_id' => $request->matchup_id,
             'user_id'=> $request->user_id,

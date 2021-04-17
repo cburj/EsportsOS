@@ -207,3 +207,7 @@ pre {
 strong{
     font-weight: bold;
 }
+
+.matchup-investigation{
+    white-space: nowrap;
+}

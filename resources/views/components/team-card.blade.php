@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-sm-2">
                     <a class="" href="/teams/{{$team->id}}">
-                        <img src="/img/teams/{{$team->name}}.png" class="img-thumbnail" onerror="this.onerror=null; this.src='/img/teams/Default.png'"/>
+                        <img src="/img/teams/{{$team->name}}.png" class="img-thumbnail" alt="Logo for the team called {{$team->name}}" onerror="this.onerror=null; this.src='/img/teams/Default.png'"/>
                     </a>
                 </div>
                 <div class="col-sm-8">
