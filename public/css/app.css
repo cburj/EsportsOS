@@ -160,6 +160,7 @@ input {
 .messageContainer {
     padding-top: 0.5vw;
     padding-bottom: 0.5vw;
+    white-space: nowrap;
 }
 
 .messagePadding {
@@ -169,20 +170,20 @@ input {
 
 .messageLocal {
     text-align: right;
-    color: white;
+    color: #1F1F1F;
 }
 
 .messageForeign {
     text-align: left;
-    color: white;
+    color: #3D3D3D;
 }
 
 .messageRight {
-    background-color: #ff3547;
+    background-color: #47A0FF;
 }
 
 .messageLeft {
-    background-color: rgb(44, 44, 44);
+    background-color: #B0B0B0;
 }
 
 .disputeTimestamp {
