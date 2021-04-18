@@ -127,7 +127,7 @@
                 @if ($verbose == 'true')
                     <div class="matches-index-logos">
                         <img src='/img/teams/Default.png' alt="Image of a Generic Team Logo" class="img-thumbnail float-right" />
-                        <img src='/img/teams/Default.png' alt="Image of a Second Generic Team Logo"class="img-thumbnail float-left" />
+                        <img src='/img/teams/Default.png' alt="Image of a Second Generic Team Logo" class="img-thumbnail float-left" />
                     </div>
                 @endif
                 <div class="text-center">
