@@ -3,6 +3,9 @@
 @section('content')
 
     <div class="container">
+        @if(!empty(session('errorMessage')))
+            <x-alert message="{{ session('errorMessage') }}" type="danger" dismiss="1"></x-alert>
+        @endif
         <x-match-card :matchup="$matchup" verbose="true"></x-match-card>
         <br>
 
@@ -90,7 +93,7 @@
                             <span class="input-group-text">Screenshot</span>
                         </div>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="fileInput" name="matchEvidenceImage" aria-describedby="fileInput" required />
+                            <input type="file" class="custom-file-input" id="fileInput" name="matchEvidenceImage" aria-describedby="fileInput" accept=".png,.PNG" required />
                             <label class="custom-file-label" for="fileInput"></label>
                         </div>
                     </div>

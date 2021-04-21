@@ -181,6 +181,11 @@ class MatchupsController extends Controller
                 $file = $request->file('matchEvidenceImage');
                 $extension = $file->extension();
 
+                if($extension != "png" || $extension != "PNG")
+                {
+                    return redirect('matchups/' . $id . '')->with('errorMessage', 'Please only upload .png or .PNG files!');
+                }
+
                 $newFileName = 'MATCH_' . $id . '_EVIDENCE.' . $extension;
 
                 $path = $file->storeAs('public/matchup_evidence', $newFileName);
