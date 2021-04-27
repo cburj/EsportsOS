@@ -1,5 +1,5 @@
-# "EsportsOS" (Working Title)
-EsportsOS is designed to allow all sizes of esports tournaments to be organised in a few simple clicks, with the ability to record match results and rank teams/players based on their performances. EsportsOS also gives admins the ability to create several dashboards that can be used within livestreams/broadcasts to be shared data with viewers and attendees.
+# "EsportsOS"
+EsportsOS is an organisation tool designed to help small Esports events get up and running. The application includes everything you could need to plan and manage your own event from start to finish. Developed using modern technologies, the application can be hosted locally, or in the cloud - allowing you to decide who can access the system. EsportsOS is designed to be upgradable, you can easily modify the system and implement your own functionality - even completely bypass the front end by using its own built-in API with token authorisation!
 
 <hr>
 
@@ -26,13 +26,12 @@ EsportsOS is designed to allow all sizes of esports tournaments to be organised 
 
 ### External API
 
-Most data stored in the database tables will be accessible through an external API, meaning other processes/applications can request data. The &quot;EOS-API&quot; will accept all GET requests for matches, teams and players – but not return any personal data such as full names or passwords etc.
+Most data stored in the database tables will be accessible through an external API, meaning other processes/applications can request data. The &quot;EOS-API&quot; will accept GET requests for matches, teams and players – but not return any personal data such as full names or passwords etc. For all API endpoints, and API Token must be generated via the API Menu, this is a unique token that is used to verify API Requests.
 
 All GET Requests can be accessed using the following endpoints:
 
 | Endpoint | Request Type | Description |
 | --- | --- | --- |
-| /api/status | GET | Returns the overall status of the system. |
 | /api/teams | GET | Returns an array of all teams and their data. |
 | /api/teams/{{team\_id}} | GET | Returns details for a specific team. |
 | /api/matchups | GET | Returns an array of all matches and their data. |
@@ -90,22 +89,3 @@ Testing for EsportsOS is done using PHPUnit. To run a test, simply type:
 ```vendor/bin/phpunit --filter <<test_function_name>>```
 
 It is advised that you run tests individually, rather than all in a single command. Please ensure that you create a copy of the development database and rename it to 'fyp-testing' to ensure that your regular data is not overwritten/destroyed whilst running the unit tests.
-
-Unit tests have been written for the following Models:
-
-Players:
-* *only_logged_in_users_can_create_players*
-* *authenticated_users_can_create_players*
-* *a_player_can_be_created_via_the_form*
-
-Matchups
-* N/A
-
-Teams
-* N/A
-
-Dispute Messages:
-* N/A
-
-Users:
-* N/A
