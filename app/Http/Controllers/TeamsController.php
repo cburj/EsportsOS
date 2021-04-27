@@ -47,13 +47,13 @@ class TeamsController extends Controller
         try
         { 
         $team = Team::create([
-            'name' => $request->name,
-            'abbreviation' => $request->abbreviation,
-            'coach_name' => $request->coach_name,
-            'country' => $request->country,
-            'twitter' => $request->twitter,
-            'primary_sponsor' => $request->primary_sponsor,
-            'secondary_sponsor' => $request->secondary_sponsor,
+            'name' => htmlspecialchars($request->name, ENT_QUOTES),
+            'abbreviation' => htmlspecialchars($request->abbreviation, ENT_QUOTES),
+            'coach_name' => htmlspecialchars($request->coach_name, ENT_QUOTES),
+            'country' => htmlspecialchars($request->country, ENT_QUOTES),
+            'twitter' => htmlspecialchars($request->twitter, ENT_QUOTES),
+            'primary_sponsor' => htmlspecialchars($request->primary_sponsor, ENT_QUOTES),
+            'secondary_sponsor' => htmlspecialchars($request->secondary_sponsor, ENT_QUOTES),
         ]);
 
         //Redirect to this new Record.

@@ -61,11 +61,11 @@ class PlayersController extends Controller
 
         try {
             $player = Player::create([
-                'username' => $request->username,
-                'full_name' => $request->full_name,
-                'country' => $request->country,
-                'twitter' => $request->twitter,
-                'discord' => $request->discord,
+                'username' => htmlspecialchars($request->username, ENT_QUOTES),
+                'full_name' => htmlspecialchars($request->full_name, ENT_QUOTES),
+                'country' => htmlspecialchars($request->country, ENT_QUOTES),
+                'twitter' => htmlspecialchars($request->twitter, ENT_QUOTES),
+                'discord' => htmlspecialchars($request->discord, ENT_QUOTES),
                 'team_id' => $request->team_id,
                 'user_id' => $request->user_id,
                 'wins' => 0,
