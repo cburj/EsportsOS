@@ -5,11 +5,13 @@
                 @if ($verbose == 'true')
                     <div class="matches-index-logos">
                         <a href="/teams/{{ $matchup->team1->id }}">
-                            <img src="/img/teams/{{ $matchup->team1->name }}.png" alt="Image of {{ $matchup->team1->name }}s Logo" class="img-thumbnail float-left"
+                            <img src="/img/teams/{{ $matchup->team1->name }}.png"
+                                alt="Image of {{ $matchup->team1->name }}s Logo" class="img-thumbnail float-left"
                                 onerror="this.onerror=null; this.src='/img/teams/Default.png'" />
                         </a>
                         <a href="/teams/{{ $matchup->team2->id }}">
-                            <img src="/img/teams/{{ $matchup->team2->name }}.png" alt="Image of {{ $matchup->team1->name }}s Logo" class="img-thumbnail float-right"
+                            <img src="/img/teams/{{ $matchup->team2->name }}.png"
+                                alt="Image of {{ $matchup->team1->name }}s Logo" class="img-thumbnail float-right"
                                 onerror="this.onerror=null; this.src='/img/teams/Default.png'" />
                         </a>
                     </div>
@@ -40,19 +42,20 @@
 
                     <h2>{{ $matchup->team1_score }}:{{ $matchup->team2_score }}</h2>
                     @if ($matchup->state == 'RESULT DISPUTED')
-                        <p><span class="danger-color pl-5 pr-5 p-1 rounded-pill text-white matchup-investigation"><i class="fas fa-exclamation"></i>
+                        <p><span class="danger-color pl-5 pr-5 p-1 rounded-pill text-white matchup-investigation"><i
+                                    class="fas fa-exclamation"></i>
                                 PENDING INVESTIGATION <i class="fas fa-exclamation"></i><span></p>
                     @endif
 
-                    @if($matchup->state != "RESULT CONFIRMED")
-                    @php
-                        //Generate the URL for players to join the game.
-                        $ip = $matchup->server_ip;
-                        $conStr = 'steam://connect/' . $matchup->server_ip .'/';
-                    @endphp
-                    <a href="" class="btn btn-elegant" onclick="location.href='{{ $conStr }}'">
-                        <i class="fas fa-server pr-2"></i>JOIN SERVER
-                    </a>
+                    @if ($matchup->state != 'RESULT CONFIRMED')
+                        @php
+                            //Generate the URL for players to join the game.
+                            $ip = $matchup->server_ip;
+                            $conStr = 'steam://connect/' . $matchup->server_ip . '/';
+                        @endphp
+                        <a href="" class="btn btn-elegant" onclick="location.href='{{ $conStr }}'">
+                            <i class="fas fa-server pr-2"></i>JOIN SERVER
+                        </a>
                     @endif
                 </div>
 
@@ -61,7 +64,8 @@
                 @if ($verbose == 'true')
                     <div class="matches-index-logos">
                         <a href="/teams/{{ $matchup->team1->id }}">
-                            <img src="/img/teams/{{ $matchup->team1->name }}.png" alt="Image of {{ $matchup->team1->name }}s Logo" class="img-thumbnail float-left"
+                            <img src="/img/teams/{{ $matchup->team1->name }}.png"
+                                alt="Image of {{ $matchup->team1->name }}s Logo" class="img-thumbnail float-left"
                                 onerror="this.onerror=null; this.src='/img/teams/Default.png'" />
                         </a>
                         <img src='/img/teams/Default.png' class="img-thumbnail float-right" />
@@ -91,12 +95,13 @@
 
 
 
-                @elseif ($matchup->team2_id != null)
+            @elseif ($matchup->team2_id != null)
                 @if ($verbose == 'true')
                     <div class="matches-index-logos">
                         <img src='/img/teams/Default.png' class="img-thumbnail float-left" />
                         <a href="/teams/{{ $matchup->team2->id }}">
-                            <img src="/img/teams/{{ $matchup->team2->name }}.png" alt="Image of {{ $matchup->team1->name }}s Logo" class="img-thumbnail float-right"
+                            <img src="/img/teams/{{ $matchup->team2->name }}.png"
+                                alt="Image of {{ $matchup->team2->name }}s Logo" class="img-thumbnail float-right"
                                 onerror="this.onerror=null; this.src='/img/teams/Default.png'" />
                         </a>
                     </div>
@@ -118,7 +123,7 @@
                         <p>Unscheduled (TBD)</p>
                     @endif
 
-                    <p>{{ $matchup->child1->team1->name }} or {{ $matchup->child1->team2->name }}</p>
+                    <p>{{ $matchup->child2->team1->name }} or {{ $matchup->child2->team2->name }}</p>
                     <p>VS</p>
                     <p><strong>{{ $matchup->team2->name }}</strong></p>
                 </div>
@@ -126,8 +131,10 @@
             @else
                 @if ($verbose == 'true')
                     <div class="matches-index-logos">
-                        <img src='/img/teams/Default.png' alt="Image of a Generic Team Logo" class="img-thumbnail float-right" />
-                        <img src='/img/teams/Default.png' alt="Image of a Second Generic Team Logo" class="img-thumbnail float-left" />
+                        <img src='/img/teams/Default.png' alt="Image of a Generic Team Logo"
+                            class="img-thumbnail float-right" />
+                        <img src='/img/teams/Default.png' alt="Image of a Second Generic Team Logo"
+                            class="img-thumbnail float-left" />
                     </div>
                 @endif
                 <div class="text-center">
