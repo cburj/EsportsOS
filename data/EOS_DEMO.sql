@@ -169,7 +169,7 @@ INSERT INTO `players` (`id`, `created_at`, `updated_at`, `username`, `full_name`
 (15, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'cocahey0', 'Cleon O\'Cahey', 'Uzbekistan', 'cocahey0', 'cocahey0', 7, 3, 0, 2, 3.00, 1),
 (16, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'cgash1', 'Conrado Gash', 'Poland', 'cgash1', 'cgash1', 7, 4, 5, 4, 0.60, 1),
 (17, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'zgalego2', 'Zelma Galego', 'Indonesia', 'zgalego2', 'zgalego2', 8, 2, 2, 4, 1.10, 1),
-(18, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'lcaen3', 'Lauretta Caen', 'Indonesia', 'lcaen3', 'lcaen3', 8, 4, 1, 0, 7.10, 1),
+(18, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'lcaen3', 'Lauretta Caen', 'Indonesia', 'lcaen3', 'lcaen3', 8, 4, 1, 0, 7.10, 2),
 (19, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'wpapis4', 'Walker Papis', 'Ukraine', 'wpapis4', 'wpapis4', 5, 0, 3, 4, 4.80, 1),
 (20, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'uingham5', 'Ulysses Ingham', 'Uzbekistan', 'uingham5', 'uingham5', 5, 5, 3, 3, 2.80, 1),
 (21, '0000-00-00 00:00:00', '0000-00-00 00:00:00', 'tchanter6', 'Thorin Chanter', 'China', 'tchanter6', 'tchanter6', 6, 0, 2, 1, 7.70, 1),

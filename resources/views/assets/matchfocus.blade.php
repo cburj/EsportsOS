@@ -22,7 +22,7 @@
             <div class="d-flex align-items-center justify-content-center" style="height: 60vh">
                 <div class="matchFocusMain">
                     <h2>UPCOMING MATCH</h2>
-                    <h1 class="asset-match-focus-teams"><img src="/img/teams/{{$matchup->team1->name}}.png" class=""/>VS<img src="/img/teams/{{$matchup->team2->name}}.png" class=""/></h1>
+                    <h1 class="asset-match-focus-teams"><img src="/img/teams/{{$matchup->team1->name}}.png" class="" onerror="this.onerror=null; this.src='/img/teams/Default.png'"/>VS<img src="/img/teams/{{$matchup->team2->name}}.png" class="" onerror="this.onerror=null; this.src='/img/teams/Default.png'"/></h1>
                     <h4>Match Start: {{ $date->format('d/m/Y @ H:i') }}</h4>
                 </div>
               </div>
