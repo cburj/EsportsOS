@@ -3,6 +3,10 @@ EsportsOS is an organisation tool designed to help small Esports events get up a
 
 <hr>
 
+<img src="https://i.gyazo.com/dd6140f3921e6e641e52206009fed783.gif">
+<img src="https://i.gyazo.com/5574266d84499e1523d2f3fcdda9dab3.gif">
+<img src="https://i.gyazo.com/50f5719f66d7cb00a1cc81079ba3850b.gif">
+
 ### Models
 * User*
 * Player
