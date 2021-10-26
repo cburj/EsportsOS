@@ -1,5 +1,5 @@
 <img src="https://i.imgur.com/ZfPlQoR.png" alt="EsportOS Logo">
-EsportsOS is an organisation tool designed to help small Esports events get up and running. The application includes everything you could need to plan and manage your own event from start to finish. Developed using modern technologies, the application can be hosted locally, or in the cloud - allowing you to decide who can access the system. EsportsOS is designed to be upgradable, you can easily modify the system and implement your own functionality - even completely bypass the front end by using its own built-in API with token authorisation!
+EsportsOS is an organisation tool designed to help small Esports events get up and running. The application includes everything you could need to plan and manage your own event from start to finish. Developed using modern technologies, the application can be hosted locally, or in the cloud - allowing you to decide who can access the system. EsportsOS is designed to be upgradable. You can easily modify the system and implement your own functionality - even completely bypass the front end by using its own built-in API with token-auth!
 
 <hr>
 
